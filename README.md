@@ -25,7 +25,7 @@ php artisan vendor:publish --provider="Bepsvpt\LaravelSecurityHeader\SecurityHea
 Add the global middleware in `app/Http/Kernel.php`
 
 ```php
-\Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+\Bepsvpt\LaravelSecurityHeader\SecurityHeaderMiddleware::class,
 ```
 
 ## License
