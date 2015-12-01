@@ -1,6 +1,6 @@
 {
     "name": "bepsvpt/laravel-security-header",
-    "description": "Append security headers to response.",
+    "description": "Append security headers to response for laravel framework.",
     "keywords": ["laravel", "middleware", "security", "header"],
     "license": "MIT",
     "authors": [
