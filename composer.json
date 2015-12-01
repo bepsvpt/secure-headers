@@ -1,0 +1,20 @@
+{
+    "name": "bepsvpt/laravel-security-header",
+    "description": "Append security headers to response.",
+    "keywords": ["laravel", "middleware", "security", "header"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "BePsvPT",
+            "email": "freedom@csie.io"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bepsvpt\\LaravelSecureHeader\\": "src/"
+        }
+    }
+}
