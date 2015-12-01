@@ -18,12 +18,14 @@ return [
     /*
      * Make sure you enable https first.
      */
-    'force_https' => false,
+    'force_https' => env('FORCE_HTTPS', false),
 
     /*
      * HTTP Strict Transport Security
      *
      * https://developer.mozilla.org/en-US/docs/Web/Security/HTTP_strict_transport_security
+     *
+     * Note: hsts will only add when the request is secure or config is set to force https
      */
     'hsts' => [
         'enable' => false,
@@ -37,6 +39,8 @@ return [
      * Public Key Pinning
      *
      * Reference: https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning
+     *
+     * Note: hpkp will only add when the request is secure or config is set to force https
      */
     'hpkp' => [
         'enable' => false,
