@@ -3,8 +3,6 @@
 namespace Bepsvpt\LaravelSecurityHeader;
 
 use Closure;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class SecurityHeaderMiddleware
 {
@@ -30,21 +28,29 @@ class SecurityHeaderMiddleware
             'X-XSS-Protection' => config('security-header.x_xss_protection'),
         ];
 
-        // If debug is enable, turn off csp
+        // If debug is enable, we will disable csp header
         if (! config('app.debug') && ! empty($csp = config('security-header.csp'))) {
             $this->headers['Content-Security-Policy'] = $this->headers['X-Content-Security-Policy'] = $csp;
         }
 
-        if (config('security-header.hsts.enable')) {
-            $this->hsts();
-        }
+        /*
+         * Only the following status will add hsts and hpkp to response header
+         *
+         * 1. The request is already secure.
+         * 2. The config is set to force https.
+         */
+        if ($request->secure() || config('security-header.force_https')) {
+            if (config('security-header.hsts.enable')) {
+                $this->hsts();
+            }
 
-        if (config('security-header.hpkp.enable')) {
-            $this->hpkp();
-        }
+            if (config('security-header.hpkp.enable')) {
+                $this->hpkp();
+            }
 
-        if (! $request->secure() && config('security-header.force_https')) {
-            return redirect()->secure($request->getRequestUri(), 302, $this->headers);
+            if (! $request->secure()) {
+                return redirect()->secure($request->getRequestUri(), 302, $this->headers);
+            }
         }
 
         $response = $next($request);
