@@ -38,4 +38,14 @@ class SecurityHeaderServiceProvider extends ServiceProvider
 
         $this->mergeConfigFrom($configPath, 'security-header');
     }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return ['command.vendor.publish'];
+    }
 }
