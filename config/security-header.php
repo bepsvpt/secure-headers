@@ -13,7 +13,16 @@ return [
      *
      * Reference: https://developer.mozilla.org/en-US/docs/Web/Security/CSP
      */
-    'csp' => '',
+    'csp' => [
+        'rule' => '',
+
+        /*
+         * The URIs that should be excluded to add CSP header.
+         */
+        'except' => [
+            //
+        ],
+    ],
 
     /*
      * Make sure you enable https first.

@@ -29,8 +29,21 @@ class SecurityHeaderMiddleware
         ];
 
         // If debug is enable, we will disable csp header
-        if (! config('app.debug') && ! empty($csp = config('security-header.csp'))) {
-            $this->headers['Content-Security-Policy'] = $this->headers['X-Content-Security-Policy'] = $csp;
+        if (! config('app.debug') && ! empty($csp = config('security-header.csp.rule'))) {
+            foreach (config('security-header.csp.except') as $except) {
+                if ($request->is($except)) {
+                    $isCspExceptPath = true;
+
+                    break;
+                }
+            }
+
+            if (! isset($isCspExceptPath)) {
+                $this->headers['Content-Security-Policy']
+                    = $this->headers['X-Content-Security-Policy']
+                    = $this->headers['X-WebKit-CSP']
+                    = $csp;
+            }
         }
 
         /*
