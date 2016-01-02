@@ -1,10 +1,10 @@
 # Laravel Security Header
 
-Append security headers to response for laravel framework.
+Add security headers to http response for laravel framework.
 
 ## Install
 
-Install using composer:
+Install using composer
 
 ```sh
 composer require bepsvpt/laravel-security-header
@@ -22,7 +22,7 @@ Publish config file
 php artisan vendor:publish --provider="Bepsvpt\LaravelSecurityHeader\SecurityHeaderServiceProvider"
 ```
 
-Add the global middleware in `app/Http/Kernel.php`
+Add global middleware in `app/Http/Kernel.php`
 
 ```php
 \Bepsvpt\LaravelSecurityHeader\SecurityHeaderMiddleware::class,
