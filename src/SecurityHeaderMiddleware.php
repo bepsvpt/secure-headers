@@ -3,9 +3,17 @@
 namespace Bepsvpt\LaravelSecurityHeader;
 
 use Closure;
+use Illuminate\Http\Request;
 
 class SecurityHeaderMiddleware
 {
+    /**
+     * Security Header Config
+     *
+     * @var array
+     */
+    private $config;
+
     /**
      * Headers that should append to response.
      *
@@ -14,52 +22,39 @@ class SecurityHeaderMiddleware
     protected $headers = [];
 
     /**
+     * Create a new error binder instance.
+     */
+    public function __construct()
+    {
+        $this->config = config('security-header');
+    }
+
+    /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  Request  $request
+     * @param  Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
         $this->headers = [
-            'X-Content-Type-Options' => config('security-header.x_content_type_options'),
-            'X-Frame-Options' => config('security-header.x_frame_options'),
-            'X-XSS-Protection' => config('security-header.x_xss_protection'),
+            'X-Content-Type-Options' => $this->config['x_content_type_options'],
+            'X-Frame-Options' => $this->config['x_frame_options'],
+            'X-XSS-Protection' => $this->config['x_xss_protection'],
         ];
 
-        // If debug is enable, we will disable csp header
-        if (! config('app.debug') && ! empty($csp = config('security-header.csp.rule'))) {
-            foreach (config('security-header.csp.except') as $except) {
-                if ($request->is($except)) {
-                    $isCspExceptPath = true;
-
-                    break;
-                }
-            }
-
-            if (! isset($isCspExceptPath)) {
-                $this->headers['Content-Security-Policy']
-                    = $this->headers['X-Content-Security-Policy']
-                    = $this->headers['X-WebKit-CSP']
-                    = $csp;
-            }
-        }
+        $this->csp($request);
 
         /*
-         * Only the following status will add hsts and hpkp to response header
+         * Only the following status will add hsts and hpkp to response header.
          *
-         * 1. The request is already secure.
-         * 2. The config is set to force https.
+         * 1. Request is already secure.
+         * 2. Force https is enable.
          */
-        if ($request->secure() || config('security-header.force_https')) {
-            if (config('security-header.hsts.enable')) {
-                $this->hsts();
-            }
-
-            if (config('security-header.hpkp.enable')) {
-                $this->hpkp();
-            }
+        if ($request->secure() || $this->config['force_https']) {
+            $this->hsts();
+            $this->hpkp();
 
             if (! $request->secure()) {
                 return redirect()->secure($request->getRequestUri(), 302, $this->headers);
@@ -74,40 +69,70 @@ class SecurityHeaderMiddleware
     }
 
     /**
-     *  Parsing hsts header.
+     * Add csp to response header.
+     *
+     * @param Request $request
+     * @return void
      */
-    protected function hsts()
+    protected function csp(Request $request)
     {
-        list($maxAge, $includeSubDomains) = [
-            config('security-header.hsts.max_age'),
-            config('security-header.hsts.include_sub_domains'),
-        ];
-
-        $this->headers['Strict-Transport-Security'] = "max-age={$maxAge}; preload;";
-
-        if ($includeSubDomains) {
-            $this->headers['Strict-Transport-Security'] .= ' includeSubDomains;';
+        if (empty($this->config['csp']['rule'])) {
+            return;
         }
+
+        foreach ($this->config['csp']['except'] as $except) {
+            if ($request->is($except)) {
+                return;
+            }
+        }
+
+        $this->headers['Content-Security-Policy']
+            = $this->headers['X-Content-Security-Policy']
+            = $this->headers['X-WebKit-CSP']
+            = $this->config['csp']['rule'];
     }
 
     /**
-     *  Parsing hpkp header.
+     *  Add hsts to response header.
+     *
+     * @return void
+     */
+    protected function hsts()
+    {
+        if (! $this->config['hsts']['enable']) {
+            return;
+        }
+
+        $hsts = "max-age={$this->config['hsts']['max_age']}; preload;";
+
+        if ($this->config['hsts']['include_sub_domains']) {
+            $hsts .= ' includeSubDomains;';
+        }
+
+        $this->headers['Strict-Transport-Security'] = $hsts;
+    }
+
+    /**
+     *  Add hpkp to response header.
+     *
+     * @return void
      */
     protected function hpkp()
     {
-        list($maxAge, $includeSubDomains) = [
-            config('security-header.hpkp.max_age'),
-            config('security-header.hpkp.include_sub_domains'),
-        ];
-
-        $this->headers['Public-Key-Pins'] = "max-age={$maxAge};";
-
-        if ($includeSubDomains) {
-            $this->headers['Public-Key-Pins'] .= ' includeSubDomains;';
+        if (! $this->config['hpkp']['enable']) {
+            return;
         }
 
-        foreach (config('security-header.hpkp.pins') as $pin) {
-            $this->headers['Public-Key-Pins'] .= " pin-sha256=\"{$pin}\";";
+        $hpkp = "max-age={$this->config['hpkp']['max_age']};";
+
+        if ($this->config['hpkp']['include_sub_domains']) {
+            $hpkp .= ' includeSubDomains;';
         }
+
+        foreach ($this->config['hpkp']['pins'] as $pin) {
+            $hpkp .= " pin-sha256=\"{$pin}\";";
+        }
+
+        $this->headers['Public-Key-Pins'] = $hpkp;
     }
 }
