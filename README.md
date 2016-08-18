@@ -1,5 +1,7 @@
 # Laravel Security Header
 
+[![StyleCI](https://styleci.io/repos/47176049/shield)](https://styleci.io/repos/47176049)
+
 Add security headers to http response for laravel framework.
 
 ## Install
