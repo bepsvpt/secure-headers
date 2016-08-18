@@ -11,7 +11,7 @@ use ParagonIE\HPKPBuilder\HPKPBuilder;
 class SecurityHeaderMiddleware
 {
     /**
-     * Security Header Config
+     * Security Header Config.
      *
      * @var array
      */
@@ -97,7 +97,7 @@ class SecurityHeaderMiddleware
         $headers = explode(':', $hpkp, 2);
 
         return [
-            $headers[0] => trim($headers[1])
+            $headers[0] => trim($headers[1]),
         ];
     }
 
