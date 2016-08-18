@@ -20,11 +20,9 @@ class SecurityHeaderServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $configPath = __DIR__ . '/../config/security-header.php';
-
-        $publishPath = config_path('security-header.php');
-
-        $this->publishes([$configPath => $publishPath], 'config');
+        $this->publishes([
+            __DIR__.'/../config/security-header.json' => config_path('security-header.json'),
+        ], 'config');
     }
 
     /**
@@ -34,9 +32,7 @@ class SecurityHeaderServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $configPath = __DIR__ . '/../config/security-header.php';
-
-        $this->mergeConfigFrom($configPath, 'security-header');
+        //
     }
 
     /**

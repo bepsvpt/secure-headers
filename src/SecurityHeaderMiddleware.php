@@ -4,6 +4,9 @@ namespace Bepsvpt\LaravelSecurityHeader;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use ParagonIE\CSPBuilder\CSPBuilder;
+use ParagonIE\HPKPBuilder\HPKPBuilder;
 
 class SecurityHeaderMiddleware
 {
@@ -15,92 +18,56 @@ class SecurityHeaderMiddleware
     private $config;
 
     /**
-     * Headers that should append to response.
-     *
-     * @var array
-     */
-    protected $headers = [];
-
-    /**
-     * Create a new error binder instance.
-     */
-    public function __construct()
-    {
-        $this->config = config('security-header');
-    }
-
-    /**
      * Handle an incoming request.
      *
      * @param  Request  $request
      * @param  Closure  $next
-     * @return mixed
+     *
+     * @return Response
      */
     public function handle(Request $request, Closure $next)
     {
-        $this->headers = [
-            'X-Content-Type-Options' => $this->config['x_content_type_options'],
-            'X-Frame-Options' => $this->config['x_frame_options'],
-            'X-XSS-Protection' => $this->config['x_xss_protection'],
-        ];
-
-        $this->csp($request);
-
-        /*
-         * Only the following status will add hsts and hpkp to response header.
-         *
-         * 1. Request is already secure.
-         * 2. Force https is enable.
-         */
-        if ($request->secure() || $this->config['force_https']) {
-            $this->hsts();
-            $this->hpkp();
-
-            if (! $request->secure()) {
-                return redirect()->secure($request->getRequestUri(), 302, $this->headers);
-            }
-        }
-
         $response = $next($request);
 
-        $response->headers->add($this->headers);
+        $this->loadConfig();
+
+        $response->withHeaders(
+            array_merge(
+                $this->csp(),
+                $this->hpkp(),
+                $this->hsts(),
+                $this->miscellaneous()
+            )
+        );
 
         return $response;
     }
 
     /**
-     * Add csp to response header.
+     * Load config.
      *
-     * @param Request $request
      * @return void
      */
-    protected function csp(Request $request)
+    protected function loadConfig()
     {
-        if (empty($this->config['csp']['rule'])) {
-            return;
+        $path = config_path('security-header.json');
+
+        if (! file_exists($path)) {
+            $path = __DIR__.'/../config/security-header.json';
         }
 
-        foreach ($this->config['csp']['except'] as $except) {
-            if ($request->is($except)) {
-                return;
-            }
-        }
-
-        $this->headers['Content-Security-Policy']
-            = $this->headers['X-Content-Security-Policy']
-            = $this->headers['X-WebKit-CSP']
-            = $this->config['csp']['rule'];
+        $this->config = json_decode(file_get_contents($path), true);
     }
 
     /**
-     *  Add hsts to response header.
+     * Get hsts header.
      *
-     * @return void
+     * @return array
      */
     protected function hsts()
     {
         if (! $this->config['hsts']['enable']) {
-            return;
+            return [];
         }
 
         $hsts = "max-age={$this->config['hsts']['max_age']}; preload;";
@@ -109,30 +76,54 @@ class SecurityHeaderMiddleware
             $hsts .= ' includeSubDomains;';
         }
 
-        $this->headers['Strict-Transport-Security'] = $hsts;
+        return [
+            'Strict-Transport-Security' => $hsts,
+        ];
     }
 
     /**
-     *  Add hpkp to response header.
+     * Get hpkp header.
      *
-     * @return void
+     * @return array
      */
     protected function hpkp()
     {
-        if (! $this->config['hpkp']['enable']) {
-            return;
+        $hpkp = (new HPKPBuilder($this->config['hpkp']))->getHeader();
+
+        if (empty($hpkp)) {
+            return [];
         }
 
-        $hpkp = "max-age={$this->config['hpkp']['max_age']};";
+        $headers = explode(':', $hpkp, 2);
 
-        if ($this->config['hpkp']['include_sub_domains']) {
-            $hpkp .= ' includeSubDomains;';
-        }
+        return [
+            $headers[0] => trim($headers[1])
+        ];
+    }
 
-        foreach ($this->config['hpkp']['pins'] as $pin) {
-            $hpkp .= " pin-sha256=\"{$pin}\";";
-        }
+    /**
+     * Get csp header.
+     *
+     * @return array
+     */
+    protected function csp()
+    {
+        $csp = new CSPBuilder($this->config['csp']);
 
-        $this->headers['Public-Key-Pins'] = $hpkp;
+        return $csp->getHeaderArray(false);
+    }
+
+    /**
+     * Get miscellaneous headers.
+     *
+     * @return array
+     */
+    protected function miscellaneous()
+    {
+        return [
+            'X-Content-Type-Options' => $this->config['x_content_type_options'],
+            'X-Frame-Options' => $this->config['x_frame_options'],
+            'X-XSS-Protection' => $this->config['x_xss_protection'],
+        ];
     }
 }
