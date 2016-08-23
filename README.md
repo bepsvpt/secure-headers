@@ -1,6 +1,9 @@
 # Laravel Security Header
 
 [![StyleCI](https://styleci.io/repos/47176049/shield)](https://styleci.io/repos/47176049)
+[![Latest Stable Version](https://poser.pugx.org/bepsvpt/laravel-security-header/v/stable?format=flat-square)](https://packagist.org/packages/bepsvpt/laravel-security-header)
+[![Total Downloads](https://poser.pugx.org/bepsvpt/laravel-security-header/downloads?format=flat-square)](https://packagist.org/packages/bepsvpt/laravel-security-header)
+[![License](https://poser.pugx.org/bepsvpt/laravel-security-header/license?format=flat-square)](https://packagist.org/packages/bepsvpt/laravel-security-header)
 
 Add security headers to http response for laravel framework.
 
