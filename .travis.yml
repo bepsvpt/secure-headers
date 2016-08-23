@@ -6,5 +6,10 @@ php:
   - 7.0
   - 7.1
 
+# Commands to be run before your environment runs.
+before_script:
+  - composer self-update
+  - composer install --no-interaction
+
 # Commands you want to run that will verify your build.
 script: phpunit
