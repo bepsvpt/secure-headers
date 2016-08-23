@@ -6,10 +6,18 @@ php:
   - 7.0
   - 7.1
 
+addons:
+  code_climate:
+    repo_token: 81463871ea72c9fdbdb67bc3ea36138a1ddb8e441213f1f3e4de98a63e2dc362
+
 # Commands to be run before your environment runs.
 before_script:
   - composer self-update
   - composer install --no-interaction
+
+# Commands to be run after your environment runs.
+after_script:
+  - vendor/bin/test-reporter
 
 # Commands you want to run that will verify your build.
 script: phpunit
