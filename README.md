@@ -1,6 +1,8 @@
 # Laravel Security Header
 
 [![Build Status](https://travis-ci.org/BePsvPT/laravel-security-header.svg?branch=master)](https://travis-ci.org/BePsvPT/laravel-security-header)
+[![Test Coverage](https://codeclimate.com/github/BePsvPT/laravel-security-header/badges/coverage.svg)](https://codeclimate.com/github/BePsvPT/laravel-security-header/coverage)
+[![Code Climate](https://codeclimate.com/github/BePsvPT/laravel-security-header/badges/gpa.svg)](https://codeclimate.com/github/BePsvPT/laravel-security-header)
 [![StyleCI](https://styleci.io/repos/47176049/shield)](https://styleci.io/repos/47176049)
 [![Latest Stable Version](https://poser.pugx.org/bepsvpt/laravel-security-header/v/stable?format=flat-square)](https://packagist.org/packages/bepsvpt/laravel-security-header)
 [![Total Downloads](https://poser.pugx.org/bepsvpt/laravel-security-header/downloads?format=flat-square)](https://packagist.org/packages/bepsvpt/laravel-security-header)
