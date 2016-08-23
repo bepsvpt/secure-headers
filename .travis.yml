@@ -1,0 +1,10 @@
+# Required to run your project under the correct environment.
+language: php
+
+# Versions of PHP you want your project run with.
+php:
+  - 7.0
+  - 7.1
+
+# Commands you want to run that will verify your build.
+script: phpunit

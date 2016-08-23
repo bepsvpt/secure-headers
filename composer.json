@@ -16,9 +16,17 @@
     "paragonie/csp-builder": "^2.0",
     "paragonie/hpkp-builder": "^0.1."
   },
+  "require-dev": {
+    "phpunit/phpunit": "~4.8"
+  },
   "autoload": {
     "psr-4": {
       "Bepsvpt\\LaravelSecurityHeader\\": "src/"
     }
+  },
+  "autoload-dev": {
+    "files": [
+      "tests/helpers.php"
+    ]
   }
 }
