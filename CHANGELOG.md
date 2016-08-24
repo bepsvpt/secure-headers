@@ -1,16 +1,22 @@
 # Changelog for Laravel Security Header
 
-## 2.1.0 (2016-08-24)
+## dev
 
-- Revert config file from json format to php
+## 2.x
 
-## 2.0.0 (2016-08-18)
+- 2.1.1 (2016-08-24)
+  - Prevent testing pollute helper functions
 
-- Transform config file to json format
-- Remove force https config
-- Increase minimum php version to 7.0
+- 2.1.0 (2016-08-24)
+  - Revert config file from json format to php
 
-## 1.1.2 (2016-01-02)
+- 2.0.0 (2016-08-18)
+  - Transform config file to json format
+  - Remove force https config
+  - Increase minimum php version to 7.0
 
-- Code refactoring
-- Debug mode will add csp header now
+## 1.x
+
+- 1.1.2 (2016-01-02)
+  - Code refactoring
+  - Debug mode will add csp header now
