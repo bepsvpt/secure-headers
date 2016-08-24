@@ -1,5 +1,8 @@
 # Changelog for Laravel Security Header
 
+## 2.1.0 (2016-08-24)
+
+- Revert config file from json format to php
 
 ## 2.0.0 (2016-08-18)
 

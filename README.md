@@ -36,6 +36,14 @@ Add global middleware in `app/Http/Kernel.php`
 \Bepsvpt\LaravelSecurityHeader\SecurityHeaderMiddleware::class,
 ```
 
+## CHANGELOG
+
+Please see [CHANGELOG](CHANGELOG.md) for details.
+
+## UPGRADE
+
+Please see [UPGRADE](UPGRADE.md) for details.
+
 ## License
 
 Laravel Security Header is licensed under [The MIT License (MIT)](LICENSE).

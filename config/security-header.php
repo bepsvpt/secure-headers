@@ -72,6 +72,8 @@ return [
      * Reference: https://developer.mozilla.org/en-US/docs/Web/Security/CSP
      *
      * If custom-csp is not null, csp will be ignored.
+     *
+     * Note: custom-csp does not support report-only.
      */
 
     'custom-csp' => env('SECURITY_HEADER_CUSTOM_CSP', null),
