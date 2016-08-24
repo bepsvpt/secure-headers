@@ -24,10 +24,5 @@
     "psr-4": {
       "Bepsvpt\\LaravelSecurityHeader\\": "src/"
     }
-  },
-  "autoload-dev": {
-    "files": [
-      "tests/helpers.php"
-    ]
   }
 }
