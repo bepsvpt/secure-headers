@@ -29,7 +29,7 @@ class SecurityHeaderMiddleware
     {
         $response = $next($request);
 
-        $this->loadConfig();
+        $this->config = config('security-header');
 
         $response->withHeaders(
             array_merge(
@@ -44,22 +44,6 @@ class SecurityHeaderMiddleware
     }
 
     /**
-     * Load config.
-     *
-     * @return void
-     */
-    protected function loadConfig()
-    {
-        $path = config_path('security-header.json');
-
-        if (! file_exists($path)) {
-            $path = __DIR__.'/../config/security-header.json';
-        }
-
-        $this->config = json_decode(file_get_contents($path), true);
-    }
-
-    /**
      * Get hsts header.
      *
      * @return array
@@ -70,9 +54,9 @@ class SecurityHeaderMiddleware
             return [];
         }
 
-        $hsts = "max-age={$this->config['hsts']['max_age']}; preload;";
+        $hsts = "max-age={$this->config['hsts']['max-age']}; preload;";
 
-        if ($this->config['hsts']['include_sub_domains']) {
+        if ($this->config['hsts']['include-sub-domains']) {
             $hsts .= ' includeSubDomains;';
         }
 
@@ -88,11 +72,11 @@ class SecurityHeaderMiddleware
      */
     protected function hpkp()
     {
-        $hpkp = (new HPKPBuilder($this->config['hpkp']))->getHeader();
-
-        if (empty($hpkp)) {
+        if (empty($this->config['hpkp']['hashes'])) {
             return [];
         }
+
+        $hpkp = (new HPKPBuilder($this->config['hpkp']))->getHeader();
 
         $headers = explode(':', $hpkp, 2);
 
@@ -108,6 +92,12 @@ class SecurityHeaderMiddleware
      */
     protected function csp()
     {
+        if (! is_null($this->config['custom-csp'])) {
+            return [
+                'Content-Security-Policy' => $this->config['custom-csp'],
+            ];
+        }
+
         $csp = new CSPBuilder($this->config['csp']);
 
         return $csp->getHeaderArray(false);
@@ -121,9 +111,9 @@ class SecurityHeaderMiddleware
     protected function miscellaneous()
     {
         return [
-            'X-Content-Type-Options' => $this->config['x_content_type_options'],
-            'X-Frame-Options' => $this->config['x_frame_options'],
-            'X-XSS-Protection' => $this->config['x_xss_protection'],
+            'X-Content-Type-Options' => $this->config['x-content-type-options'],
+            'X-Frame-Options' => $this->config['x-frame-options'],
+            'X-XSS-Protection' => $this->config['x-xss-protection'],
         ];
     }
 }

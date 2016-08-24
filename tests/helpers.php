@@ -1,14 +1,24 @@
 <?php
 
-if (! function_exists('config_path')) {
+if (! function_exists('config')) {
     /**
-     * Get the configuration path.
+     * Get / set the specified configuration value.
      *
-     * @param  string  $path
-     * @return string
+     * If an array is passed as the key, we will assume you want to set an array of values.
+     *
+     * @param  array|string  $key
+     * @param  mixed  $default
+     *
+     * @return mixed
      */
-    function config_path($path = '')
+    function config($key = null, $default = null)
     {
-        return __DIR__.'/config'.($path ? DIRECTORY_SEPARATOR.$path : $path);
+        $path = __DIR__."/config/{$key}.php";
+
+        if (! file_exists($path)) {
+            return $default;
+        }
+
+        return require $path;
     }
 }

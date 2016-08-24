@@ -2,20 +2,9 @@
 
 class MiddlewareTest extends PHPUnit_Framework_TestCase
 {
-    private $config;
-
-    public function setUp()
+    protected function copy($filename)
     {
-        parent::setUp();
-
-        @unlink(__DIR__.'/config/security-header.json');
-
-        $this->config = json_decode(file_get_contents(__DIR__.'/config/default.json'), true);
-    }
-
-    protected function saveConfig()
-    {
-        file_put_contents(__DIR__.'/config/security-header.json', json_encode($this->config));
+        copy(__DIR__."/config/{$filename}.php", __DIR__.'/config/security-header.php');
     }
 
     protected function response()
@@ -27,20 +16,21 @@ class MiddlewareTest extends PHPUnit_Framework_TestCase
         });
     }
 
-    public function test_using_default_config_file_if_config_file_not_found()
+    public function test_default_config()
     {
+        $this->copy('default');
+
         $response = $this->response();
 
         $this->assertNotNull($response->headers->get('Content-Security-Policy'));
-        $this->assertNotNull($response->headers->get('X-Content-Type-Options'));
-        $this->assertNotNull($response->headers->get('X-Frame-Options'));
-        $this->assertNotNull($response->headers->get('X-XSS-Protection'));
+        $this->assertSame('nosniff', $response->headers->get('X-Content-Type-Options'));
+        $this->assertSame('sameorigin', $response->headers->get('X-Frame-Options'));
+        $this->assertSame('1; mode=block', $response->headers->get('X-XSS-Protection'));
     }
 
     public function test_hpkp_is_empty()
     {
-        $this->config['hpkp']['hashes'] = [];
-        $this->saveConfig();
+        $this->copy('hpkp_empty');
 
         $response = $this->response();
 
@@ -49,13 +39,20 @@ class MiddlewareTest extends PHPUnit_Framework_TestCase
 
     public function test_hsts_is_enable()
     {
-        $this->config['hsts']['enable'] = true;
-        $this->config['hsts']['include_sub_domains'] = true;
-        $this->saveConfig();
+        $this->copy('hsts_enable');
 
         $response = $this->response();
 
         $this->assertNotNull($response->headers->get('Strict-Transport-Security'));
         $this->assertContains('includeSubDomains', $response->headers->get('Strict-Transport-Security'));
+    }
+
+    public function test_custom_csp()
+    {
+        $this->copy('custom_csp');
+
+        $response = $this->response();
+
+        $this->assertSame('laravel-security-header', $response->headers->get('Content-Security-Policy'));
     }
 }
