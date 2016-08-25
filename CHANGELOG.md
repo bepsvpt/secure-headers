@@ -2,6 +2,8 @@
 
 ## dev
 
+- Add X-Download-Options, X-Permitted-Cross-Domain-Policies, Referrer-Policy headers
+
 ## 2.x
 
 - 2.1.1 (2016-08-24)

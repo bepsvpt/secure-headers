@@ -24,8 +24,11 @@ class MiddlewareTest extends PHPUnit_Framework_TestCase
 
         $this->assertNotNull($response->headers->get('Content-Security-Policy'));
         $this->assertSame('nosniff', $response->headers->get('X-Content-Type-Options'));
+        $this->assertSame('noopen', $response->headers->get('X-Download-Options'));
         $this->assertSame('sameorigin', $response->headers->get('X-Frame-Options'));
+        $this->assertSame('none', $response->headers->get('X-Permitted-Cross-Domain-Policies'));
         $this->assertSame('1; mode=block', $response->headers->get('X-XSS-Protection'));
+        $this->assertSame('origin-when-cross-origin', $response->headers->get('Referrer-Policy'));
     }
 
     public function test_hpkp_is_empty()

@@ -5,25 +5,61 @@ return [
      * X-Content-Type-Options
      *
      * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
+     *
+     * Available Value: 'nosniff'
      */
 
     'x-content-type-options' => 'nosniff',
 
     /*
+     * X-XSS-Protection
+     *
+     * Reference: https://msdn.microsoft.com/en-us/library/jj542450(v=vs.85).aspx
+     *
+     * Available Value: 'noopen'
+     */
+
+    'x-download-options' => 'noopen',
+
+    /*
      * X-Frame-Options
      *
      * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
+     *
+     * Available Value: 'deny', 'sameorigin', 'allow-from uri'
      */
 
     'x-frame-options' => 'sameorigin',
 
     /*
+     * X-Permitted-Cross-Domain-Policies
+     *
+     * Reference: https://www.adobe.com/devnet/adobe-media-server/articles/cross-domain-xml-for-streaming.html
+     *
+     * Available Value: 'all', 'none', 'master-only', 'by-content-type', 'by-ftp-filename'
+     */
+
+    'x-permitted-cross-domain-policies' => 'none',
+
+    /*
      * X-XSS-Protection
      *
-     * Reference: https://blogs.msdn.microsoft.com/ieinternals/2011/01/31/controlling-the-xss-filter/
+     * Reference: https://blogs.msdn.microsoft.com/ieinternals/2011/01/31/controlling-the-xss-filter
+     *
+     * Available Value: '1', '0', '1; mode=block'
      */
 
     'x-xss-protection' => '1; mode=block',
+
+    /*
+     * Referrer-Policy
+     *
+     * Reference: https://w3c.github.io/webappsec-referrer-policy
+     *
+     * Available Value: 'no-referrer', 'no-referrer-when-downgrade', 'origin', 'origin-when-crossorigin', 'unsafe-url'
+     */
+
+    'referrer-policy' => 'origin-when-cross-origin',
 
     /*
      * HTTP Strict Transport Security
