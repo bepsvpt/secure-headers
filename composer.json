@@ -1,7 +1,7 @@
 {
   "name": "bepsvpt/laravel-security-header",
-  "description": "Append security headers to response for laravel framework.",
-  "keywords": ["laravel", "header", "hsts", "hpkp", "https"],
+  "description": "Append secure headers to response for laravel framework.",
+  "keywords": ["laravel", "header", "hsts", "hpkp", "csp", "https"],
   "license": "MIT",
   "authors": [
     {
@@ -17,8 +17,8 @@
     "paragonie/hpkp-builder": "^0.1"
   },
   "require-dev": {
-    "codeclimate/php-test-reporter": "~0.3",
-    "phpunit/phpunit": "~4.8"
+    "codeclimate/php-test-reporter": "^0.3",
+    "phpunit/phpunit": "^5.5"
   },
   "autoload": {
     "psr-4": {
