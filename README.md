@@ -8,7 +8,7 @@
 [![Total Downloads](https://poser.pugx.org/bepsvpt/laravel-security-header/downloads?format=flat-square)](https://packagist.org/packages/bepsvpt/laravel-security-header)
 [![License](https://poser.pugx.org/bepsvpt/laravel-security-header/license?format=flat-square)](https://packagist.org/packages/bepsvpt/laravel-security-header)
 
-Add security headers to http response for laravel framework.
+Add secure headers to response for laravel framework.
 
 ## Install
 
