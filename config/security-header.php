@@ -26,7 +26,7 @@ return [
      *
      * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
      *
-     * Available Value: 'deny', 'sameorigin', 'allow-from uri'
+     * Available Value: 'deny', 'sameorigin', 'allow-from <uri>'
      */
 
     'x-frame-options' => 'sameorigin',
@@ -82,7 +82,7 @@ return [
      *
      * Reference: https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning
      *
-     * When hashes is empty, hpkp will be ignored.
+     * hpkp will be ignored if hashes is empty.
      */
 
     'hpkp' => [
@@ -107,7 +107,7 @@ return [
      *
      * Reference: https://developer.mozilla.org/en-US/docs/Web/Security/CSP
      *
-     * If custom-csp is not null, csp will be ignored.
+     * csp will be ignored if custom-csp is not null.
      *
      * Note: custom-csp does not support report-only.
      */
@@ -179,14 +179,12 @@ return [
 
         /*
          * The following directives are all use 'allow' and 'self' flag.
+         *
+         * Note: default value of 'self' flag is false.
          */
 
         'font-src' => [
-            'allow' => [
-                //
-            ],
-
-            'self' => false,
+            //
         ],
 
         'connect-src' => [
@@ -209,10 +207,12 @@ return [
             //
         ],
 
+        /*
+         * plugin-types only support 'allow'.
+         */
+
         'plugin-types' => [
-            'allow' => [
-                //
-            ],
+            //
         ],
     ],
 ];
