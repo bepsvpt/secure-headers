@@ -2,9 +2,10 @@
 
 ## dev
 
-- Add X-Download-Options, X-Permitted-Cross-Domain-Policies, Referrer-Policy headers
-
 ## 2.x
+
+- 2.2.0 (2016-10-03)
+  - Add X-Download-Options, X-Permitted-Cross-Domain-Policies, Referrer-Policy headers
 
 - 2.1.1 (2016-08-24)
   - Prevent testing pollute helper functions
