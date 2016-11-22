@@ -36,6 +36,10 @@ Add global middleware in `app/Http/Kernel.php`
 \Bepsvpt\LaravelSecurityHeader\SecurityHeaderMiddleware::class,
 ```
 
+Set up the config file `config/security-header.php`
+
+Done!
+
 ## CHANGELOG
 
 Please see [CHANGELOG](CHANGELOG.md) for details.
