@@ -1,12 +1,12 @@
 # Secure Headers
 
-[![Build Status](https://travis-ci.org/BePsvPT/laravel-security-header.svg?branch=master)](https://travis-ci.org/BePsvPT/laravel-security-header)
-[![Test Coverage](https://codeclimate.com/github/BePsvPT/laravel-security-header/badges/coverage.svg)](https://codeclimate.com/github/BePsvPT/laravel-security-header/coverage)
-[![Code Climate](https://codeclimate.com/github/BePsvPT/laravel-security-header/badges/gpa.svg)](https://codeclimate.com/github/BePsvPT/laravel-security-header)
+[![Build Status](https://travis-ci.org/BePsvPT/secure-headers.svg?branch=master)](https://travis-ci.org/BePsvPT/secure-headers)
+[![Test Coverage](https://codeclimate.com/github/BePsvPT/secure-headers/badges/coverage.svg)](https://codeclimate.com/github/BePsvPT/secure-headers/coverage)
+[![Code Climate](https://codeclimate.com/github/BePsvPT/secure-headers/badges/gpa.svg)](https://codeclimate.com/github/BePsvPT/secure-headers)
 [![StyleCI](https://styleci.io/repos/47176049/shield)](https://styleci.io/repos/47176049)
-[![Latest Stable Version](https://poser.pugx.org/bepsvpt/laravel-security-header/v/stable?format=flat-square)](https://packagist.org/packages/bepsvpt/laravel-security-header)
-[![Total Downloads](https://poser.pugx.org/bepsvpt/laravel-security-header/downloads?format=flat-square)](https://packagist.org/packages/bepsvpt/laravel-security-header)
-[![License](https://poser.pugx.org/bepsvpt/laravel-security-header/license?format=flat-square)](https://packagist.org/packages/bepsvpt/laravel-security-header)
+[![Latest Stable Version](https://poser.pugx.org/bepsvpt/secure-headers/v/stable?format=flat-square)](https://packagist.org/packages/bepsvpt/secure-headers)
+[![Total Downloads](https://poser.pugx.org/bepsvpt/secure-headers/downloads?format=flat-square)](https://packagist.org/packages/bepsvpt/secure-headers)
+[![License](https://poser.pugx.org/bepsvpt/secure-headers/license?format=flat-square)](https://packagist.org/packages/bepsvpt/secure-headers)
 
 Add secure headers to HTTP response.
 
