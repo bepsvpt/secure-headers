@@ -6,6 +6,7 @@
 
 - 3.0.0 (2016-12-19)
   - Support non laravel project
+    - Remove env helper function from config file [d4379b0](https://github.com/BePsvPT/secure-headers/commit/d4379b052f3ffb5f0b45da967645d4bfe345014c#diff-47866b67d787728550e5ee35c73b17b5)
   - Change namespace
   - Change project name
 
