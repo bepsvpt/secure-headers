@@ -1,61 +1,38 @@
 <?php
 
-class MiddlewareTest extends PHPUnit_Framework_TestCase
+class MiddlewareTest extends Orchestra\Testbench\TestCase
 {
-    protected function copy($filename)
+    /**
+     * Get package providers.
+     *
+     * @param \Illuminate\Foundation\Application $app
+     *
+     * @return array
+     */
+    protected function getPackageProviders($app)
     {
-        copy(__DIR__."/config/{$filename}.php", __DIR__.'/config/security-header.php');
+        return [
+            Bepsvpt\SecureHeaders\SecureHeadersServiceProvider::class,
+        ];
     }
 
-    protected function response()
+    /**
+     * Define environment setup.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     *
+     * @return void
+     */
+    protected function getEnvironmentSetUp($app)
     {
-        $middleware = new Bepsvpt\LaravelSecurityHeader\SecurityHeaderMiddleware;
-
-        return $middleware->handle(new Illuminate\Http\Request, function () {
-            return new Illuminate\Http\Response;
-        });
+        $app->make(Illuminate\Contracts\Http\Kernel::class)->pushMiddleware(Bepsvpt\SecureHeaders\SecureHeadersMiddleware::class);
     }
 
-    public function test_default_config()
+    public function test_middleware()
     {
-        $this->copy('default');
+        $headers = $this->get('/')->response->headers->all();
 
-        $response = $this->response();
-
-        $this->assertNotNull($response->headers->get('Content-Security-Policy'));
-        $this->assertSame('nosniff', $response->headers->get('X-Content-Type-Options'));
-        $this->assertSame('noopen', $response->headers->get('X-Download-Options'));
-        $this->assertSame('sameorigin', $response->headers->get('X-Frame-Options'));
-        $this->assertSame('none', $response->headers->get('X-Permitted-Cross-Domain-Policies'));
-        $this->assertSame('1; mode=block', $response->headers->get('X-XSS-Protection'));
-        $this->assertSame('origin-when-cross-origin', $response->headers->get('Referrer-Policy'));
-    }
-
-    public function test_hpkp_is_empty()
-    {
-        $this->copy('hpkp_empty');
-
-        $response = $this->response();
-
-        $this->assertNull($response->headers->get('Public-Key-Pins'));
-    }
-
-    public function test_hsts_is_enable()
-    {
-        $this->copy('hsts_enable');
-
-        $response = $this->response();
-
-        $this->assertNotNull($response->headers->get('Strict-Transport-Security'));
-        $this->assertContains('includeSubDomains', $response->headers->get('Strict-Transport-Security'));
-    }
-
-    public function test_custom_csp()
-    {
-        $this->copy('custom_csp');
-
-        $response = $this->response();
-
-        $this->assertSame('laravel-security-header', $response->headers->get('Content-Security-Policy'));
+        $this->assertArrayHasKey('x-frame-options', $headers);
+        $this->assertArrayHasKey('content-security-policy', $headers);
     }
 }

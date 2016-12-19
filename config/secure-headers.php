@@ -26,7 +26,7 @@ return [
      *
      * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
      *
-     * Available Value: 'deny', 'sameorigin', 'allow-from uri'
+     * Available Value: 'deny', 'sameorigin', 'allow-from <uri>'
      */
 
     'x-frame-options' => 'sameorigin',
@@ -56,10 +56,11 @@ return [
      *
      * Reference: https://w3c.github.io/webappsec-referrer-policy
      *
-     * Available Value: 'no-referrer', 'no-referrer-when-downgrade', 'origin', 'origin-when-crossorigin', 'unsafe-url'
+     * Available Value: 'no-referrer', 'no-referrer-when-downgrade', 'origin', 'origin-when-cross-origin',
+     *                  'same-origin', 'strict-origin', 'strict-origin-when-cross-origin', 'unsafe-url'
      */
 
-    'referrer-policy' => 'origin-when-cross-origin',
+    'referrer-policy' => 'strict-origin-when-cross-origin',
 
     /*
      * HTTP Strict Transport Security
@@ -70,7 +71,7 @@ return [
      */
 
     'hsts' => [
-        'enable' => env('SECURITY_HEADER_HSTS_ENABLE', false),
+        'enable' => false,
 
         'max-age' => 15552000,
 
@@ -82,15 +83,15 @@ return [
      *
      * Reference: https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning
      *
-     * When hashes is empty, hpkp will be ignored.
+     * hpkp will be ignored if hashes is empty.
      */
 
     'hpkp' => [
         'hashes' => [
-            [
-                'algo' => 'sha256',
-                'hash' => 'your-hash',
-            ],
+            // [
+            //     'algo' => 'sha256',
+            //     'hash' => 'hash-value',
+            // ],
         ],
 
         'include-sub-domains' => false,
@@ -107,10 +108,12 @@ return [
      *
      * Reference: https://developer.mozilla.org/en-US/docs/Web/Security/CSP
      *
-     * If custom-csp is not null, csp will be ignored.
+     * csp will be ignored if custom-csp is not null.
+     *
+     * Note: custom-csp does not support report-only.
      */
 
-    'custom-csp' => 'laravel-security-header',
+    'custom-csp' => null,
 
     'csp' => [
         'report-only' => false,
@@ -137,7 +140,7 @@ return [
             ],
 
             'hashes' => [
-                //
+                // ['sha256' => 'hash-value'],
             ],
 
             'nonces' => [
@@ -177,14 +180,12 @@ return [
 
         /*
          * The following directives are all use 'allow' and 'self' flag.
+         *
+         * Note: default value of 'self' flag is false.
          */
 
         'font-src' => [
-            'allow' => [
-                //
-            ],
-
-            'self' => false,
+            //
         ],
 
         'connect-src' => [
@@ -207,10 +208,12 @@ return [
             //
         ],
 
+        /*
+         * plugin-types only support 'allow'.
+         */
+
         'plugin-types' => [
-            'allow' => [
-                //
-            ],
+            //
         ],
     ],
 ];

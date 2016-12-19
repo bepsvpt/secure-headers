@@ -1,6 +1,13 @@
-# Changelog for Laravel Security Header
+# Changelog for Secure Headers
 
 ## dev
+
+## 3.x
+
+- 3.0.0 (2016-12-19)
+  - Support non laravel project
+  - Change namespace
+  - Change project name
 
 ## 2.x
 

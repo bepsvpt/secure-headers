@@ -1,4 +1,4 @@
-# Laravel Security Header
+# Secure Headers
 
 [![Build Status](https://travis-ci.org/BePsvPT/laravel-security-header.svg?branch=master)](https://travis-ci.org/BePsvPT/laravel-security-header)
 [![Test Coverage](https://codeclimate.com/github/BePsvPT/laravel-security-header/badges/coverage.svg)](https://codeclimate.com/github/BePsvPT/laravel-security-header/coverage)
@@ -8,35 +8,35 @@
 [![Total Downloads](https://poser.pugx.org/bepsvpt/laravel-security-header/downloads?format=flat-square)](https://packagist.org/packages/bepsvpt/laravel-security-header)
 [![License](https://poser.pugx.org/bepsvpt/laravel-security-header/license?format=flat-square)](https://packagist.org/packages/bepsvpt/laravel-security-header)
 
-Add secure headers to response for laravel framework.
+Add secure headers to HTTP response.
 
 ## Install
 
 Install using composer
 
 ```sh
-composer require bepsvpt/laravel-security-header
+composer require bepsvpt/secure-headers
 ```
 
 Add the service provider in `config/app.php`
 
 ```php
-Bepsvpt\LaravelSecurityHeader\SecurityHeaderServiceProvider::class,
+Bepsvpt\SecureHeaders\SecureHeadersServiceProvider::class,
 ```
 
 Publish config file
 
 ```sh
-php artisan vendor:publish --provider="Bepsvpt\LaravelSecurityHeader\SecurityHeaderServiceProvider"
+php artisan vendor:publish --provider="Bepsvpt\SecureHeaders\SecureHeadersServiceProvider"
 ```
 
 Add global middleware in `app/Http/Kernel.php`
 
 ```php
-\Bepsvpt\LaravelSecurityHeader\SecurityHeaderMiddleware::class,
+\Bepsvpt\SecureHeaders\SecureHeadersMiddleware::class,
 ```
 
-Set up the config file `config/security-header.php`
+Set up the config file `config/secure-headers.php`
 
 Done!
 
@@ -50,4 +50,4 @@ Please see [UPGRADE](UPGRADE.md) for details.
 
 ## License
 
-Laravel Security Header is licensed under [The MIT License (MIT)](LICENSE).
+Secure Headers is licensed under [The MIT License (MIT)](LICENSE).

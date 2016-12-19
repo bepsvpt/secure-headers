@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit backupGlobals="false"
          backupStaticAttributes="false"
-         bootstrap="tests/autoload.php"
+         bootstrap="vendor/autoload.php"
          colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
@@ -12,7 +12,7 @@
          syntaxCheck="true"
 >
     <testsuites>
-        <testsuite name="Laravel Security Header Test">
+        <testsuite name="Secure Headers Test">
             <directory>./tests</directory>
         </testsuite>
     </testsuites>
@@ -22,9 +22,6 @@
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./src</directory>
-            <exclude>
-                <file>./src/SecurityHeaderServiceProvider.php</file>
-            </exclude>
         </whitelist>
     </filter>
 </phpunit>
