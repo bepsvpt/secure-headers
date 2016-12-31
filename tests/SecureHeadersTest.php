@@ -1,8 +1,9 @@
 <?php
 
 use Bepsvpt\SecureHeaders\SecureHeaders;
+use PHPUnit\Framework\TestCase;
 
-class SecureHeadersTest extends PHPUnit_Framework_TestCase
+class SecureHeadersTest extends TestCase
 {
     /**
      * @var string

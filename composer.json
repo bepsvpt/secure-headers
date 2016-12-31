@@ -18,7 +18,7 @@
     "paragonie/hpkp-builder": "^0.1"
   },
   "require-dev": {
-    "codeclimate/php-test-reporter": "^0.3",
+    "codeclimate/php-test-reporter": "^0.4",
     "orchestra/testbench": "^3.3",
     "phpunit/phpunit": "^5.7"
   },
