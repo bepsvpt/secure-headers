@@ -12,7 +12,6 @@
   ],
   "require": {
     "php": "^7.0",
-    "illuminate/http": "^5.1",
     "illuminate/support": "^5.1",
     "paragonie/csp-builder": "^2.0",
     "paragonie/hpkp-builder": "^0.1"
