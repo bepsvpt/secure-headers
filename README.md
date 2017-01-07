@@ -8,7 +8,7 @@
 [![Total Downloads](https://poser.pugx.org/bepsvpt/secure-headers/downloads?format=flat-square)](https://packagist.org/packages/bepsvpt/secure-headers)
 [![License](https://poser.pugx.org/bepsvpt/secure-headers/license?format=flat-square)](https://packagist.org/packages/bepsvpt/secure-headers)
 
-Add secure headers to HTTP response.
+Add security related headers to HTTP response. The package includes Service Providers for easy [Laravel](https://laravel.com) integration.
 
 ## Installation
 
