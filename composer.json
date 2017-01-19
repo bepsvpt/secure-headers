@@ -1,6 +1,6 @@
 {
   "name": "bepsvpt/secure-headers",
-  "description": "Add secure headers to HTTP response.",
+  "description": "Add security related headers to HTTP response.",
   "keywords": ["laravel", "header", "hsts", "hpkp", "csp", "https"],
   "homepage": "https://github.com/BePsvPT/secure-headers",
   "license": "MIT",
