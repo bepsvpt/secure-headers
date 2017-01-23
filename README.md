@@ -10,67 +10,9 @@
 
 Add security related headers to HTTP response. The package includes Service Providers for easy [Laravel](https://laravel.com) integration.
 
-## Installation
+## Document
 
-### Non Laravel Project
-
-Install using composer
-
-```sh
-composer require bepsvpt/secure-headers
-```
-
-Copy `vendor/bepsvpt/secure-headers/config/secure-headers.php` to your project directory
-
-Set up config file
-
-Done!
-
-### Laravel Project
-
-Install using composer
-
-```sh
-composer require bepsvpt/secure-headers
-```
-
-Add service provider in `config/app.php`
-
-```php
-Bepsvpt\SecureHeaders\SecureHeadersServiceProvider::class,
-```
-
-Publish config file
-
-```sh
-php artisan vendor:publish --provider="Bepsvpt\SecureHeaders\SecureHeadersServiceProvider"
-```
-
-Add global middleware in `app/Http/Kernel.php`
-
-```php
-\Bepsvpt\SecureHeaders\SecureHeadersMiddleware::class,
-```
-
-Set up config file `config/secure-headers.php`
-
-Done!
-
-## Usage (Non Laravel Project)
-
-```php
-<?php
-
-use \Bepsvpt\SecureHeaders\SecureHeaders;
-
-$secureHeaders = SecureHeaders::fromFile('/path/to/secure-headers.php');
-
-// Get headers
-$secureHeaders->headers();
-
-// Send headers to HTTP response
-$secureHeaders->send();
-```
+Please see [Wiki](https://github.com/BePsvPT/secure-headers/wiki) for details.
 
 ## CHANGELOG
 
