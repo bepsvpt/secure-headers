@@ -20,6 +20,18 @@ class SecureHeadersTest extends TestCase
         $this->assertContains('Referrer-Policy: strict-origin-when-cross-origin', $headers);
     }
 
+    public function test_null_value()
+    {
+        $config = require $this->configPath;
+
+        $config['x-download-options'] = null;
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArrayHasKey('X-Frame-Options', $headers);
+        $this->assertArrayNotHasKey('X-Download-Options', $headers);
+    }
+
     public function test_load_from_file()
     {
         $headers = SecureHeaders::fromFile($this->configPath)->headers();

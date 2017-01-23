@@ -170,13 +170,13 @@ class SecureHeaders
      */
     protected function miscellaneous()
     {
-        return [
+        return array_filter([
             'X-Content-Type-Options' => $this->config['x-content-type-options'],
             'X-Download-Options' => $this->config['x-download-options'],
             'X-Frame-Options' => $this->config['x-frame-options'],
             'X-Permitted-Cross-Domain-Policies' => $this->config['x-permitted-cross-domain-policies'],
             'X-XSS-Protection' => $this->config['x-xss-protection'],
             'Referrer-Policy' => $this->config['referrer-policy'],
-        ];
+        ]);
     }
 }

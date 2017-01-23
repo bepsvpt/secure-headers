@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     /*
      * X-Content-Type-Options
      *
@@ -108,7 +109,7 @@ return [
      *
      * Reference: https://developer.mozilla.org/en-US/docs/Web/Security/CSP
      *
-     * csp will be ignored if custom-csp is not null.
+     * csp will be ignored if custom-csp is not null. To disable csp, set custom-csp to empty string.
      *
      * Note: custom-csp does not support report-only.
      */
@@ -216,4 +217,5 @@ return [
             //
         ],
     ],
+
 ];
