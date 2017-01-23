@@ -14,13 +14,13 @@ Add security related headers to HTTP response. The package includes Service Prov
 
 Please see [Wiki](https://github.com/BePsvPT/secure-headers/wiki) for details.
 
-## CHANGELOG
+## Changelog
 
-Please see [CHANGELOG](CHANGELOG.md) for details.
+Please see [Changelog](https://github.com/BePsvPT/secure-headers/wiki/Changelog) for details.
 
-## UPGRADE
+## Upgrade
 
-Please see [UPGRADE](UPGRADE.md) for details.
+Please see [Upgrade](https://github.com/BePsvPT/secure-headers/wiki/Upgrade) for details.
 
 ## License
 
