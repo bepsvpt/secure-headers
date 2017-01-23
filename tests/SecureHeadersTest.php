@@ -20,7 +20,7 @@ class SecureHeadersTest extends TestCase
         $this->assertContains('Referrer-Policy: strict-origin-when-cross-origin', $headers);
     }
 
-    public function test_null_value()
+    public function test_disable_header()
     {
         $config = require $this->configPath;
 
