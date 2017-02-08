@@ -13,7 +13,7 @@ return [
     'x-content-type-options' => 'nosniff',
 
     /*
-     * X-XSS-Protection
+     * X-Download-Options
      *
      * Reference: https://msdn.microsoft.com/en-us/library/jj542450(v=vs.85).aspx
      *
