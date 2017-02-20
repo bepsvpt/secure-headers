@@ -20,9 +20,11 @@ class SecureHeadersMiddleware
     {
         $response = $next($request);
 
-        $response->withHeaders(
-            (new SecureHeaders(config('secure-headers', [])))->headers()
-        );
+        $headers = (new SecureHeaders(config('secure-headers', [])))->headers();
+
+        foreach($headers as $name => $content) {
+            $response->header($name, $content);
+        }
 
         return $response;
     }
