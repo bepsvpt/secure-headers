@@ -22,8 +22,8 @@ class SecureHeadersMiddleware
 
         $headers = (new SecureHeaders(config('secure-headers', [])))->headers();
 
-        foreach ($headers as $name => $content) {
-            $response->header($name, $content);
+        foreach ($headers as $key => $value) {
+            $response->header($key, $value);
         }
 
         return $response;
