@@ -22,7 +22,7 @@ class SecureHeadersMiddleware
 
         $headers = (new SecureHeaders(config('secure-headers', [])))->headers();
 
-        foreach($headers as $name => $content) {
+        foreach ($headers as $name => $content) {
             $response->header($name, $content);
         }
 
