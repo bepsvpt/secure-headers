@@ -5,6 +5,7 @@ namespace Bepsvpt\SecureHeaders;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class SecureHeadersMiddleware
 {
@@ -19,6 +20,11 @@ class SecureHeadersMiddleware
     public function handle(Request $request, Closure $next)
     {
         $response = $next($request);
+
+        // when response is BinaryFileResponse, we should not add headers
+        if ($response instanceof BinaryFileResponse) {
+            return $response;
+        }
 
         $headers = (new SecureHeaders(config('secure-headers', [])))->headers();
 

@@ -30,9 +30,25 @@ class MiddlewareTest extends Orchestra\Testbench\TestCase
 
     public function test_middleware()
     {
+        $this->app['router']->get('/', function () {
+            return 'Hello World!';
+        });
+
         $response = $this->get('/');
 
         $response->assertHeader('x-frame-options');
         $response->assertHeader('content-security-policy');
+    }
+
+    public function test_binary_response()
+    {
+        $this->app['router']->get('/', function () {
+            return response()->download(__DIR__.'/../README.md');
+        });
+
+        $response = $this->get('/');
+
+        $this->assertFalse($response->headers->has('x-content-type-options'));
+        $this->assertFalse($response->headers->has('content-security-policy'));
     }
 }
