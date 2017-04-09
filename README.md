@@ -13,6 +13,10 @@
 
 Add security related headers to HTTP response. The package includes Service Providers for easy [Laravel](https://laravel.com) integration.
 
+## Version
+
+3.0.5
+
 ## Document
 
 Please see [Wiki](https://github.com/BePsvPT/secure-headers/wiki) for details.
