@@ -123,6 +123,9 @@ return [
 
         'upgrade-insecure-requests' => false,
 
+        // enable or disable the automatic conversion of sources to https
+        'https-transform-on-https-connections' => true,
+
         'base-uri' => [
             //
         ],

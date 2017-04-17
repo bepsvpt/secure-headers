@@ -118,6 +118,11 @@ class SecureHeaders
 
         $csp = new CSPBuilder($this->config['csp']);
 
+        if (! ($this->config['csp']['https-transform-on-https-connections'] ?? true)) {
+            /* @todo wait for upstream package releasing new version */
+            // $csp = $csp->disableHttpsTransformOnHttpsConnections();
+        }
+
         return $csp->getHeaderArray(false);
     }
 
