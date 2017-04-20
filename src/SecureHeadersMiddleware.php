@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class SecureHeadersMiddleware
 {
@@ -21,8 +22,8 @@ class SecureHeadersMiddleware
     {
         $response = $next($request);
 
-        // when response is BinaryFileResponse, we should not add headers
-        if ($response instanceof BinaryFileResponse) {
+        // when response is BinaryFileResponse or StreamedResponse, we should not add headers
+        if ($response instanceof BinaryFileResponse || $response instanceof StreamedResponse) {
             return $response;
         }
 
