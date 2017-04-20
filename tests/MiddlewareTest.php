@@ -55,7 +55,7 @@ class MiddlewareTest extends Orchestra\Testbench\TestCase
 
         $headers = $this->get('/')->{$this->_response}->headers->all();
 
-        $this->assertArrayNotHasKey('x-content-type-options', $headers);
-        $this->assertArrayNotHasKey('content-security-policy', $headers);
+        $this->assertArrayHasKey('x-content-type-options', $headers);
+        $this->assertArrayHasKey('content-security-policy', $headers);
     }
 }

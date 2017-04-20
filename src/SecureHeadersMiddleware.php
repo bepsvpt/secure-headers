@@ -21,15 +21,10 @@ class SecureHeadersMiddleware
     {
         $response = $next($request);
 
-        // when response is BinaryFileResponse, we should not add headers
-        if ($response instanceof BinaryFileResponse) {
-            return $response;
-        }
-
         $headers = (new SecureHeaders(config('secure-headers', [])))->headers();
 
         foreach ($headers as $key => $value) {
-            $response->header($key, $value);
+            $response->headers->set($key, $value, true);
         }
 
         return $response;
