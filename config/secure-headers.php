@@ -61,7 +61,7 @@ return [
      *                  'same-origin', 'strict-origin', 'strict-origin-when-cross-origin', 'unsafe-url'
      */
 
-    'referrer-policy' => 'strict-origin-when-cross-origin',
+    'referrer-policy' => 'no-referrer',
 
     /*
      * HTTP Strict Transport Security

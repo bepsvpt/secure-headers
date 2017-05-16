@@ -17,7 +17,7 @@ class SecureHeadersTest extends TestCase
         $headers = xdebug_get_headers();
 
         $this->assertContains('X-Content-Type-Options: nosniff', $headers);
-        $this->assertContains('Referrer-Policy: strict-origin-when-cross-origin', $headers);
+        $this->assertContains('Referrer-Policy: no-referrer', $headers);
     }
 
     public function test_disable_header()
