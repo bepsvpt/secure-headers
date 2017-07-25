@@ -3,7 +3,7 @@
 namespace Bepsvpt\SecureHeaders;
 
 use InvalidArgumentException;
-use ParagonIE\CSPBuilder\CSPBuilder;
+use Bepsvpt\CSPBuilder\CSPBuilder;
 use ParagonIE\HPKPBuilder\HPKPBuilder;
 use RuntimeException;
 
@@ -119,11 +119,10 @@ class SecureHeaders
         $csp = new CSPBuilder($this->config['csp']);
 
         if (! ($this->config['csp']['https-transform-on-https-connections'] ?? true)) {
-            /* @todo wait for upstream package releasing new version */
-            // $csp = $csp->disableHttpsTransformOnHttpsConnections();
+            $csp = $csp->disableHttpTransformOnHttpsConnection();
         }
 
-        return $csp->getHeaderArray(false);
+        return $csp->getHeaderArray();
     }
 
     /**

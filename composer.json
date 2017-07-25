@@ -12,14 +12,14 @@
   ],
   "require": {
     "php": "^7.0",
+    "bepsvpt/csp-builder": "1.0.*",
     "illuminate/support": "^5.1",
-    "paragonie/csp-builder": "^2.0",
     "paragonie/hpkp-builder": "^0.1"
   },
   "require-dev": {
-    "codeclimate/php-test-reporter": "^0.4",
-    "orchestra/testbench": "^3.4",
-    "phpunit/phpunit": "^5.7"
+    "codeclimate/php-test-reporter": "0.4.*",
+    "orchestra/testbench": "3.4.*",
+    "phpunit/phpunit": "5.7.*"
   },
   "autoload": {
     "psr-4": {

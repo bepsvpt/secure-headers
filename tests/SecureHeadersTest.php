@@ -92,4 +92,25 @@ class SecureHeadersTest extends TestCase
             'Strict-Transport-Security' => 'max-age=15552000; preload; includeSubDomains;',
         ], $headers, true);
     }
+
+    public function test_disable_https_transform()
+    {
+        $_SERVER['HTTPS'] = 'on';
+
+        $config = require $this->configPath;
+
+        $config['csp']['form-action']['allow'][] = 'http://example.com';
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertContains('https://example.com', $headers['Content-Security-Policy']);
+        $this->assertNotContains('http://example.com', $headers['Content-Security-Policy']);
+
+        $config['csp']['https-transform-on-https-connections'] = false;
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertContains('http://example.com', $headers['Content-Security-Policy']);
+        $this->assertNotContains('https://example.com', $headers['Content-Security-Policy']);
+    }
 }
