@@ -13,11 +13,39 @@ class SecureHeadersServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if ($this->app instanceof \Laravel\Lumen\Application) {
+            $this->bootLumen();
+        } else {
+            $this->bootLaravel();
+        }
+    }
+
+    /**
+     * Bootstrap laravel application events.
+     *
+     * @return void
+     */
+    protected function bootLaravel()
+    {
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../config/secure-headers.php' => config_path('secure-headers.php'),
             ], 'config');
         }
+    }
+
+    /**
+     * Bootstrap lumen application events.
+     *
+     * @return void
+     */
+    protected function bootLumen()
+    {
+        $this->app->configure('secure-headers');
+
+        $this->app->middleware([
+            SecureHeadersMiddleware::class,
+        ]);
     }
 
     /**
