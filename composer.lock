@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0c18e658cf189ebf2532ef2309e82dc4",
+    "content-hash": "53a309c05944d5f638b0446d813c0ed5",
     "packages": [
         {
             "name": "bepsvpt/csp-builder",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/BePsvPT/csp-builder.git",
-                "reference": "d7768b47a04b77f6b6e6522062ea1f02a73dd9c6"
+                "reference": "61fc14811b1c166462234aa53fa856f25c3e8660"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BePsvPT/csp-builder/zipball/d7768b47a04b77f6b6e6522062ea1f02a73dd9c6",
-                "reference": "d7768b47a04b77f6b6e6522062ea1f02a73dd9c6",
+                "url": "https://api.github.com/repos/BePsvPT/csp-builder/zipball/61fc14811b1c166462234aa53fa856f25c3e8660",
+                "reference": "61fc14811b1c166462234aa53fa856f25c3e8660",
                 "shasum": ""
             },
             "require": {
@@ -60,7 +60,7 @@
                 "security",
                 "xss"
             ],
-            "time": "2017-07-25T12:58:55+00:00"
+            "time": "2017-07-26T01:42:13+00:00"
         },
         {
             "name": "doctrine/inflector",
