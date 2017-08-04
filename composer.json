@@ -13,8 +13,8 @@
   "require": {
     "php": "^7.0",
     "bepsvpt/csp-builder": "1.0.*",
-    "illuminate/support": "^5.1",
-    "paragonie/hpkp-builder": "^0.1"
+    "bepsvpt/hpkp-builder": "1.0.*",
+    "illuminate/support": "^5.1"
   },
   "require-dev": {
     "codeclimate/php-test-reporter": "0.4.*",
