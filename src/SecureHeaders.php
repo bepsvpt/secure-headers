@@ -4,7 +4,7 @@ namespace Bepsvpt\SecureHeaders;
 
 use InvalidArgumentException;
 use Bepsvpt\CSPBuilder\CSPBuilder;
-use ParagonIE\HPKPBuilder\HPKPBuilder;
+use Bepsvpt\HPKPBuilder\HPKPBuilder;
 use RuntimeException;
 
 class SecureHeaders
@@ -136,13 +136,9 @@ class SecureHeaders
             return [];
         }
 
-        $hpkp = (new HPKPBuilder($this->config['hpkp']))->getHeader();
+        $hpkp = (new HPKPBuilder($this->config['hpkp']));
 
-        $headers = explode(':', $hpkp, 2);
-
-        return [
-            $headers[0] => trim($headers[1]),
-        ];
+        return $hpkp->getHeaderArray();
     }
 
     /**
