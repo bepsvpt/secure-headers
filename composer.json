@@ -14,21 +14,30 @@
     "php": "^7.0",
     "bepsvpt/csp-builder": "1.0.*",
     "bepsvpt/hpkp-builder": "1.0.*",
-    "illuminate/support": "^5.1"
+    "illuminate/support": "^5.1 || dev-master"
   },
   "require-dev": {
     "codeclimate/php-test-reporter": "0.4.*",
     "doctrine/instantiator": "1.0.*",
-    "orchestra/testbench": "3.4.*",
-    "phpunit/phpunit": "5.7.*"
+    "orchestra/testbench": "3.5.*",
+    "phpunit/phpunit": "6.0.*"
   },
   "autoload": {
     "psr-4": {
       "Bepsvpt\\SecureHeaders\\": "src/"
     }
   },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "config": {
     "optimize-autoloader": true,
     "sort-packages": true
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Bepsvpt\\SecureHeaders\\SecureHeadersServiceProvider"
+      ]
+    }
   }
 }
