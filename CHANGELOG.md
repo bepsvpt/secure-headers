@@ -1,8 +1,9 @@
 ## dev
 
-- Prepare for laravel 5.5 ([1f76e6a](https://github.com/BePsvPT/secure-headers/commit/1f76e6aca72eeab59f42000f06388cc684880a64))
-
 ## 4.x
+
+- 4.1.0 (2017-09-01)
+  - Support laravel 5.5 ([1f76e6a](https://github.com/BePsvPT/secure-headers/commit/1f76e6aca72eeab59f42000f06388cc684880a64))
 
 - 4.0.0 (2017-08-04)
   - Transform [paragonie/csp-builder](https://github.com/paragonie/csp-builder) dependency to [bepsvpt/csp-builder](https://github.com/BePsvPT/csp-builder) ([4ce4f14](https://github.com/BePsvPT/secure-headers/commit/4ce4f14e938f47bf480f823914dfea3737bdae0c))
