@@ -19,7 +19,7 @@ Add security related headers to HTTP response. The package includes Service Prov
 
 ## Version
 
-4.0.0
+4.1.0
 
 ## Installation
 
@@ -49,7 +49,7 @@ Install using composer
 composer require bepsvpt/secure-headers
 ```
 
-Add service provider in `config/app.php`
+Add service provider in `config/app.php` ( laravel version < 5.5 )
 
 ```php
 Bepsvpt\SecureHeaders\SecureHeadersServiceProvider::class,
