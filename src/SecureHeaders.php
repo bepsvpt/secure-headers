@@ -211,7 +211,7 @@ class SecureHeaders
     {
         static $nonce;
 
-        if (!isset($nonce)) {
+        if (! isset($nonce)) {
             $nonce = self::generateNonce();
         }
 
