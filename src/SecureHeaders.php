@@ -31,7 +31,7 @@ class SecureHeaders
      */
     public function __construct(array $config = [])
     {
-        $this->config = $config;
+        $this->config = $this->enhanceConfig($config);
     }
 
     /**
@@ -178,5 +178,48 @@ class SecureHeaders
             'X-XSS-Protection' => $this->config['x-xss-protection'],
             'Referrer-Policy' => $this->config['referrer-policy'],
         ]);
+    }
+
+    protected function enhanceConfig(array $config): array
+    {
+        $config = $this->addGeneratedScriptNonce($config);
+
+        $config = $this->addGeneratedStyleNonce($config);
+
+        return $config;
+    }
+
+    protected function addGeneratedScriptNonce(array $config): array
+    {
+        if ($config['csp']['script-src']['add-generated-nonce'] ?? false === true) {
+            $config['csp']['script-src']['nonces'][] = self::nonce();
+        }
+
+        return $config;
+    }
+
+    protected function addGeneratedStyleNonce(array $config): array
+    {
+        if ($config['csp']['style-src']['add-generated-nonce'] ?? false === true) {
+            $config['csp']['style-src']['nonces'][] = self::nonce();
+        }
+
+        return $config;
+    }
+
+    public static function nonce(): string
+    {
+        static $nonce;
+
+        if (!isset($nonce)) {
+            $nonce = self::generateNonce();
+        }
+
+        return $nonce;
+    }
+
+    protected static function generateNonce(): string
+    {
+        return bin2hex(random_bytes(16));
     }
 }

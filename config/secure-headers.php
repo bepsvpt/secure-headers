@@ -156,6 +156,8 @@ return [
             'unsafe-inline' => false,
 
             'unsafe-eval' => false,
+
+            'add-generated-nonce' => true,
         ],
 
         'style-src' => [
@@ -163,9 +165,15 @@ return [
                 //
             ],
 
+            'nonces' => [
+                //
+            ],
+
             'self' => false,
 
             'unsafe-inline' => false,
+
+            'add-generated-nonce' => true,
         ],
 
         'img-src' => [
