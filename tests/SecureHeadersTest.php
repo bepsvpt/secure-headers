@@ -47,6 +47,37 @@ class SecureHeadersTest extends TestCase
         SecureHeaders::fromFile(__DIR__.'/not-found');
     }
 
+    public function test_nonce_value_always_the_same()
+    {
+        $nonce = SecureHeaders::nonce();
+
+        $this->assertSame($nonce, SecureHeaders::nonce());
+
+        $this->assertSame(SecureHeaders::nonce(), SecureHeaders::nonce());
+    }
+
+    public function test_csp_script_auto_generated_nonce()
+    {
+        $config = require $this->configPath;
+
+        $config['csp']['script-src']['add-generated-nonce'] = true;
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertContains(SecureHeaders::nonce(), $headers['Content-Security-Policy']);
+    }
+
+    public function test_csp_style_auto_generated_nonce()
+    {
+        $config = require $this->configPath;
+
+        $config['csp']['style-src']['add-generated-nonce'] = true;
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertContains(SecureHeaders::nonce(), $headers['Content-Security-Policy']);
+    }
+
     public function test_custom_csp()
     {
         $config = require $this->configPath;

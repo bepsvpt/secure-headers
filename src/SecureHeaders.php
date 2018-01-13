@@ -31,7 +31,7 @@ class SecureHeaders
      */
     public function __construct(array $config = [])
     {
-        $this->config = $this->enhanceConfig($config);
+        $this->config = $this->preprocessConfig($config);
     }
 
     /**
@@ -180,7 +180,14 @@ class SecureHeaders
         ]);
     }
 
-    protected function enhanceConfig(array $config): array
+    /**
+     * Preprocess config data.
+     *
+     * @param array $config
+     *
+     * @return array
+     */
+    protected function preprocessConfig(array $config): array
     {
         $config = $this->addGeneratedScriptNonce($config);
 
@@ -189,6 +196,13 @@ class SecureHeaders
         return $config;
     }
 
+    /**
+     * Add generated nonce value to script-src.
+     *
+     * @param array $config
+     *
+     * @return array
+     */
     protected function addGeneratedScriptNonce(array $config): array
     {
         if ($config['csp']['script-src']['add-generated-nonce'] ?? false === true) {
@@ -198,6 +212,13 @@ class SecureHeaders
         return $config;
     }
 
+    /**
+     * Add generated nonce value to style-src.
+     *
+     * @param array $config
+     *
+     * @return array
+     */
     protected function addGeneratedStyleNonce(array $config): array
     {
         if ($config['csp']['style-src']['add-generated-nonce'] ?? false === true) {
@@ -207,19 +228,15 @@ class SecureHeaders
         return $config;
     }
 
+    /**
+     * Generate random nonce value for current request.
+     *
+     * @return string
+     */
     public static function nonce(): string
     {
         static $nonce;
 
-        if (! isset($nonce)) {
-            $nonce = self::generateNonce();
-        }
-
-        return $nonce;
-    }
-
-    protected static function generateNonce(): string
-    {
-        return bin2hex(random_bytes(16));
+        return $nonce ?: $nonce = bin2hex(random_bytes(16));
     }
 }
