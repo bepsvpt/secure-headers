@@ -5,6 +5,7 @@ language: php
 php:
   - 7.0
   - 7.1
+  - 7.2
 
 addons:
   code_climate:
@@ -15,8 +16,7 @@ notifications:
 
 # Commands to be run before your environment runs.
 before_script:
-  - composer self-update
-  - composer install --no-interaction
+  - composer update --no-interaction --no-suggest
 
 # Commands to be run after your environment runs.
 after_script:
