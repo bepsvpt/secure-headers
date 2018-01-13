@@ -157,7 +157,7 @@ return [
 
             'unsafe-eval' => false,
 
-            'add-generated-nonce' => true,
+            'add-generated-nonce' => false,
         ],
 
         'style-src' => [
@@ -173,7 +173,7 @@ return [
 
             'unsafe-inline' => false,
 
-            'add-generated-nonce' => true,
+            'add-generated-nonce' => false,
         ],
 
         'img-src' => [
