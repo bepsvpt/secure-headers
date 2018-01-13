@@ -20,7 +20,7 @@
     "codeclimate/php-test-reporter": "0.4.*",
     "doctrine/instantiator": "1.0.*",
     "orchestra/testbench": "3.5.*",
-    "phpunit/phpunit": "6.0.*"
+    "phpunit/phpunit": "6.5.*"
   },
   "autoload": {
     "psr-4": {
