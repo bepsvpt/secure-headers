@@ -158,7 +158,7 @@ class SecureHeaders
             $hsts .= ' includeSubDomains;';
         }
 
-        $hsts .= " preload";
+        $hsts .= ' preload';
 
         return [
             'Strict-Transport-Security' => $hsts,
