@@ -2,6 +2,10 @@
 
 ## 4.x
 
+- 4.2.0 (2018-03-11)
+  - Support generating nonce value for CSP header ([#13](https://github.com/BePsvPT/secure-headers/pull/13))
+  - Fix HSTS "preload" markup ([#16](https://github.com/BePsvPT/secure-headers/pull/16))
+
 - 4.1.0 (2017-09-01)
   - Support laravel 5.5 ([1f76e6a](https://github.com/BePsvPT/secure-headers/commit/1f76e6aca72eeab59f42000f06388cc684880a64))
 
