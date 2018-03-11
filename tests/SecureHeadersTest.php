@@ -120,7 +120,7 @@ class SecureHeadersTest extends TestCase
         $headers = (new SecureHeaders($config))->headers();
 
         $this->assertArraySubset([
-            'Strict-Transport-Security' => 'max-age=15552000; preload; includeSubDomains;',
+            'Strict-Transport-Security' => 'max-age=15552000; includeSubDomains; preload',
         ], $headers, true);
     }
 

@@ -152,11 +152,13 @@ class SecureHeaders
             return [];
         }
 
-        $hsts = "max-age={$this->config['hsts']['max-age']}; preload;";
+        $hsts = "max-age={$this->config['hsts']['max-age']};";
 
         if ($this->config['hsts']['include-sub-domains']) {
             $hsts .= ' includeSubDomains;';
         }
+
+        $hsts .= ' preload';
 
         return [
             'Strict-Transport-Security' => $hsts,
