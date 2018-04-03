@@ -212,6 +212,10 @@ return [
             //
         ],
 
+        'manifest-src' => [
+            //
+        ],
+
         'media-src' => [
             //
         ],
@@ -225,6 +229,10 @@ return [
          */
 
         'plugin-types' => [
+            //
+        ],
+
+        'prefetch-src' => [
             //
         ],
     ],
