@@ -1,5 +1,16 @@
 ## dev
 
+## 5.x
+
+- 5.0.0 (2018-04-09)
+  - Support Content Security Policy Level 3.
+  - Change HPKP `hashes` field scheme.
+  - Change CSP directive `hashes` field scheme.
+  - Rename CSP directive `type` field to `schemes`.
+  - Remove CSP `https-transform-on-https-connections` directive.
+  - Remove CSP `image-src` directive `data` field.
+  - Do not use another packages for build csp and hpkp header.
+
 ## 4.x
 
 - 4.2.0 (2018-03-11)
