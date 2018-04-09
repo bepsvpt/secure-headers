@@ -1,7 +1,6 @@
 <?php
 
-use Bepsvpt\SecureHeaders\Builder
-    ;
+use Bepsvpt\SecureHeaders\Builder;
 use PHPUnit\Framework\TestCase;
 
 class BuilderTest extends TestCase
@@ -147,7 +146,7 @@ class BuilderTest extends TestCase
         $this->assertArrayHasKey('Content-Security-Policy-Report-Only', $header);
         $this->assertArrayNotHasKey('Content-Security-Policy', $header);
 
-        $this->assertContains("block-all-mixed-content", $header['Content-Security-Policy-Report-Only']);
-        $this->assertContains("upgrade-insecure-requests", $header['Content-Security-Policy-Report-Only']);
+        $this->assertContains('block-all-mixed-content', $header['Content-Security-Policy-Report-Only']);
+        $this->assertContains('upgrade-insecure-requests', $header['Content-Security-Policy-Report-Only']);
     }
 }
