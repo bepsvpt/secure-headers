@@ -102,7 +102,8 @@ class SecureHeadersTest extends TestCase
         $config = require $this->configPath;
 
         $config['hpkp']['hashes'] = [
-            ['algo' => 'sha256', 'hash' => 'apple'],
+            '5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9',
+            '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b',
         ];
 
         $headers = (new SecureHeaders($config))->headers();
@@ -122,19 +123,5 @@ class SecureHeadersTest extends TestCase
         $this->assertArraySubset([
             'Strict-Transport-Security' => 'max-age=15552000; includeSubDomains; preload',
         ], $headers, true);
-    }
-
-    public function test_disable_https_transform()
-    {
-        $config = require $this->configPath;
-
-        $config['csp']['form-action']['allow'][] = 'http://example.com';
-
-        $config['csp']['https-transform-on-https-connections'] = false;
-
-        $headers = (new SecureHeaders($config))->headers();
-
-        $this->assertContains('http://example.com', $headers['Content-Security-Policy']);
-        $this->assertNotContains('https://example.com', $headers['Content-Security-Policy']);
     }
 }

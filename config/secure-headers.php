@@ -89,10 +89,7 @@ return [
 
     'hpkp' => [
         'hashes' => [
-            // [
-            //     'algo' => 'sha256',
-            //     'hash' => 'hash-value',
-            // ],
+            // 'sha256-hash-value',
         ],
 
         'include-sub-domains' => false,
@@ -121,34 +118,34 @@ return [
 
         'report-uri' => null,
 
+        'block-all-mixed-content' => false,
+
         'upgrade-insecure-requests' => false,
 
-        // enable or disable the automatic conversion of sources to https
-        'https-transform-on-https-connections' => true,
-
-        'base-uri' => [
-            //
-        ],
-
-        'default-src' => [
-            //
-        ],
-
-        'child-src' => [
-            //
-        ],
+        /*
+         * Please references script-src directive for available values, only `script-src` and `style-src`
+         * supports `add-generated-nonce`.
+         *
+         * Note: when directive value is empty, it will use `none` for that directive.
+         */
 
         'script-src' => [
             'allow' => [
-                //
+                // url,
             ],
 
             'hashes' => [
-                // ['sha256' => 'hash-value'],
+                // 'sha256' => [
+                //     'hash-value',
+                // ],
             ],
 
             'nonces' => [
-                //
+                // base64-encoded,
+            ],
+
+            'schemes' => [
+                // https:,
             ],
 
             'self' => false,
@@ -156,6 +153,10 @@ return [
             'unsafe-inline' => false,
 
             'unsafe-eval' => false,
+
+            'strict-dynamic' => false,
+
+            'unsafe-hashed-attributes' => false,
 
             'add-generated-nonce' => false,
         ],
@@ -165,8 +166,18 @@ return [
                 //
             ],
 
+            'hashes' => [
+                // 'sha256' => [
+                //     'hash-value',
+                // ],
+            ],
+
             'nonces' => [
                 //
+            ],
+
+            'schemes' => [
+                // https:,
             ],
 
             'self' => false,
@@ -177,30 +188,22 @@ return [
         ],
 
         'img-src' => [
-            'allow' => [
-                //
-            ],
-
-            'types' => [
-                //
-            ],
-
-            'self' => false,
-
-            'data' => false,
+            //
         ],
 
-        /*
-         * The following directives are all use 'allow' and 'self' flag.
-         *
-         * Note: default value of 'self' flag is false.
-         */
+        'default-src' => [
+            //
+        ],
 
-        'font-src' => [
+        'base-uri' => [
             //
         ],
 
         'connect-src' => [
+            //
+        ],
+
+        'font-src' => [
             //
         ],
 
@@ -209,6 +212,10 @@ return [
         ],
 
         'frame-ancestors' => [
+            //
+        ],
+
+        'frame-src' => [
             //
         ],
 
@@ -224,17 +231,18 @@ return [
             //
         ],
 
-        /*
-         * plugin-types only support 'allow'.
-         */
+        'worker-src' => [
+            //
+        ],
 
         'plugin-types' => [
-            //
+            // application/x-shockwave-flash,
         ],
 
-        'prefetch-src' => [
-            //
-        ],
+        'require-sri-for' => '',
+
+        'sandbox' => '',
+
     ],
 
 ];

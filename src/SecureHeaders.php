@@ -3,8 +3,6 @@
 namespace Bepsvpt\SecureHeaders;
 
 use InvalidArgumentException;
-use Bepsvpt\CSPBuilder\CSPBuilder;
-use Bepsvpt\HPKPBuilder\HPKPBuilder;
 use RuntimeException;
 
 class SecureHeaders
@@ -116,13 +114,7 @@ class SecureHeaders
             ];
         }
 
-        $csp = new CSPBuilder($this->config['csp']);
-
-        if (! ($this->config['csp']['https-transform-on-https-connections'] ?? true)) {
-            $csp = $csp->disableHttpTransformOnHttpsConnection();
-        }
-
-        return $csp->getHeaderArray();
+        return Builder::getCSPHeader($this->config['csp']);
     }
 
     /**
@@ -136,9 +128,7 @@ class SecureHeaders
             return [];
         }
 
-        $hpkp = (new HPKPBuilder($this->config['hpkp']));
-
-        return $hpkp->getHeaderArray();
+        return Builder::getHPKPHeader($this->config['hpkp']);
     }
 
     /**
