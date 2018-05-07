@@ -124,4 +124,51 @@ class SecureHeadersTest extends TestCase
             'Strict-Transport-Security' => 'max-age=15552000; includeSubDomains; preload',
         ], $headers, true);
     }
+
+    public function test_expect_ct()
+    {
+        $config = require $this->configPath;
+
+        // only enable expect-ct
+        $config['expect-ct']['enable'] = true;
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArraySubset([
+            'Expect-CT' => 'max-age=2147483648',
+        ], $headers, true);
+
+        // add enforce flag
+        $config['expect-ct']['enforce'] = true;
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArraySubset([
+            'Expect-CT' => 'max-age=2147483648, enforce',
+        ], $headers, true);
+
+        // add report-uri flag
+        $config['expect-ct']['report-uri'] = 'https://example.com/report-ct';
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArraySubset([
+            'Expect-CT' => 'max-age=2147483648, enforce, report-uri="https://example.com/report-ct"',
+        ], $headers, true);
+
+        $config['expect-ct']['enforce'] = false;
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArraySubset([
+            'Expect-CT' => 'max-age=2147483648, report-uri="https://example.com/report-ct"',
+        ], $headers, true);
+
+        // ensure backward compatibility
+        unset($config['expect-ct']);
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArrayNotHasKey('Expect-CT', $headers);
+    }
 }

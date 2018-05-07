@@ -91,6 +91,7 @@ class SecureHeaders
             $this->csp(),
             $this->hpkp(),
             $this->hsts(),
+            $this->expectCT(),
             $this->miscellaneous()
         );
 
@@ -152,6 +153,32 @@ class SecureHeaders
 
         return [
             'Strict-Transport-Security' => $hsts,
+        ];
+    }
+
+    /**
+     * Generate Expect-CT header.
+     *
+     * @return array
+     */
+    protected function expectCT()
+    {
+        if (! ($this->config['expect-ct']['enable'] ?? false)) {
+            return [];
+        }
+
+        $ct = "max-age={$this->config['expect-ct']['max-age']}";
+
+        if ($this->config['expect-ct']['enforce']) {
+            $ct .= ', enforce';
+        }
+
+        if (! empty($this->config['expect-ct']['report-uri'])) {
+            $ct .= sprintf(', report-uri="%s"', $this->config['expect-ct']['report-uri']);
+        }
+
+        return [
+            'Expect-CT' => $ct,
         ];
     }
 
