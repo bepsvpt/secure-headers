@@ -1,6 +1,6 @@
 ## 5.0.0 to 5.1.0
 
-- The following new headers are added, you can find it [here](https://github.com/BePsvPT/laravel-security-header/blob/b8b2f914f5a428282a87c801f0730fe3b7916515/config/security-header.php) and copy to your config file.
+- The following new headers are added, you can find it [here](https://github.com/BePsvPT/secure-headers/blob/5.1.0/config/secure-headers.php#L82-L96) and copy to your config file.
   - Expect-CT
 
 ## 4.x.x to 5.0.0
