@@ -1,3 +1,8 @@
+## 5.0.0 to 5.1.0
+
+- The following new headers are added, you can find it [here](https://github.com/BePsvPT/laravel-security-header/blob/b8b2f914f5a428282a87c801f0730fe3b7916515/config/security-header.php) and copy to your config file.
+  - Expect-CT
+
 ## 4.x.x to 5.0.0
 
 - HPKP `hashes` field only supports sha256 algorithm, change other algorithms to sha256.

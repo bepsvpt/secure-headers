@@ -2,6 +2,9 @@
 
 ## 5.x
 
+- 5.1.0 (2018-05-07)
+  - Support Expect-CT header
+
 - 5.0.0 (2018-04-09)
   - Support Content Security Policy Level 3.
   - Change HPKP `hashes` field scheme.
