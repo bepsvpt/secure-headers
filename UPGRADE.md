@@ -9,7 +9,7 @@
 - CSP `https-transform-on-https-connections` was removed, dont forget to use the explicit protocol.
 - CSP `child-src` directive was removed, use `frame-src` or `worker-src` directive instead.
 - CSP `img-src` directive `data` field was removed, use `schemes` field instead.
-- CSP directive `hashes` field has new format, you can find it [here](https://github.com/BePsvPT/secure-headers/blob/50a803790f2f41767b9dc36459443725db4a1f64/config/secure-headers.php).
+- CSP directive `hashes` field has new format, you can find it [here](https://github.com/BePsvPT/secure-headers/blob/5.0.0/config/secure-headers.php#L137-L141).
 
 ## 3.x.x to 4.0.0
 
@@ -24,7 +24,7 @@
 
 ## 2.1.x to 2.2.0
 
-- The following new headers are added, you can find it [here](https://github.com/BePsvPT/laravel-security-header/blob/655c007418ac03bb56e152f5f5bfe6f7117a964b/config/security-header.php) and copy to your config file.
+- The following new headers are added, you can find it [here](https://github.com/BePsvPT/secure-headers/blob/2.2.0/config/security-header.php) and copy to your config file.
   - X-Download-Options
   - X-Permitted-Cross-Domain-Policies
   - Referrer-Policy
