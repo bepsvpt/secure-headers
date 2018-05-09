@@ -155,7 +155,7 @@ return [
 
         'script-src' => [
             'allow' => [
-                // url,
+                // 'url',
             ],
 
             'hashes' => [
@@ -165,11 +165,11 @@ return [
             ],
 
             'nonces' => [
-                // base64-encoded,
+                // 'base64-encoded',
             ],
 
             'schemes' => [
-                // https:,
+                // 'https:',
             ],
 
             'self' => false,
@@ -201,7 +201,7 @@ return [
             ],
 
             'schemes' => [
-                // https:,
+                // 'https:',
             ],
 
             'self' => false,
@@ -260,7 +260,7 @@ return [
         ],
 
         'plugin-types' => [
-            // application/x-shockwave-flash,
+            // 'application/x-shockwave-flash',
         ],
 
         'require-sri-for' => '',
