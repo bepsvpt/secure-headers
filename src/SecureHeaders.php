@@ -241,7 +241,7 @@ class SecureHeaders
      */
     protected function addGeneratedStyleNonce(array $config): array
     {
-        if ($config['csp']['style-src']['add-generated-nonce'] ?? false === true) {
+        if (($config['csp']['style-src']['add-generated-nonce'] ?? false) === true) {
             $config['csp']['style-src']['nonces'][] = self::nonce();
         }
 
