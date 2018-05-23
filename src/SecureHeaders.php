@@ -196,6 +196,7 @@ class SecureHeaders
             'X-Permitted-Cross-Domain-Policies' => $this->config['x-permitted-cross-domain-policies'],
             'X-XSS-Protection' => $this->config['x-xss-protection'],
             'Referrer-Policy' => $this->config['referrer-policy'],
+            'Server' => $this->config['server'],
         ]);
     }
 
