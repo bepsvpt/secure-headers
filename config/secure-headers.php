@@ -7,6 +7,7 @@ return [
      *
      * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Server
      *
+     * Note: when server is empty string, it will not add to response header
      */
 
     'server' => '',
