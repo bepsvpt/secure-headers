@@ -8,6 +8,7 @@ return [
      * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Server
      *
      */
+
     'server' => '',
 
     /*
