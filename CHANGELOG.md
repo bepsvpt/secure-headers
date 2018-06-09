@@ -2,6 +2,10 @@
 
 ## 5.x
 
+- 5.2.0 (2018-06-09)
+  - Support Clear-Site-Header header
+  - Support Server header
+
 - 5.1.0 (2018-05-07)
   - Support Expect-CT header
 
