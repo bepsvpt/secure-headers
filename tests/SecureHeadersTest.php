@@ -47,6 +47,23 @@ class SecureHeadersTest extends TestCase
         SecureHeaders::fromFile(__DIR__.'/not-found');
     }
 
+    public function test_server_header()
+    {
+        $config = require $this->configPath;
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArrayNotHasKey('Server', $headers);
+
+        $config['server'] = 'Example';
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArraySubset([
+            'Server' => 'Example',
+        ], $headers, true);
+    }
+
     public function test_nonce_value_always_the_same()
     {
         $nonce = SecureHeaders::nonce();
