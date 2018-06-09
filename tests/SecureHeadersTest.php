@@ -171,4 +171,52 @@ class SecureHeadersTest extends TestCase
 
         $this->assertArrayNotHasKey('Expect-CT', $headers);
     }
+
+    public function test_clear_site_data()
+    {
+        $config = require $this->configPath;
+
+        // enable Clear-Site-Data
+        $config['clear-site-data']['enable'] = true;
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArraySubset([
+            'Clear-Site-Data' => '"cache", "cookies", "storage", "executionContexts"',
+        ], $headers, true);
+
+        // disable cookie and executionContexts
+        $config['clear-site-data']['cookies'] = false;
+        $config['clear-site-data']['executionContexts'] = false;
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArraySubset([
+            'Clear-Site-Data' => '"cache", "storage"',
+        ], $headers, true);
+
+        // disable cache and storage
+        $config['clear-site-data']['cache'] = false;
+        $config['clear-site-data']['storage'] = false;
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArrayNotHasKey('Clear-Site-Data', $headers);
+
+        // use all
+        $config['clear-site-data']['all'] = true;
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArraySubset([
+            'Clear-Site-Data' => '"*"',
+        ], $headers, true);
+
+        // ensure backward compatibility
+        unset($config['clear-site-data']);
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArrayNotHasKey('Clear-Site-Data', $headers);
+    }
 }

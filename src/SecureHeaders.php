@@ -92,6 +92,7 @@ class SecureHeaders
             $this->hpkp(),
             $this->hsts(),
             $this->expectCT(),
+            $this->clearSiteData(),
             $this->miscellaneous()
         );
 
@@ -179,6 +180,38 @@ class SecureHeaders
 
         return [
             'Expect-CT' => $ct,
+        ];
+    }
+
+    /**
+     * Generate Clear-Site-Data header.
+     *
+     * @return array
+     */
+    protected function clearSiteData()
+    {
+        if (! ($this->config['clear-site-data']['enable'] ?? false)) {
+            return [];
+        }
+
+        if ($this->config['clear-site-data']['all']) {
+            $csd = '"*"';
+        } else {
+            // simulate array_only, filter disabled and get keys
+            $flags = array_keys(array_filter(array_intersect_key(
+                $this->config['clear-site-data'],
+                array_flip(['cache', 'cookies', 'storage', 'executionContexts'])
+            )));
+
+            if (empty($flags)) {
+                return [];
+            }
+
+            $csd = sprintf('"%s"', implode('", "', $flags));
+        }
+
+        return [
+            'Clear-Site-Data' => $csd,
         ];
     }
 

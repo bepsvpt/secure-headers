@@ -73,6 +73,26 @@ return [
     'referrer-policy' => 'no-referrer',
 
     /*
+     * Clear-Site-Data
+     *
+     * Reference: https://w3c.github.io/webappsec-clear-site-data/
+     */
+
+    'clear-site-data' => [
+        'enable' => false,
+
+        'all' => false,
+
+        'cache' => true,
+
+        'cookies' => true,
+
+        'storage' => true,
+
+        'executionContexts' => true,
+    ],
+
+    /*
      * HTTP Strict Transport Security
      *
      * Reference: https://developer.mozilla.org/en-US/docs/Web/Security/HTTP_strict_transport_security
