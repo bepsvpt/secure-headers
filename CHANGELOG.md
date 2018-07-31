@@ -2,6 +2,9 @@
 
 ## 5.x
 
+- 5.2.1 (2018-07-31)
+  - Update document
+
 - 5.2.0 (2018-06-09)
   - Support Clear-Site-Header header
   - Support Server header
