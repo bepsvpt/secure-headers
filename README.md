@@ -13,6 +13,7 @@ Add security related headers to HTTP response. The package includes Service Prov
 - [Version](#version)
 - [Installation](#installation)
 - [Usage（non laravel project）](#usage)
+- [Document and Notice](#document-and-notice)
 - [Changelog](#changelog)
 - [Upgrade](#upgrade)
 - [License](#license)
@@ -133,6 +134,10 @@ $secureHeaders->headers();
 // Send headers to HTTP response
 $secureHeaders->send();
 ```
+
+## Document and Notice
+
+Please see [DOCS](docs) for details.
 
 ## Changelog
 

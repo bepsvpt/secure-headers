@@ -1,24 +1,39 @@
-# Document for Headers in Config File
+# Document and Notice
 
-* [Policy](#policy)
+* [Overall](#overall)
+* [Clear Site Data](#clear-site-data)
+* [HTTP Strict Transport Security](#http-strict-transport-security)
 * [Public Key Pinning](#public-key-pinning)
 * [Content Security Policy](#content-security-policy)
-* [Additional Resources](#additional-resources)
 
-## Policy
+## Overall
 
-* Each header has a reference link in config file, you should read it if you do not know the header.
-* If you want to disable a string type header, just set to `null` or empty string.
+* Each header in config file has a reference link in phpdoc, reading it will help you knowing what the header doing.
+* If you want to disable a string type header, just set the value to `null` or empty string `''`.
+
+## Clear Site Data
+
+* Clear Site Data only supports `https` protocol, it will not work in `http` protocol.
+
+## HTTP Strict Transport Security
+
+* After setting `hsts` header, you can visit [https://hstspreload.org](https://hstspreload.org) and submit request to add your domain to `preload list`.
 
 ## Public Key Pinning
 
-* When hashes is empty array, this header will not add to http response.
+* When `hpkp` `hashes` array is empty, this header will not add to http response.
 
 ## Content Security Policy
 
-* We use [paragonie/csp-builder](https://github.com/paragonie/csp-builder) to help us support csp header.
-* If you want to disable csp header, set `custom-csp` to empty string.
-
-## Additional Resources
-
-* [Everything you need to know about HTTP security headers](https://blog.appcanary.com/2017/http-security-headers.html)
+* If you want to disable csp header, set `custom-csp` to empty string `''`.
+* When a directive is empty array, it will set to `none`. If you want to omit a directive, just remove it.
+* If you want to allow specific protocol in directive, add them to `schemes` array.
+    ```php
+    'img-src' => [
+        'schemes' => [
+            'data:',
+            'https:',
+        ],
+    ],
+    ```
+* If you want to use automated generated nonce value, setting `add-generated-nonce` to `true` in `script-src` or `style-src` directives and calling `SecureHeaders::nonce()` to get nonce value.
