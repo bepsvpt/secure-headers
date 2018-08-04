@@ -148,6 +148,193 @@ return [
     ],
 
     /*
+     * Feature Policy
+     *
+     * Reference: https://wicg.github.io/feature-policy/
+     */
+
+    'feature-policy' => [
+        'enable' => true,
+
+        /*
+         * Each directive details can be found on:
+         *
+         * https://github.com/WICG/feature-policy/blob/master/features.md
+         *
+         * 'none', '*' and 'self allow' are mutually exclusive,
+         * the priority is 'none' > '*' > 'self allow'.
+         */
+
+        'camera' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'fullscreen' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'geolocation' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'microphone' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'midi' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'payment' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'picture-in-picture' => [
+            'none' => false,
+
+            '*' => true,
+
+            'self' => false,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'accelerometer' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'ambient-light-sensor' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'gyroscope' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'magnetometer' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'speaker' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'usb' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'vr' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+    ],
+
+    /*
      * Content Security Policy
      *
      * Reference: https://developer.mozilla.org/en-US/docs/Web/Security/CSP

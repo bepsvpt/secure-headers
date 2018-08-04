@@ -37,6 +37,69 @@ class Builder
     }
 
     /**
+     * Generate Feature Policy header.
+     *
+     * @param array $config
+     *
+     * @return array
+     */
+    public static function getFeaturePolicyHeader(array $config): array
+    {
+        $directives = [
+            'accelerometer',
+            'ambient-light-sensor',
+            'autoplay',
+            'camera',
+            'encrypted-media',
+            'fullscreen',
+            'geolocation',
+            'gyroscope',
+            'magnetometer',
+            'microphone',
+            'midi',
+            'payment',
+            'picture-in-picture',
+            'speaker',
+            'usb',
+            'var',
+        ];
+
+        foreach ($directives as $directive) {
+            if (! isset($config[$directive]) || empty($config[$directive])) {
+                continue;
+            }
+
+            $value = '';
+
+            if ($config[$directive]['none']) {
+                $value = "'none'";
+            } elseif ($config[$directive]['*']) {
+                $value = '*';
+            } else {
+                if ($config[$directive]['self']) {
+                    $value = "'self'";
+                }
+
+                foreach ($config[$directive]['allow'] as $url) {
+                    if (false !== ($url = filter_var($url, FILTER_SANITIZE_URL))) {
+                        $value = sprintf('%s %s', $value, $url);
+                    }
+                }
+            }
+
+            if (strlen($value = trim($value)) > 0) {
+                $headers[] = sprintf('%s %s', $directive, $value);
+            }
+        }
+
+        if (! isset($headers)) {
+            return [];
+        }
+
+        return ['Feature-Policy' => implode('; ', $headers)];
+    }
+
+    /**
      * Generate CSP header.
      *
      * @param array $config

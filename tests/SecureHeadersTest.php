@@ -114,6 +114,31 @@ class SecureHeadersTest extends TestCase
         ], $headers, true);
     }
 
+    public function test_feature_policy()
+    {
+        $config = require $this->configPath;
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArrayHasKey('Feature-Policy', $headers);
+
+        // disable feature policy
+        $config = require $this->configPath;
+
+        $config['feature-policy']['enable'] = false;
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArrayNotHasKey('Feature-Policy', $headers);
+
+        // ensure backward compatibility
+        unset($config['feature-policy']);
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArrayNotHasKey('Feature-Policy', $headers);
+    }
+
     public function test_hpkp()
     {
         $config = require $this->configPath;

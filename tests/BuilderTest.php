@@ -20,6 +20,75 @@ class BuilderTest extends TestCase
         'report-uri' => null,
     ];
 
+    protected $fpConfig = [
+        'enable' => true,
+
+        'camera' => [
+            'none' => true,
+
+            '*' => true,
+
+            'self' => true,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'fullscreen' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'allow' => [
+                'https://example.com',
+                'https://www.example.org',
+            ],
+        ],
+
+        'geolocation' => [
+            'none' => false,
+
+            '*' => true,
+
+            'self' => true,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'microphone' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'midi' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => false,
+
+            'allow' => [
+                'https://example.com',
+            ],
+        ],
+
+        'not-exists' => [
+            'self' => true,
+        ]
+    ];
+
     public function test_hpkp()
     {
         $header = Builder::getHPKPHeader($this->hpkpConfig);
@@ -60,6 +129,34 @@ class BuilderTest extends TestCase
             'pin-sha256="YLh1dUR9y6Kja30RrAn7JKnbQG/uEtLMkBgFF2Fuihg="; pin-sha256="x2NDL8tAZrl1FEjBBQX8ea2iSH/lzfNAjlDxOX8BePR="; max-age=15552000',
             $header['Public-Key-Pins-Report-Only']
         );
+    }
+
+    public function test_feature_policy()
+    {
+        $header = Builder::getFeaturePolicyHeader($this->fpConfig);
+
+        $this->assertSame(
+            "camera 'none'; fullscreen 'self' https://example.com https://www.example.org; geolocation *; microphone 'self'; midi https://example.com",
+            $header['Feature-Policy']
+        );
+    }
+
+    public function test_feature_policy_without_directive()
+    {
+        $this->fpConfig = ['enable' => true];
+
+        $header = Builder::getFeaturePolicyHeader($this->fpConfig);
+
+        $this->assertArrayNotHasKey('Feature-Policy', $header);
+    }
+
+    public function test_feature_policy_with_empty_directive()
+    {
+        $this->fpConfig = ['enable' => true, 'camera' => [], 'fullscreen' => []];
+
+        $header = Builder::getFeaturePolicyHeader($this->fpConfig);
+
+        $this->assertArrayNotHasKey('Feature-Policy', $header);
     }
 
     public function test_csp()

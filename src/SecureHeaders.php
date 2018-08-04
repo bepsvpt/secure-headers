@@ -89,6 +89,7 @@ class SecureHeaders
     {
         $this->headers = array_merge(
             $this->csp(),
+            $this->featurePolicy(),
             $this->hpkp(),
             $this->hsts(),
             $this->expectCT(),
@@ -117,6 +118,20 @@ class SecureHeaders
         }
 
         return Builder::getCSPHeader($this->config['csp']);
+    }
+
+    /**
+     * Get Feature Policy header.
+     *
+     * @return array
+     */
+    protected function featurePolicy(): array
+    {
+        if (! ($this->config['feature-policy']['enable'] ?? false)) {
+            return [];
+        }
+
+        return Builder::getFeaturePolicyHeader($this->config['feature-policy']);
     }
 
     /**
