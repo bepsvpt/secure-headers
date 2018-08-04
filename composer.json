@@ -1,7 +1,7 @@
 {
   "name": "bepsvpt/secure-headers",
   "description": "Add security related headers to HTTP response. The package includes Service Providers for easy Laravel integration.",
-  "keywords": ["laravel", "header", "hsts", "hpkp", "csp", "https"],
+  "keywords": ["laravel", "header", "https", "hsts", "hpkp", "csp", "except-ct", "feature-policy", "clear-site-data"],
   "homepage": "https://github.com/BePsvPT/secure-headers",
   "license": "MIT",
   "authors": [
