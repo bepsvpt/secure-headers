@@ -1,3 +1,8 @@
+## 5.2.x to 5.3.0
+
+- The following new headers are added, you can find it [here](https://github.com/BePsvPT/secure-headers/blob/5.3.0/config/secure-headers.php) and copy to your config file.
+  - Feature-Policy
+
 ## 5.1.0 to 5.2.0
 
 - The following new headers are added, you can find it [here](https://github.com/BePsvPT/secure-headers/blob/5.2.0/config/secure-headers.php#L5-L13) and [here](https://github.com/BePsvPT/secure-headers/blob/5.2.0/config/secure-headers.php#L76-L94) and copy to your config file.

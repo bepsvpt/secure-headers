@@ -2,6 +2,9 @@
 
 ## 5.x
 
+- 5.3.0 (2018-08-04)
+  - Support Feature-Policy header
+
 - 5.2.1 (2018-07-31)
   - Update document
 
