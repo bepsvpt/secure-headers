@@ -86,7 +86,7 @@ class BuilderTest extends TestCase
 
         'not-exists' => [
             'self' => true,
-        ]
+        ],
     ];
 
     public function test_hpkp()
