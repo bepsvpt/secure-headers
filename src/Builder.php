@@ -108,7 +108,7 @@ class Builder
      */
     public static function getCSPHeader(array $config): array
     {
-        static $directives = [
+        $directives = [
             'default-src',
             'base-uri',
             'connect-src',
@@ -194,11 +194,10 @@ class Builder
 
         if (! empty($policies['allow'])) {
             foreach ($policies['allow'] as $url) {
-                if (false === ($url = filter_var($url, FILTER_SANITIZE_URL))) {
-                    continue;
+                // removes illegal URL characters
+                if (false !== ($url = filter_var($url, FILTER_SANITIZE_URL))) {
+                    $ret[] = $url;
                 }
-
-                $ret[] = $url;
             }
         }
 

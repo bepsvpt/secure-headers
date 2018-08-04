@@ -71,7 +71,7 @@ class SecureHeaders
      *
      * @return array
      */
-    public function headers()
+    public function headers(): array
     {
         if (! $this->compiled) {
             $this->compile();
@@ -105,7 +105,7 @@ class SecureHeaders
      *
      * @return array
      */
-    protected function csp()
+    protected function csp(): array
     {
         if (! is_null($this->config['custom-csp'])) {
             if (empty($this->config['custom-csp'])) {
@@ -139,7 +139,7 @@ class SecureHeaders
      *
      * @return array
      */
-    protected function hpkp()
+    protected function hpkp(): array
     {
         if (empty($this->config['hpkp']['hashes'])) {
             return [];
@@ -153,7 +153,7 @@ class SecureHeaders
      *
      * @return array
      */
-    protected function hsts()
+    protected function hsts(): array
     {
         if (! $this->config['hsts']['enable']) {
             return [];
@@ -177,7 +177,7 @@ class SecureHeaders
      *
      * @return array
      */
-    protected function expectCT()
+    protected function expectCT(): array
     {
         if (! ($this->config['expect-ct']['enable'] ?? false)) {
             return [];
@@ -203,7 +203,7 @@ class SecureHeaders
      *
      * @return array
      */
-    protected function clearSiteData()
+    protected function clearSiteData(): array
     {
         if (! ($this->config['clear-site-data']['enable'] ?? false)) {
             return [];
@@ -235,7 +235,7 @@ class SecureHeaders
      *
      * @return array
      */
-    protected function miscellaneous()
+    protected function miscellaneous(): array
     {
         return array_filter([
             'X-Content-Type-Options' => $this->config['x-content-type-options'],
@@ -257,38 +257,22 @@ class SecureHeaders
      */
     protected function preprocessConfig(array $config): array
     {
-        $config = $this->addGeneratedScriptNonce($config);
-
-        $config = $this->addGeneratedStyleNonce($config);
-
-        return $config;
+        return $this->addGeneratedNonce($config);
     }
 
     /**
-     * Add generated nonce value to script-src.
+     * Add generated nonce value to script-src and style-src.
      *
      * @param array $config
      *
      * @return array
      */
-    protected function addGeneratedScriptNonce(array $config): array
+    protected function addGeneratedNonce(array $config): array
     {
-        if ($config['csp']['script-src']['add-generated-nonce'] ?? false === true) {
+        if (($config['csp']['script-src']['add-generated-nonce'] ?? false) === true) {
             $config['csp']['script-src']['nonces'][] = self::nonce();
         }
 
-        return $config;
-    }
-
-    /**
-     * Add generated nonce value to style-src.
-     *
-     * @param array $config
-     *
-     * @return array
-     */
-    protected function addGeneratedStyleNonce(array $config): array
-    {
         if (($config['csp']['style-src']['add-generated-nonce'] ?? false) === true) {
             $config['csp']['style-src']['nonces'][] = self::nonce();
         }
