@@ -20,7 +20,7 @@ Add security related headers to HTTP response. The package includes Service Prov
 
 ## Version
 
-5.2.1
+5.3.0
 
 ## Installation
 
