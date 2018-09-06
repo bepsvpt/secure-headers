@@ -7,20 +7,19 @@ php:
   - 7.1
   - 7.2
 
-addons:
-  code_climate:
-    repo_token: d4952effc6e0e3b3c2aabb5a352bbc97aa1d23f3f7560214f8c145f43ef951b0
-
 notifications:
   email: false
 
 # Commands to be run before your environment runs.
 before_script:
   - composer update --no-interaction --no-suggest
-
-# Commands to be run after your environment runs.
-after_script:
-  - vendor/bin/test-reporter
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 
 # Commands you want to run that will verify your build.
 script: vendor/bin/phpunit --stderr
+
+# Commands to be run after your environment runs.
+after_script:
+  - ./cc-test-reporter after-build --coverage-input-type clover --id d4952effc6e0e3b3c2aabb5a352bbc97aa1d23f3f7560214f8c145f43ef951b0 --exit-code $TRAVIS_TEST_RESULT
