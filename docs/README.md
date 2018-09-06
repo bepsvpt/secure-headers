@@ -5,6 +5,7 @@
 * [HTTP Strict Transport Security](#http-strict-transport-security)
 * [Public Key Pinning](#public-key-pinning)
 * [Content Security Policy](#content-security-policy)
+* [Testing](#testing)
 
 ## Overall
 
@@ -37,3 +38,17 @@
     ],
     ```
 * If you want to use automated generated nonce value, setting `add-generated-nonce` to `true` in `script-src` or `style-src` directives and calling `SecureHeaders::nonce()` to get nonce value.
+
+## Testing
+
+If you want to run testing, make sure you have the corresponding package version and minimum php version.
+
+| Laravel | Testbench | PHPUnit | Minimum PHP Version |
+|:-------:|:---------:|:-------:|:-------------------:|
+|  5.1.x  |   3.1.x   |  5.7.x  |         7.0         |
+|  5.2.x  |   3.2.x   |  5.7.x  |         7.0         |
+|  5.3.x  |   3.3.x   |  5.7.x  |         7.0         |
+|  5.4.x  |   3.4.x   |  5.7.x  |         7.0         |
+|  5.5.x  |   3.5.x   |  6.5.x  |         7.0         |
+|  5.6.x  |   3.6.x   |  6.5.x  |        7.1.3        |
+|  5.7.x  |   3.7.x   |  7.3.x  |        7.1.3        |
