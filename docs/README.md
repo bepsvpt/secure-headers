@@ -37,7 +37,23 @@
         ],
     ],
     ```
-* If you want to use automated generated nonce value, setting `add-generated-nonce` to `true` in `script-src` or `style-src` directives and calling `SecureHeaders::nonce()` to get nonce value.
+* If you want to use automated generated nonce value, setting `add-generated-nonce` to `true` in `script-src` or `style-src` directives and calling `Bepsvpt\SecureHeaders\SecureHeaders::nonce()` to get nonce value.
+
+    using inject
+    ```blade
+    @inject('headers', 'Bepsvpt\SecureHeaders\SecureHeaders')
+
+    <style nonce="{{ $header->nonce() }}">
+      // your css
+    </style>
+    ```
+
+    or calling directly
+    ```blade
+    <script nonce="{{ Bepsvpt\SecureHeaders\SecureHeaders::nonce() }}">
+      // your js
+    </script>
+    ```
 
 ## Testing
 
