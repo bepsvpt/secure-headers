@@ -43,7 +43,7 @@
     ```blade
     @inject('headers', 'Bepsvpt\SecureHeaders\SecureHeaders')
 
-    <style nonce="{{ $header->nonce() }}">
+    <style nonce="{{ $headers->nonce() }}">
       // your css
     </style>
     ```
