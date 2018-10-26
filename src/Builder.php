@@ -60,6 +60,7 @@ class Builder
             'payment',
             'picture-in-picture',
             'speaker',
+            'sync-xhr',
             'usb',
             'var',
         ];

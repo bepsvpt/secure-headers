@@ -165,7 +165,31 @@ return [
          * the priority is 'none' > '*' > 'self allow'.
          */
 
+        'autoplay' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
         'camera' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'encrypted-media' => [
             'none' => false,
 
             '*' => false,
@@ -309,6 +333,18 @@ return [
             ],
         ],
 
+        'sync-xhr' => [
+            'none' => false,
+
+            '*' => true,
+
+            'self' => false,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
         'usb' => [
             'none' => false,
 
@@ -391,6 +427,9 @@ return [
 
             'unsafe-hashed-attributes' => false,
 
+            // https://www.chromestatus.com/feature/5792234276388864
+            'report-sample' => true,
+
             'add-generated-nonce' => false,
         ],
 
@@ -416,6 +455,8 @@ return [
             'self' => false,
 
             'unsafe-inline' => false,
+
+            'report-sample' => true,
 
             'add-generated-nonce' => false,
         ],
