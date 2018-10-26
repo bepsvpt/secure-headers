@@ -2,6 +2,12 @@
 
 ## 5.x
 
+- 5.3.2 (2018-10-26)
+  - Support Feature-Policy sync-xhr directive
+
+- 5.3.1 (2018-09-06)
+  - Support laravel 5.7
+
 - 5.3.0 (2018-08-04)
   - Support Feature-Policy header
 
