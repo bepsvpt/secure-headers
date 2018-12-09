@@ -13,6 +13,7 @@ notifications:
 
 # Commands to be run before your environment runs.
 before_script:
+  - sudo pecl install xdebug-2.7.0beta1
   - composer update --no-interaction --no-suggest
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
