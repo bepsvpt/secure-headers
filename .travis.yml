@@ -1,24 +1,104 @@
 # Required to run your project under the correct environment.
 language: php
 
-# Versions of PHP you want your project run with.
-php:
-  - 7.0
-  - 7.1
-  - 7.2
-
 notifications:
   email: false
 
+# Versions of PHP you want your project run with.
+matrix:
+  include:
+#    - php: 7.0
+#      env:
+#        - TESTBENCH_VERSION=3.1.*
+#        - PHPUNIT_VERSION=6.5.*
+#    - php: 7.0
+#      env:
+#        - TESTBENCH_VERSION=3.2.*
+#        - PHPUNIT_VERSION=6.5.*
+#    - php: 7.0
+#      env:
+#        - TESTBENCH_VERSION=3.3.*
+#        - PHPUNIT_VERSION=6.5.*
+#    - php: 7.0
+#      env:
+#        - TESTBENCH_VERSION=3.4.*
+#        - PHPUNIT_VERSION=6.5.*
+#    - php: 7.0
+#      env:
+#        - TESTBENCH_VERSION=3.5.*
+#        - PHPUNIT_VERSION=6.5.*
+
+#    - php: 7.1
+#      env:
+#        - TESTBENCH_VERSION=3.1.*
+#        - PHPUNIT_VERSION=6.5.*
+#    - php: 7.1
+#      env:
+#        - TESTBENCH_VERSION=3.2.*
+#        - PHPUNIT_VERSION=6.5.*
+#    - php: 7.1
+#      env:
+#        - TESTBENCH_VERSION=3.3.*
+#        - PHPUNIT_VERSION=6.5.*
+#    - php: 7.1
+#      env:
+#        - TESTBENCH_VERSION=3.4.*
+#        - PHPUNIT_VERSION=6.5.*
+#    - php: 7.1
+#      env:
+#        - TESTBENCH_VERSION=3.5.*
+#        - PHPUNIT_VERSION=6.5.*
+#    - php: 7.1
+#      env:
+#        - TESTBENCH_VERSION=3.6.*
+#        - PHPUNIT_VERSION=7.5.*
+#    - php: 7.1
+#      env:
+#        - TESTBENCH_VERSION=3.7.*
+#        - PHPUNIT_VERSION=7.5.*
+
+    - php: 7.2
+      env:
+        - TESTBENCH_VERSION=3.1.*
+        - PHPUNIT_VERSION=6.5.*
+    - php: 7.2
+      env:
+        - TESTBENCH_VERSION=3.2.*
+        - PHPUNIT_VERSION=6.5.*
+    - php: 7.2
+      env:
+        - TESTBENCH_VERSION=3.3.*
+        - PHPUNIT_VERSION=6.5.*
+    - php: 7.2
+      env:
+        - TESTBENCH_VERSION=3.4.*
+        - PHPUNIT_VERSION=6.5.*
+    - php: 7.2
+      env:
+        - TESTBENCH_VERSION=3.5.*
+        - PHPUNIT_VERSION=6.5.*
+    - php: 7.2
+      env:
+        - TESTBENCH_VERSION=3.6.*
+        - PHPUNIT_VERSION=7.5.*
+    - php: 7.2
+      env:
+        - TESTBENCH_VERSION=3.7.*
+        - PHPUNIT_VERSION=7.5.*
+
+install:
+  - composer require "orchestra/testbench:${TESTBENCH_VERSION}" --dev --no-update --no-interaction
+  - composer require "phpunit/phpunit:${PHPUNIT_VERSION}" --dev --no-update --no-interaction
+  - travis_retry composer update --no-suggest --no-interaction --optimize-autoloader
+
 # Commands to be run before your environment runs.
 before_script:
-  - composer update --no-interaction --no-suggest
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 
 # Commands you want to run that will verify your build.
-script: vendor/bin/phpunit --stderr
+script: vendor/bin/phpunit
 
 # Commands to be run after your environment runs.
 after_script:
