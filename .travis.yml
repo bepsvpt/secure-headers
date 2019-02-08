@@ -10,15 +10,15 @@ matrix:
     - php: 7.0
       env:
         - TESTBENCH_VERSION=3.1.*
-        - PHPUNIT_VERSION=6.5.*
+        - PHPUNIT_VERSION=5.7.*
     - php: 7.0
       env:
         - TESTBENCH_VERSION=3.2.*
-        - PHPUNIT_VERSION=6.5.*
+        - PHPUNIT_VERSION=5.7.*
     - php: 7.0
       env:
         - TESTBENCH_VERSION=3.3.*
-        - PHPUNIT_VERSION=6.5.*
+        - PHPUNIT_VERSION=5.7.*
     - php: 7.0
       env:
         - TESTBENCH_VERSION=3.4.*
@@ -31,15 +31,15 @@ matrix:
     - php: 7.1
       env:
         - TESTBENCH_VERSION=3.1.*
-        - PHPUNIT_VERSION=6.5.*
+        - PHPUNIT_VERSION=5.7.*
     - php: 7.1
       env:
         - TESTBENCH_VERSION=3.2.*
-        - PHPUNIT_VERSION=6.5.*
+        - PHPUNIT_VERSION=5.7.*
     - php: 7.1
       env:
         - TESTBENCH_VERSION=3.3.*
-        - PHPUNIT_VERSION=6.5.*
+        - PHPUNIT_VERSION=5.7.*
     - php: 7.1
       env:
         - TESTBENCH_VERSION=3.4.*
@@ -60,15 +60,15 @@ matrix:
     - php: 7.2
       env:
         - TESTBENCH_VERSION=3.1.*
-        - PHPUNIT_VERSION=6.5.*
+        - PHPUNIT_VERSION=5.7.*
     - php: 7.2
       env:
         - TESTBENCH_VERSION=3.2.*
-        - PHPUNIT_VERSION=6.5.*
+        - PHPUNIT_VERSION=5.7.*
     - php: 7.2
       env:
         - TESTBENCH_VERSION=3.3.*
-        - PHPUNIT_VERSION=6.5.*
+        - PHPUNIT_VERSION=5.7.*
     - php: 7.2
       env:
         - TESTBENCH_VERSION=3.4.*
