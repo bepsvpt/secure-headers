@@ -9,6 +9,7 @@
          processIsolation="false"
          stopOnError="false"
          stopOnFailure="false"
+         stderr="true"
 >
     <testsuites>
         <testsuite name="Secure Headers Test">
