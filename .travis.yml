@@ -120,6 +120,7 @@ matrix:
         - PHPUNIT_VERSION=7.5.*
 
 install:
+  - composer global require hirak/prestissimo --no-suggest --no-interaction --optimize-autoloader
   - composer require "orchestra/testbench:${TESTBENCH_VERSION}" "phpunit/phpunit:${PHPUNIT_VERSION}" --dev --no-update --no-interaction
   - composer update --no-suggest --no-interaction --prefer-dist --optimize-autoloader
 
