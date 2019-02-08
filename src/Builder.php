@@ -211,7 +211,7 @@ class Builder
 
                 foreach ($hashes as $value) {
                     // skip invalid value
-                    if (base64_encode(base64_decode($value, true)) !== $value) {
+                    if (! self::isBase64Valid($value)) {
                         continue;
                     }
 
@@ -223,7 +223,7 @@ class Builder
         if (! empty($policies['nonces'])) {
             foreach ($policies['nonces'] as $nonce) {
                 // skip invalid value, https://www.w3.org/TR/CSP/#grammardef-nonce-source
-                if (base64_encode(base64_decode($nonce, true)) !== $nonce) {
+                if (! self::isBase64Valid($nonce)) {
                     continue;
                 }
 
@@ -238,5 +238,23 @@ class Builder
         }
 
         return implode(' ', $ret);
+    }
+
+    /**
+     * Check base64 encoded string is valid or not.
+     *
+     * @param string $encode
+     *
+     * @return bool
+     */
+    protected static function isBase64Valid(string $encode): bool
+    {
+        $decode = base64_decode($encode, true);
+
+        if (false === $decode) {
+            return false;
+        }
+
+        return base64_encode($decode) === $encode;
     }
 }
