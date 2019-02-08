@@ -2,11 +2,15 @@
 
 ## 5.x
 
+- 5.3.3 (2019-02-xx)
+  - Support Laravel 5.8
+  - Let Travis CI cover all supported PHP and Laravel versions
+
 - 5.3.2 (2018-10-26)
   - Support Feature-Policy sync-xhr directive
 
 - 5.3.1 (2018-09-06)
-  - Support laravel 5.7
+  - Support Laravel 5.7
 
 - 5.3.0 (2018-08-04)
   - Support Feature-Policy header
@@ -37,7 +41,7 @@
   - Fix HSTS "preload" markup ([#16](https://github.com/BePsvPT/secure-headers/pull/16))
 
 - 4.1.0 (2017-09-01)
-  - Support laravel 5.5 ([1f76e6a](https://github.com/BePsvPT/secure-headers/commit/1f76e6aca72eeab59f42000f06388cc684880a64))
+  - Support Laravel 5.5 ([1f76e6a](https://github.com/BePsvPT/secure-headers/commit/1f76e6aca72eeab59f42000f06388cc684880a64))
 
 - 4.0.0 (2017-08-04)
   - Transform [paragonie/csp-builder](https://github.com/paragonie/csp-builder) dependency to [bepsvpt/csp-builder](https://github.com/BePsvPT/csp-builder) ([4ce4f14](https://github.com/BePsvPT/secure-headers/commit/4ce4f14e938f47bf480f823914dfea3737bdae0c))
@@ -58,10 +62,10 @@
   - Fix call to undefined method when download file ([#5](https://github.com/BePsvPT/secure-headers/issues/5)) ([5b7ccd3](https://github.com/BePsvPT/secure-headers/commit/5b7ccd395ce3e2feefbb51af1bd1d46532992f0c))
 
 - 3.0.4 (2017-02-21)
-  - Fix laravel 5.1 compatibility ([#3](https://github.com/BePsvPT/secure-headers/pull/3))
+  - Fix Laravel 5.1 compatibility ([#3](https://github.com/BePsvPT/secure-headers/pull/3))
 
 - 3.0.3 (2017-01-29)
-  - Support laravel 5.4 ([a98840e](https://github.com/BePsvPT/secure-headers/commit/a98840e95bb476a8e104c249514ef1d7f97397ed))
+  - Support Laravel 5.4 ([a98840e](https://github.com/BePsvPT/secure-headers/commit/a98840e95bb476a8e104c249514ef1d7f97397ed))
 
 - 3.0.2 (2017-01-23)
   - Support disable specific header ([9d995f7](https://github.com/BePsvPT/secure-headers/commit/9d995f76f7e301f921546f6446db113f50883082))
@@ -70,7 +74,7 @@
   - Remove incorrect dependents ([64e0f93](https://github.com/BePsvPT/secure-headers/commit/64e0f939af8f85972038ede5051565cb1bcf4d11))
 
 - 3.0.0 (2016-12-19)
-  - Support non laravel project
+  - Support non Laravel project
     - Remove env helper function from config file ([d4379b0](https://github.com/BePsvPT/secure-headers/commit/d4379b052f3ffb5f0b45da967645d4bfe345014c#diff-47866b67d787728550e5ee35c73b17b5))
   - Change namespace
   - Change project name
