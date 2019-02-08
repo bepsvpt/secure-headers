@@ -7,55 +7,55 @@ notifications:
 # Versions of PHP you want your project run with.
 matrix:
   include:
-#    - php: 7.0
-#      env:
-#        - TESTBENCH_VERSION=3.1.*
-#        - PHPUNIT_VERSION=6.5.*
-#    - php: 7.0
-#      env:
-#        - TESTBENCH_VERSION=3.2.*
-#        - PHPUNIT_VERSION=6.5.*
-#    - php: 7.0
-#      env:
-#        - TESTBENCH_VERSION=3.3.*
-#        - PHPUNIT_VERSION=6.5.*
-#    - php: 7.0
-#      env:
-#        - TESTBENCH_VERSION=3.4.*
-#        - PHPUNIT_VERSION=6.5.*
-#    - php: 7.0
-#      env:
-#        - TESTBENCH_VERSION=3.5.*
-#        - PHPUNIT_VERSION=6.5.*
+    - php: 7.0
+      env:
+        - TESTBENCH_VERSION=3.1.*
+        - PHPUNIT_VERSION=6.5.*
+    - php: 7.0
+      env:
+        - TESTBENCH_VERSION=3.2.*
+        - PHPUNIT_VERSION=6.5.*
+    - php: 7.0
+      env:
+        - TESTBENCH_VERSION=3.3.*
+        - PHPUNIT_VERSION=6.5.*
+    - php: 7.0
+      env:
+        - TESTBENCH_VERSION=3.4.*
+        - PHPUNIT_VERSION=6.5.*
+    - php: 7.0
+      env:
+        - TESTBENCH_VERSION=3.5.*
+        - PHPUNIT_VERSION=6.5.*
 
-#    - php: 7.1
-#      env:
-#        - TESTBENCH_VERSION=3.1.*
-#        - PHPUNIT_VERSION=6.5.*
-#    - php: 7.1
-#      env:
-#        - TESTBENCH_VERSION=3.2.*
-#        - PHPUNIT_VERSION=6.5.*
-#    - php: 7.1
-#      env:
-#        - TESTBENCH_VERSION=3.3.*
-#        - PHPUNIT_VERSION=6.5.*
-#    - php: 7.1
-#      env:
-#        - TESTBENCH_VERSION=3.4.*
-#        - PHPUNIT_VERSION=6.5.*
-#    - php: 7.1
-#      env:
-#        - TESTBENCH_VERSION=3.5.*
-#        - PHPUNIT_VERSION=6.5.*
-#    - php: 7.1
-#      env:
-#        - TESTBENCH_VERSION=3.6.*
-#        - PHPUNIT_VERSION=7.5.*
-#    - php: 7.1
-#      env:
-#        - TESTBENCH_VERSION=3.7.*
-#        - PHPUNIT_VERSION=7.5.*
+    - php: 7.1
+      env:
+        - TESTBENCH_VERSION=3.1.*
+        - PHPUNIT_VERSION=6.5.*
+    - php: 7.1
+      env:
+        - TESTBENCH_VERSION=3.2.*
+        - PHPUNIT_VERSION=6.5.*
+    - php: 7.1
+      env:
+        - TESTBENCH_VERSION=3.3.*
+        - PHPUNIT_VERSION=6.5.*
+    - php: 7.1
+      env:
+        - TESTBENCH_VERSION=3.4.*
+        - PHPUNIT_VERSION=6.5.*
+    - php: 7.1
+      env:
+        - TESTBENCH_VERSION=3.5.*
+        - PHPUNIT_VERSION=6.5.*
+    - php: 7.1
+      env:
+        - TESTBENCH_VERSION=3.6.*
+        - PHPUNIT_VERSION=7.5.*
+    - php: 7.1
+      env:
+        - TESTBENCH_VERSION=3.7.*
+        - PHPUNIT_VERSION=7.5.*
 
     - php: 7.2
       env:
@@ -86,10 +86,14 @@ matrix:
         - TESTBENCH_VERSION=3.7.*
         - PHPUNIT_VERSION=7.5.*
 
+    - php: 7.3
+      env:
+        - TESTBENCH_VERSION=3.7.*
+        - PHPUNIT_VERSION=7.5.*
+
 install:
-  - composer require "orchestra/testbench:${TESTBENCH_VERSION}" --dev --no-update --no-interaction
-  - composer require "phpunit/phpunit:${PHPUNIT_VERSION}" --dev --no-update --no-interaction
-  - travis_retry composer update --no-suggest --no-interaction --optimize-autoloader
+  - composer require "orchestra/testbench:${TESTBENCH_VERSION}" "phpunit/phpunit:${PHPUNIT_VERSION}" --dev --no-update --no-interaction
+  - composer update --no-suggest --no-interaction --optimize-autoloader
 
 # Commands to be run before your environment runs.
 before_script:
