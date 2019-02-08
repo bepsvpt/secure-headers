@@ -1,6 +1,9 @@
 <?php
 
+namespace Bepsvpt\Tests\SecureHeaders;
+
 use Bepsvpt\SecureHeaders\SecureHeaders;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 class SecureHeadersTest extends TestCase

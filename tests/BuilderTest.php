@@ -1,5 +1,7 @@
 <?php
 
+namespace Bepsvpt\Tests\SecureHeaders;
+
 use Bepsvpt\SecureHeaders\Builder;
 use PHPUnit\Framework\TestCase;
 

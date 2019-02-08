@@ -25,6 +25,11 @@
       "Bepsvpt\\SecureHeaders\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Bepsvpt\\Tests\\SecureHeaders\\": "tests/"
+    }
+  },
   "minimum-stability": "dev",
   "prefer-stable": true,
   "config": {

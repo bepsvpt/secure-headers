@@ -1,6 +1,13 @@
 <?php
 
-class MiddlewareTest extends Orchestra\Testbench\TestCase
+namespace Bepsvpt\Tests\SecureHeaders;
+
+use Bepsvpt\SecureHeaders\SecureHeadersMiddleware;
+use Bepsvpt\SecureHeaders\SecureHeadersServiceProvider;
+use Illuminate\Contracts\Http\Kernel as HttpKernel;
+use Orchestra\Testbench\TestCase;
+
+class MiddlewareTest extends TestCase
 {
     /**
      * Wrapper laravel response for different version.
@@ -36,7 +43,7 @@ class MiddlewareTest extends Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            Bepsvpt\SecureHeaders\SecureHeadersServiceProvider::class,
+            SecureHeadersServiceProvider::class,
         ];
     }
 
@@ -49,7 +56,7 @@ class MiddlewareTest extends Orchestra\Testbench\TestCase
      */
     protected function getEnvironmentSetUp($app)
     {
-        $app->make(Illuminate\Contracts\Http\Kernel::class)->pushMiddleware(Bepsvpt\SecureHeaders\SecureHeadersMiddleware::class);
+        $app->make(HttpKernel::class)->pushMiddleware(SecureHeadersMiddleware::class);
     }
 
     public function test_middleware()
