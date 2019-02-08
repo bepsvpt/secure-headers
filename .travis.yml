@@ -4,6 +4,10 @@ language: php
 notifications:
   email: false
 
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
 # Versions of PHP you want your project run with.
 matrix:
   include:
@@ -117,7 +121,7 @@ matrix:
 
 install:
   - composer require "orchestra/testbench:${TESTBENCH_VERSION}" "phpunit/phpunit:${PHPUNIT_VERSION}" --dev --no-update --no-interaction
-  - composer update --no-suggest --no-interaction --optimize-autoloader
+  - composer update --no-suggest --no-interaction --prefer-dist --optimize-autoloader
 
 # Commands to be run before your environment runs.
 before_script:
