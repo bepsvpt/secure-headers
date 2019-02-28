@@ -60,6 +60,10 @@ matrix:
       env:
         - TESTBENCH_VERSION=3.7.*
         - PHPUNIT_VERSION=7.5.*
+    - php: 7.1
+      env:
+        - TESTBENCH_VERSION=3.8.*
+        - PHPUNIT_VERSION=7.5.*
 
     - php: 7.2
       env:
@@ -89,6 +93,10 @@ matrix:
       env:
         - TESTBENCH_VERSION=3.7.*
         - PHPUNIT_VERSION=7.5.*
+    - php: 7.2
+      env:
+        - TESTBENCH_VERSION=3.8.*
+        - PHPUNIT_VERSION=7.5.*
 
     - php: 7.3
       env:
@@ -117,6 +125,10 @@ matrix:
     - php: 7.3
       env:
         - TESTBENCH_VERSION=3.7.*
+        - PHPUNIT_VERSION=7.5.*
+    - php: 7.3
+      env:
+        - TESTBENCH_VERSION=3.8.*
         - PHPUNIT_VERSION=7.5.*
 
 install:
