@@ -147,7 +147,4 @@ script: vendor/bin/phpunit
 
 # Commands to be run after your environment runs.
 after_script:
-  - |
-    if [ "$TRAVIS_PHP_VERSION" == "7.3" && "$TESTBENCH_VERSION" == "3.8.*" ]; then
-      ./cc-test-reporter after-build --coverage-input-type clover --id $CC_TOKEN --exit-code $TRAVIS_TEST_RESULT;
-    fi
+  - if [ "$TRAVIS_PHP_VERSION" == "7.3" && "$TESTBENCH_VERSION" == "3.8.*" ]; then ./cc-test-reporter after-build --coverage-input-type clover --id $CC_TOKEN --exit-code $TRAVIS_TEST_RESULT; fi
