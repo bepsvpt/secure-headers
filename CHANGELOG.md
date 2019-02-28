@@ -2,7 +2,7 @@
 
 ## 5.x
 
-- 5.3.3 (2019-02-xx)
+- 5.3.3 (2019-02-28)
   - Support Laravel 5.8
   - Let Travis CI cover all supported PHP and Laravel versions
 
