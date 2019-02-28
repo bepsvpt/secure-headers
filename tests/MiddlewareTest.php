@@ -17,23 +17,6 @@ class MiddlewareTest extends TestCase
     protected $_response = 'baseResponse';
 
     /**
-     * Setup the test environment.
-     *
-     * @return void
-     */
-    public function setUp()
-    {
-        parent::setUp();
-
-        switch (substr($this->app->version(), 0, 3)) {
-            case '5.1':
-            case '5.2':
-            case '5.3':
-                $this->_response = 'response';
-        }
-    }
-
-    /**
      * Get package providers.
      *
      * @param \Illuminate\Foundation\Application $app
@@ -56,6 +39,13 @@ class MiddlewareTest extends TestCase
      */
     protected function getEnvironmentSetUp($app)
     {
+        switch (substr($app->version(), 0, 3)) {
+            case '5.1':
+            case '5.2':
+            case '5.3':
+                $this->_response = 'response';
+        }
+
         $app->make(HttpKernel::class)->pushMiddleware(SecureHeadersMiddleware::class);
     }
 
