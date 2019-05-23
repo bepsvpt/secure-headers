@@ -165,7 +165,9 @@ class SecureHeaders
             $hsts .= ' includeSubDomains;';
         }
 
-        $hsts .= ' preload';
+        if ($this->config['hsts']['preload'] ?? true) {
+            $hsts .= ' preload';
+        }
 
         return [
             'Strict-Transport-Security' => $hsts,
