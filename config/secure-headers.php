@@ -107,6 +107,8 @@ return [
         'max-age' => 15552000,
 
         'include-sub-domains' => false,
+
+        'preload' => false,
     ],
 
     /*
