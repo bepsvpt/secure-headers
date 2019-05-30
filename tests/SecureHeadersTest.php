@@ -184,6 +184,21 @@ class SecureHeadersTest extends TestCase
         ], $headers, true);
     }
 
+    public function test_hsts_preload_disabled()
+    {
+        $config = require $this->configPath;
+
+        $config['hsts']['enable'] = true;
+        $config['hsts']['include-sub-domains'] = true;
+        $config['hsts']['preload'] = false;
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArraySubset([
+            'Strict-Transport-Security' => 'max-age=15552000; includeSubDomains',
+        ], $headers, true);
+    }
+
     public function test_expect_ct()
     {
         $config = require $this->configPath;
