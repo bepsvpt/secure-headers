@@ -168,34 +168,23 @@ class SecureHeadersTest extends TestCase
         $this->assertArraySubset([
             'Strict-Transport-Security' => 'max-age=15552000; includeSubDomains; preload',
         ], $headers, true);
-    }
 
-    public function test_hsts_preload_not_set()
-    {
-        $config = require __DIR__.'/fixtures/5_3_3/config/secure-headers.php';
-
-        $config['hsts']['enable'] = true;
-        $config['hsts']['include-sub-domains'] = true;
-
-        $headers = (new SecureHeaders($config))->headers();
-
-        $this->assertArraySubset([
-            'Strict-Transport-Security' => 'max-age=15552000; includeSubDomains; preload',
-        ], $headers, true);
-    }
-
-    public function test_hsts_preload_disabled()
-    {
-        $config = require $this->configPath;
-
-        $config['hsts']['enable'] = true;
-        $config['hsts']['include-sub-domains'] = true;
+        // disable preload
         $config['hsts']['preload'] = false;
 
         $headers = (new SecureHeaders($config))->headers();
 
         $this->assertArraySubset([
             'Strict-Transport-Security' => 'max-age=15552000; includeSubDomains',
+        ], $headers, true);
+
+        // ensure backward compatibility
+        unset($config['hsts']['preload']);
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArraySubset([
+            'Strict-Transport-Security' => 'max-age=15552000; includeSubDomains; preload',
         ], $headers, true);
     }
 
