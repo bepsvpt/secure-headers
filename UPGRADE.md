@@ -1,3 +1,8 @@
+## 5.3.x to 5.4.0
+
+- HSTS `preload` field can be disabled now, you can find it [here](https://github.com/BePsvPT/secure-headers/blob/5.4.0/config/secure-headers.php#L111) and copy to your config file.
+- `display-capture` and `document-domain` are added to Feature-Policy, you can find it [here](https://github.com/BePsvPT/secure-headers/blob/5.4.0/config/secure-headers.php#L226-L238) and [here](https://github.com/BePsvPT/secure-headers/blob/5.4.0/config/secure-headers.php#L240-L252).
+
 ## 5.2.x to 5.3.0
 
 - The following new headers are added, you can find it [here](https://github.com/BePsvPT/secure-headers/blob/5.3.0/config/secure-headers.php#L150-L335) and copy to your config file.
@@ -25,7 +30,7 @@
 ## 3.x.x to 4.0.0
 
 - If you are a Lumen user, change `$app->register(Bepsvpt\SecureHeaders\LumenServiceProvider::class);` to `$app->register(Bepsvpt\SecureHeaders\SecureHeadersServiceProvider::class);` in `bootstrap/app.php`
-- Because of dependency changing, please check your Content-Security-Policy(CSP) header is correct after upgrade. 
+- Because of dependency changing, please check your Content-Security-Policy(CSP) header is correct after upgrade.
 
 ## 2.2.0 to 3.0.0
 
