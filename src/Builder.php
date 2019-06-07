@@ -50,6 +50,8 @@ class Builder
             'ambient-light-sensor',
             'autoplay',
             'camera',
+            'display-capture',
+            'document-domain',
             'encrypted-media',
             'fullscreen',
             'geolocation',
@@ -62,7 +64,7 @@ class Builder
             'speaker',
             'sync-xhr',
             'usb',
-            'var',
+            'vr',
         ];
 
         foreach ($directives as $directive) {
@@ -78,12 +80,16 @@ class Builder
                 $value = '*';
             } else {
                 if ($config[$directive]['self']) {
-                    $value = "'self'";
+                    $value .= " 'self'";
+                }
+
+                if ($config[$directive]['src'] ?? false) {
+                    $value .= " 'src'";
                 }
 
                 foreach ($config[$directive]['allow'] as $url) {
                     if (false !== ($url = filter_var($url, FILTER_SANITIZE_URL))) {
-                        $value = sprintf('%s %s', $value, $url);
+                        $value .= " {$url}";
                     }
                 }
             }
@@ -97,7 +103,7 @@ class Builder
             return [];
         }
 
-        return ['Feature-Policy' => implode('; ', $headers)];
+        return ['Feature-Policy' => trim(implode('; ', $headers))];
     }
 
     /**

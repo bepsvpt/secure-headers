@@ -167,120 +167,14 @@ return [
          * the priority is 'none' > '*' > 'self allow'.
          */
 
-        'autoplay' => [
-            'none' => false,
-
-            '*' => false,
-
-            'self' => true,
-
-            'allow' => [
-                // 'url',
-            ],
-        ],
-
-        'camera' => [
-            'none' => false,
-
-            '*' => false,
-
-            'self' => true,
-
-            'allow' => [
-                // 'url',
-            ],
-        ],
-
-        'encrypted-media' => [
-            'none' => false,
-
-            '*' => false,
-
-            'self' => true,
-
-            'allow' => [
-                // 'url',
-            ],
-        ],
-
-        'fullscreen' => [
-            'none' => false,
-
-            '*' => false,
-
-            'self' => true,
-
-            'allow' => [
-                // 'url',
-            ],
-        ],
-
-        'geolocation' => [
-            'none' => false,
-
-            '*' => false,
-
-            'self' => true,
-
-            'allow' => [
-                // 'url',
-            ],
-        ],
-
-        'microphone' => [
-            'none' => false,
-
-            '*' => false,
-
-            'self' => true,
-
-            'allow' => [
-                // 'url',
-            ],
-        ],
-
-        'midi' => [
-            'none' => false,
-
-            '*' => false,
-
-            'self' => true,
-
-            'allow' => [
-                // 'url',
-            ],
-        ],
-
-        'payment' => [
-            'none' => false,
-
-            '*' => false,
-
-            'self' => true,
-
-            'allow' => [
-                // 'url',
-            ],
-        ],
-
-        'picture-in-picture' => [
-            'none' => false,
-
-            '*' => true,
-
-            'self' => false,
-
-            'allow' => [
-                // 'url',
-            ],
-        ],
-
         'accelerometer' => [
             'none' => false,
 
             '*' => false,
 
             'self' => true,
+
+            'src' => false,
 
             'allow' => [
                 // 'url',
@@ -294,6 +188,106 @@ return [
 
             'self' => true,
 
+            'src' => false,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'autoplay' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'src' => false,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'camera' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'src' => false,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'display-capture' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'src' => false,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'document-domain' => [
+            'none' => false,
+
+            '*' => true,
+
+            'self' => false,
+
+            'src' => false,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'encrypted-media' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'src' => false,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'fullscreen' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'src' => false,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'geolocation' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'src' => false,
+
             'allow' => [
                 // 'url',
             ],
@@ -305,6 +299,8 @@ return [
             '*' => false,
 
             'self' => true,
+
+            'src' => false,
 
             'allow' => [
                 // 'url',
@@ -318,6 +314,64 @@ return [
 
             'self' => true,
 
+            'src' => false,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'microphone' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'src' => false,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'midi' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'src' => false,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'payment' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'src' => false,
+
+            'allow' => [
+                // 'url',
+            ],
+        ],
+
+        'picture-in-picture' => [
+            'none' => false,
+
+            '*' => true,
+
+            'self' => false,
+
+            'src' => false,
+
             'allow' => [
                 // 'url',
             ],
@@ -329,6 +383,8 @@ return [
             '*' => false,
 
             'self' => true,
+
+            'src' => false,
 
             'allow' => [
                 // 'url',
@@ -342,6 +398,8 @@ return [
 
             'self' => false,
 
+            'src' => false,
+
             'allow' => [
                 // 'url',
             ],
@@ -354,6 +412,8 @@ return [
 
             'self' => true,
 
+            'src' => false,
+
             'allow' => [
                 // 'url',
             ],
@@ -365,6 +425,8 @@ return [
             '*' => false,
 
             'self' => true,
+
+            'src' => false,
 
             'allow' => [
                 // 'url',
