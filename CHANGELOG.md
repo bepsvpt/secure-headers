@@ -2,6 +2,11 @@
 
 ## 5.x
 
+- 5.4.0 (2019-06-07)
+  - Support disable HSTS `preload`
+  - Add `display-capture` and `document-domain` to Feature-Policy
+  - Add `src` allowlist to Feature-Policy
+
 - 5.3.3 (2019-02-28)
   - Support Laravel 5.8
   - Let Travis CI cover all supported PHP and Laravel versions
