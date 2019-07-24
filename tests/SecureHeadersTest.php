@@ -67,6 +67,23 @@ class SecureHeadersTest extends TestCase
         ], $headers, true);
     }
 
+    public function test_x_power_by_header()
+    {
+        $config = require $this->configPath;
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArrayNotHasKey('X-Power-By', $headers);
+
+        $config['x-power-by'] = 'Example';
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArraySubset([
+            'X-Power-By' => 'Example',
+        ], $headers, true);
+    }
+
     public function test_nonce_value_always_the_same()
     {
         $nonce = SecureHeaders::nonce();

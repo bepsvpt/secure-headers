@@ -53,6 +53,14 @@ return [
     'x-permitted-cross-domain-policies' => 'none',
 
     /*
+     * X-Power-By
+     *
+     * Note: it will not add to response header if the value is empty string.
+     */
+
+    'x-power-by' => '',
+
+    /*
      * X-XSS-Protection
      *
      * Reference: https://blogs.msdn.microsoft.com/ieinternals/2011/01/31/controlling-the-xss-filter
