@@ -1,3 +1,8 @@
+## 5.4.0 to 5.5.0
+
+- The following new headers are added, you can find it [here](https://github.com/BePsvPT/secure-headers/blob/5.5.0/config/secure-headers.php#L55-L61) and copy to your config file.
+  - X-Power-By
+
 ## 5.3.x to 5.4.0
 
 - HSTS `preload` field can be disabled now, you can find it [here](https://github.com/BePsvPT/secure-headers/blob/5.4.0/config/secure-headers.php#L111) and copy to your config file.
