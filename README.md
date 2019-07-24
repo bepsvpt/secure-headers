@@ -20,7 +20,7 @@ Add security related headers to HTTP response. The package includes Service Prov
 
 ## Version
 
-5.4.0
+5.5.0
 
 ### Supported Laravel Version
 
