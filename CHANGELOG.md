@@ -2,6 +2,9 @@
 
 ## 5.x
 
+- 5.5.0 (2019-07-24)
+  - Support X-Power-By header
+
 - 5.4.0 (2019-06-07)
   - Support disable HSTS `preload`
   - Add `display-capture` and `document-domain` to Feature-Policy
