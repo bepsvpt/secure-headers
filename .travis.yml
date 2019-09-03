@@ -75,7 +75,13 @@ matrix:
     - php: 7.2
       env:
         - TESTBENCH_VERSION=3.8.*
-        - PHPUNIT_VERSION=7.5.*
+        - PHPUNIT_VERSION=7.5.
+    - php: 7.2
+      env:
+        - TESTBENCH_VERSION=4.0.*
+        - PHPUNIT_VERSION=8.0.*
+
+*
 
     - php: 7.3
       env:
@@ -109,6 +115,11 @@ matrix:
       env:
         - TESTBENCH_VERSION=3.8.*
         - PHPUNIT_VERSION=7.5.*
+    - php: 7.3
+      env:
+        - TESTBENCH_VERSION=4.0.*
+        - PHPUNIT_VERSION=8.0.*
+
 
 install:
   - composer global require hirak/prestissimo --no-suggest --no-interaction --optimize-autoloader
@@ -126,4 +137,4 @@ script: vendor/bin/phpunit
 
 # Commands to be run after your environment runs.
 after_script:
-  - if [ "$TRAVIS_PHP_VERSION" == "7.3" && "$TESTBENCH_VERSION" == "3.8.*" ]; then ./cc-test-reporter after-build --coverage-input-type clover --id $CC_TOKEN --exit-code $TRAVIS_TEST_RESULT; fi
+  - if [ "$TRAVIS_PHP_VERSION" == "7.3" && "$TESTBENCH_VERSION" == "4.0.*" ]; then ./cc-test-reporter after-build --coverage-input-type clover --id $CC_TOKEN --exit-code $TRAVIS_TEST_RESULT; fi
