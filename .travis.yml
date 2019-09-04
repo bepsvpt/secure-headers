@@ -81,8 +81,6 @@ matrix:
         - TESTBENCH_VERSION=4.0.*
         - PHPUNIT_VERSION=8.0.*
 
-*
-
     - php: 7.3
       env:
         - TESTBENCH_VERSION=3.1.*
