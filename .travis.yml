@@ -75,7 +75,7 @@ matrix:
     - php: 7.2
       env:
         - TESTBENCH_VERSION=3.8.*
-        - PHPUNIT_VERSION=7.5.
+        - PHPUNIT_VERSION=7.5.*
     - php: 7.2
       env:
         - TESTBENCH_VERSION=4.0.*
