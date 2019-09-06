@@ -24,7 +24,7 @@ Add security related headers to HTTP response. The package includes Service Prov
 
 ### Supported Laravel Version
 
-5.1 ~ 5.8
+5.1 ~ 6.0
 
 ## Installation
 
