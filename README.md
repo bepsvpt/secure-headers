@@ -1,8 +1,6 @@
 # Secure Headers
 
-[![Build Status](https://travis-ci.org/BePsvPT/secure-headers.svg?branch=master)](https://travis-ci.org/BePsvPT/secure-headers)
-[![Test Coverage](https://codeclimate.com/github/BePsvPT/secure-headers/badges/coverage.svg)](https://codeclimate.com/github/BePsvPT/secure-headers/coverage)
-[![Code Climate](https://codeclimate.com/github/BePsvPT/secure-headers/badges/gpa.svg)](https://codeclimate.com/github/BePsvPT/secure-headers)
+[![Actions Status](https://github.com/BePsvPT/secure-headers/workflows/Laravel%206.x/badge.svg)](https://github.com/BePsvPT/secure-headers/actions)
 [![StyleCI](https://styleci.io/repos/47176049/shield)](https://styleci.io/repos/47176049)
 [![Latest Stable Version](https://poser.pugx.org/bepsvpt/secure-headers/v/stable?format=flat-square)](https://packagist.org/packages/bepsvpt/secure-headers)
 [![Total Downloads](https://poser.pugx.org/bepsvpt/secure-headers/downloads?format=flat-square)](https://packagist.org/packages/bepsvpt/secure-headers)
