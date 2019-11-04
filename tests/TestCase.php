@@ -4,6 +4,7 @@ namespace Bepsvpt\Tests\SecureHeaders;
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
 use PHPUnit\Runner\Version;
+use PHPUnit_Runner_Version;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -42,6 +43,12 @@ abstract class TestCase extends BaseTestCase
      */
     protected function isPhpunitBelow8()
     {
-        return version_compare(Version::series(), '8.0', '<');
+        if (class_exists(PHPUnit_Runner_Version::class)) {
+            $version = PHPUnit_Runner_Version::series();
+        } else {
+            $version = Version::series();
+        }
+
+        return version_compare($version, '8.0', '<');
     }
 }
