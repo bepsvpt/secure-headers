@@ -4,7 +4,6 @@ namespace Bepsvpt\Tests\SecureHeaders;
 
 use Bepsvpt\SecureHeaders\SecureHeaders;
 use InvalidArgumentException;
-use PHPUnit\Framework\TestCase;
 
 class SecureHeadersTest extends TestCase
 {
@@ -62,9 +61,9 @@ class SecureHeadersTest extends TestCase
 
         $headers = (new SecureHeaders($config))->headers();
 
-        $this->assertArraySubset([
-            'Server' => 'Example',
-        ], $headers, true);
+        $this->assertArrayHasKey('Server', $headers);
+
+        $this->assertSame('Example', $headers['Server']);
     }
 
     public function test_x_power_by_header()
@@ -79,9 +78,9 @@ class SecureHeadersTest extends TestCase
 
         $headers = (new SecureHeaders($config))->headers();
 
-        $this->assertArraySubset([
-            'X-Power-By' => 'Example',
-        ], $headers, true);
+        $this->assertArrayHasKey('X-Power-By', $headers);
+
+        $this->assertSame('Example', $headers['X-Power-By']);
     }
 
     public function test_nonce_value_always_the_same()
@@ -101,7 +100,7 @@ class SecureHeadersTest extends TestCase
 
         $headers = (new SecureHeaders($config))->headers();
 
-        $this->assertContains(SecureHeaders::nonce(), $headers['Content-Security-Policy']);
+        $this->assertStringContainsWrapper(SecureHeaders::nonce(), $headers['Content-Security-Policy']);
     }
 
     public function test_csp_style_auto_generated_nonce()
@@ -112,7 +111,7 @@ class SecureHeadersTest extends TestCase
 
         $headers = (new SecureHeaders($config))->headers();
 
-        $this->assertContains(SecureHeaders::nonce(), $headers['Content-Security-Policy']);
+        $this->assertStringContainsWrapper(SecureHeaders::nonce(), $headers['Content-Security-Policy']);
     }
 
     public function test_custom_csp()
@@ -129,9 +128,9 @@ class SecureHeadersTest extends TestCase
 
         $headers = (new SecureHeaders($config))->headers();
 
-        $this->assertArraySubset([
-            'Content-Security-Policy' => 'apple',
-        ], $headers, true);
+        $this->assertArrayHasKey('Content-Security-Policy', $headers);
+
+        $this->assertSame('apple', $headers['Content-Security-Policy']);
     }
 
     public function test_feature_policy()
@@ -182,27 +181,27 @@ class SecureHeadersTest extends TestCase
 
         $headers = (new SecureHeaders($config))->headers();
 
-        $this->assertArraySubset([
-            'Strict-Transport-Security' => 'max-age=15552000; includeSubDomains; preload',
-        ], $headers, true);
+        $this->assertArrayHasKey('Strict-Transport-Security', $headers);
 
-        // disable preload
-        $config['hsts']['preload'] = false;
+        $this->assertSame('max-age=15552000; includeSubDomains', $headers['Strict-Transport-Security']);
+
+        // enable preload
+        $config['hsts']['preload'] = true;
 
         $headers = (new SecureHeaders($config))->headers();
 
-        $this->assertArraySubset([
-            'Strict-Transport-Security' => 'max-age=15552000; includeSubDomains',
-        ], $headers, true);
+        $this->assertArrayHasKey('Strict-Transport-Security', $headers);
+
+        $this->assertSame('max-age=15552000; includeSubDomains; preload', $headers['Strict-Transport-Security']);
 
         // ensure backward compatibility
         unset($config['hsts']['preload']);
 
         $headers = (new SecureHeaders($config))->headers();
 
-        $this->assertArraySubset([
-            'Strict-Transport-Security' => 'max-age=15552000; includeSubDomains; preload',
-        ], $headers, true);
+        $this->assertArrayHasKey('Strict-Transport-Security', $headers);
+
+        $this->assertSame('max-age=15552000; includeSubDomains', $headers['Strict-Transport-Security']);
     }
 
     public function test_expect_ct()
@@ -214,35 +213,35 @@ class SecureHeadersTest extends TestCase
 
         $headers = (new SecureHeaders($config))->headers();
 
-        $this->assertArraySubset([
-            'Expect-CT' => 'max-age=2147483648',
-        ], $headers, true);
+        $this->assertArrayHasKey('Expect-CT', $headers);
+
+        $this->assertSame('max-age=2147483648', $headers['Expect-CT']);
 
         // add enforce flag
         $config['expect-ct']['enforce'] = true;
 
         $headers = (new SecureHeaders($config))->headers();
 
-        $this->assertArraySubset([
-            'Expect-CT' => 'max-age=2147483648, enforce',
-        ], $headers, true);
+        $this->assertArrayHasKey('Expect-CT', $headers);
+
+        $this->assertSame('max-age=2147483648, enforce', $headers['Expect-CT']);
 
         // add report-uri flag
         $config['expect-ct']['report-uri'] = 'https://example.com/report-ct';
 
         $headers = (new SecureHeaders($config))->headers();
 
-        $this->assertArraySubset([
-            'Expect-CT' => 'max-age=2147483648, enforce, report-uri="https://example.com/report-ct"',
-        ], $headers, true);
+        $this->assertArrayHasKey('Expect-CT', $headers);
+
+        $this->assertSame('max-age=2147483648, enforce, report-uri="https://example.com/report-ct"', $headers['Expect-CT']);
 
         $config['expect-ct']['enforce'] = false;
 
         $headers = (new SecureHeaders($config))->headers();
 
-        $this->assertArraySubset([
-            'Expect-CT' => 'max-age=2147483648, report-uri="https://example.com/report-ct"',
-        ], $headers, true);
+        $this->assertArrayHasKey('Expect-CT', $headers);
+
+        $this->assertSame('max-age=2147483648, report-uri="https://example.com/report-ct"', $headers['Expect-CT']);
 
         // ensure backward compatibility
         unset($config['expect-ct']);
@@ -261,9 +260,9 @@ class SecureHeadersTest extends TestCase
 
         $headers = (new SecureHeaders($config))->headers();
 
-        $this->assertArraySubset([
-            'Clear-Site-Data' => '"cache", "cookies", "storage", "executionContexts"',
-        ], $headers, true);
+        $this->assertArrayHasKey('Clear-Site-Data', $headers);
+
+        $this->assertSame('"cache", "cookies", "storage", "executionContexts"', $headers['Clear-Site-Data']);
 
         // disable cookie and executionContexts
         $config['clear-site-data']['cookies'] = false;
@@ -271,9 +270,9 @@ class SecureHeadersTest extends TestCase
 
         $headers = (new SecureHeaders($config))->headers();
 
-        $this->assertArraySubset([
-            'Clear-Site-Data' => '"cache", "storage"',
-        ], $headers, true);
+        $this->assertArrayHasKey('Clear-Site-Data', $headers);
+
+        $this->assertSame('"cache", "storage"', $headers['Clear-Site-Data']);
 
         // disable cache and storage
         $config['clear-site-data']['cache'] = false;
@@ -288,9 +287,9 @@ class SecureHeadersTest extends TestCase
 
         $headers = (new SecureHeaders($config))->headers();
 
-        $this->assertArraySubset([
-            'Clear-Site-Data' => '"*"',
-        ], $headers, true);
+        $this->assertArrayHasKey('Clear-Site-Data', $headers);
+
+        $this->assertSame('"*"', $headers['Clear-Site-Data']);
 
         // ensure backward compatibility
         unset($config['clear-site-data']);

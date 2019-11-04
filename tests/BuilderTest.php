@@ -3,7 +3,6 @@
 namespace Bepsvpt\Tests\SecureHeaders;
 
 use Bepsvpt\SecureHeaders\Builder;
-use PHPUnit\Framework\TestCase;
 
 class BuilderTest extends TestCase
 {
@@ -191,10 +190,10 @@ class BuilderTest extends TestCase
 
         $header = Builder::getCSPHeader($data)['Content-Security-Policy'];
 
-        $this->assertNotContains('sha128-Y3NwLWJ1aWxkZXI=', $header);
-        $this->assertNotContains('sha256-Y3NwLWJ-1aWxkZXI=', $header);
-        $this->assertNotContains('nonce-Y3NwLWJ-1aWxkZXI=', $header);
-        $this->assertContains('nonce-Y3NwLWJ1aWxkZXI=', $header);
+        $this->assertStringNotContainsWrapper('sha128-Y3NwLWJ1aWxkZXI=', $header);
+        $this->assertStringNotContainsWrapper('sha256-Y3NwLWJ-1aWxkZXI=', $header);
+        $this->assertStringNotContainsWrapper('nonce-Y3NwLWJ-1aWxkZXI=', $header);
+        $this->assertStringContainsWrapper('nonce-Y3NwLWJ1aWxkZXI=', $header);
     }
 
     public function test_unsafe_eval_and_inline()
@@ -208,8 +207,8 @@ class BuilderTest extends TestCase
 
         $header = Builder::getCSPHeader($data)['Content-Security-Policy'];
 
-        $this->assertContains("'unsafe-eval'", $header);
-        $this->assertContains("'unsafe-inline'", $header);
+        $this->assertStringContainsWrapper("'unsafe-eval'", $header);
+        $this->assertStringContainsWrapper("'unsafe-inline'", $header);
     }
 
     public function test_special_directives()
@@ -227,9 +226,9 @@ class BuilderTest extends TestCase
 
         $header = Builder::getCSPHeader($data)['Content-Security-Policy'];
 
-        $this->assertContains('plugin-types application/x-shockwave-flash application/x-java-applet', $header);
-        $this->assertContains('sandbox allow-presentation', $header);
-        $this->assertContains('require-sri-for script style', $header);
+        $this->assertStringContainsWrapper('plugin-types application/x-shockwave-flash application/x-java-applet', $header);
+        $this->assertStringContainsWrapper('sandbox allow-presentation', $header);
+        $this->assertStringContainsWrapper('require-sri-for script style', $header);
     }
 
     public function test_report_only()
@@ -245,7 +244,7 @@ class BuilderTest extends TestCase
         $this->assertArrayHasKey('Content-Security-Policy-Report-Only', $header);
         $this->assertArrayNotHasKey('Content-Security-Policy', $header);
 
-        $this->assertContains('block-all-mixed-content', $header['Content-Security-Policy-Report-Only']);
-        $this->assertContains('upgrade-insecure-requests', $header['Content-Security-Policy-Report-Only']);
+        $this->assertStringContainsWrapper('block-all-mixed-content', $header['Content-Security-Policy-Report-Only']);
+        $this->assertStringContainsWrapper('upgrade-insecure-requests', $header['Content-Security-Policy-Report-Only']);
     }
 }
