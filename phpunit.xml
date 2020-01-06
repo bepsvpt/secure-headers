@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit backupGlobals="false"
-         backupStaticAttributes="false"
-         bootstrap="vendor/autoload.php"
+<phpunit bootstrap="vendor/autoload.php"
          cacheResult="false"
          colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
-         processIsolation="false"
-         stopOnError="false"
-         stopOnFailure="false"
+         executionOrder="random"
+         processIsolation="true"
+         stopOnError="true"
+         stopOnFailure="true"
          stderr="true"
 >
-    <testsuites>
-        <testsuite name="Secure Headers Test">
-            <directory>./tests</directory>
-        </testsuite>
-    </testsuites>
-    <logging>
-        <log type="coverage-clover" target="clover.xml"/>
-    </logging>
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./src</directory>
-        </whitelist>
-    </filter>
+  <testsuites>
+    <testsuite name="Secure Headers Test">
+      <directory>./tests</directory>
+    </testsuite>
+  </testsuites>
+  <logging>
+    <log type="coverage-clover" target="clover.xml"/>
+  </logging>
+  <filter>
+    <whitelist processUncoveredFilesFromWhitelist="true">
+      <directory suffix=".php">./src</directory>
+    </whitelist>
+  </filter>
 </phpunit>
