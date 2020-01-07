@@ -1,0 +1,169 @@
+name: Laravel
+
+on: [push, pull_request]
+
+jobs:
+  phpstan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup PHP, Composer and Extensions
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: '7.4'
+          extension: dom, fileinfo, mbstring, xdebug
+
+      - name: Install dependencies
+        run: composer update --optimize-autoloader --prefer-dist --no-interaction --no-progress --no-suggest
+
+      - name: Run PHPStan
+        run: php vendor/bin/phpstan analyse
+
+  laravel_6_x:
+    runs-on: ${{ matrix.operating-system }}
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        operating-system: [ubuntu-latest, windows-latest, macOS-latest]
+        php-versions: ['7.2', '7.3', '7.4']
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup PHP, Composer and Extensions
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extension: dom, fileinfo, mbstring, xdebug
+
+      - name: Add Testbench and PHPUnit to dev dependencies
+        run: composer require "orchestra/testbench:^4.0" "phpunit/phpunit:^8.0" --dev --no-interaction --no-suggest --no-update
+
+      - name: Install dependencies
+        run: composer update --optimize-autoloader --prefer-dist --no-interaction --no-progress --no-suggest
+
+      - name: Test against Laravel 6.x
+        run: php vendor/bin/phpunit
+
+  laravel_5_6_to_5_8:
+    runs-on: ${{ matrix.operating-system }}
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        operating-system: [ubuntu-latest, windows-latest, macOS-latest]
+        php-versions: ['7.1', '7.2', '7.3', '7.4']
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup PHP, Composer and Extensions
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extension: dom, fileinfo, mbstring, xdebug
+
+      - name: Add 7.5.* PHPUnit to dev dependencies
+        run: composer require "phpunit/phpunit:7.5.*" --dev --no-interaction --no-suggest --no-update
+
+      - name: Add 3.6.* Testbench dev dependencies
+        run: composer require "orchestra/testbench:3.6.*" --dev --no-interaction --no-suggest --no-update
+
+      - name: Install dependencies
+        run: composer update --optimize-autoloader --prefer-dist --no-interaction --no-progress --no-suggest
+
+      - name: Test against Laravel 5.6
+        run: php vendor/bin/phpunit
+
+      - name: Add 3.7.* Testbench dev dependencies
+        run: composer require "orchestra/testbench:3.7.*" --dev --no-interaction --no-suggest --no-update
+
+      - name: Install dependencies
+        run: composer update --optimize-autoloader --prefer-dist --no-interaction --no-progress --no-suggest
+
+      - name: Test against Laravel 5.7
+        run: php vendor/bin/phpunit
+
+      - name: Add 3.8.* Testbench dev dependencies
+        run: composer require "orchestra/testbench:3.8.*" --dev --no-interaction --no-suggest --no-update
+
+      - name: Install dependencies
+        run: composer update --optimize-autoloader --prefer-dist --no-interaction --no-progress --no-suggest
+
+      - name: Test against Laravel 5.8
+        run: php vendor/bin/phpunit
+
+  laravel_5_1_to_5_5:
+    runs-on: ${{ matrix.operating-system }}
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        operating-system: [ubuntu-latest, windows-latest, macOS-latest]
+        php-versions: ['7.0', '7.1', '7.2', '7.3', '7.4']
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup PHP, Composer and Extensions
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extension: dom, fileinfo, mbstring, xdebug
+
+      - name: Add 5.7.* PHPUnit to dev dependencies
+        run: composer require "phpunit/phpunit:5.7.*" --dev --no-interaction --no-suggest --no-update
+
+      - name: Add 3.1.* Testbench dev dependencies
+        run: composer require "orchestra/testbench:3.1.*" --dev --no-interaction --no-suggest --no-update
+
+      - name: Install dependencies
+        run: composer update --optimize-autoloader --prefer-dist --no-interaction --no-progress --no-suggest
+
+      - name: Test against Laravel 5.1
+        run: php vendor/bin/phpunit
+
+      - name: Add 3.2.* Testbench dev dependencies
+        run: composer require "orchestra/testbench:3.2.*" --dev --no-interaction --no-suggest --no-update
+
+      - name: Install dependencies
+        run: composer update --optimize-autoloader --prefer-dist --no-interaction --no-progress --no-suggest
+
+      - name: Test against Laravel 5.2
+        run: php vendor/bin/phpunit
+
+      - name: Add 3.3.* Testbench dev dependencies
+        run: composer require "orchestra/testbench:3.3.*" --dev --no-interaction --no-suggest --no-update
+
+      - name: Install dependencies
+        run: composer update --optimize-autoloader --prefer-dist --no-interaction --no-progress --no-suggest
+
+      - name: Test against Laravel 5.3
+        run: php vendor/bin/phpunit
+
+      - name: Add 6.5.* PHPUnit to dev dependencies
+        run: composer require "phpunit/phpunit:6.5.*" --dev --no-interaction --no-suggest --no-update
+
+      - name: Add 3.4.* Testbench dev dependencies
+        run: composer require "orchestra/testbench:3.4.*" --dev --no-interaction --no-suggest --no-update
+
+      - name: Install dependencies
+        run: composer update --optimize-autoloader --prefer-dist --no-interaction --no-progress --no-suggest
+
+      - name: Test against Laravel 5.4
+        run: php vendor/bin/phpunit
+
+      - name: Add 3.5.* Testbench dev dependencies
+        run: composer require "orchestra/testbench:3.5.*" --dev --no-interaction --no-suggest --no-update
+
+      - name: Install dependencies
+        run: composer update --optimize-autoloader --prefer-dist --no-interaction --no-progress --no-suggest
+
+      - name: Test against Laravel 5.5
+        run: php vendor/bin/phpunit
