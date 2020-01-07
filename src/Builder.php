@@ -159,7 +159,11 @@ class Builder
             ? 'Content-Security-Policy-Report-Only'
             : 'Content-Security-Policy';
 
-        return [$key => implode('; ', array_filter($headers, 'strlen'))];
+        $headers = array_filter($headers, function (string $header) {
+            return strlen(trim($header)) > 0;
+        });
+
+        return [$key => implode('; ', $headers)];
     }
 
     /**
