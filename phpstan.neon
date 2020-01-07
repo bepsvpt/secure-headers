@@ -1,0 +1,32 @@
+parameters:
+    level: 5
+
+    paths:
+        - %currentWorkingDirectory%/src
+        - %currentWorkingDirectory%/tests
+
+    ignoreErrors:
+        -
+            message: "#Class Laravel\\\\Lumen\\\\Application not found\\.#"
+            count: 1
+            path: src/SecureHeadersServiceProvider.php
+
+        -
+            message: "#Call to an undefined method Illuminate\\\\Contracts\\\\Foundation\\\\Application\\:\\:configure\\(\\)\\.#"
+            count: 1
+            path: src/SecureHeadersServiceProvider.php
+
+        -
+            message: "#Call to an undefined method Illuminate\\\\Contracts\\\\Foundation\\\\Application\\:\\:middleware\\(\\)\\.#"
+            count: 1
+            path: src/SecureHeadersServiceProvider.php
+
+        -
+            message: "#Class PHPUnit_Runner_Version not found\\.#"
+            count: 1
+            path: tests/TestCase.php
+
+        -
+            message: "#Call to static method series\\(\\) on an unknown class PHPUnit_Runner_Version\\.#"
+            count: 1
+            path: tests/TestCase.php
