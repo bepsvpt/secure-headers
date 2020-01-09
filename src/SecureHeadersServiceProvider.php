@@ -3,6 +3,7 @@
 namespace Bepsvpt\SecureHeaders;
 
 use Illuminate\Support\ServiceProvider;
+use Laravel\Lumen\Application;
 
 class SecureHeadersServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,7 @@ class SecureHeadersServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if ($this->app instanceof \Laravel\Lumen\Application) {
+        if ($this->app instanceof Application) {
             $this->bootLumen();
         } else {
             $this->bootLaravel();
@@ -29,7 +30,7 @@ class SecureHeadersServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/secure-headers.php' => config_path('secure-headers.php'),
+                $this->configPath() => config_path('secure-headers.php'),
             ], 'config');
         }
     }
@@ -55,8 +56,16 @@ class SecureHeadersServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(
-            __DIR__.'/../config/secure-headers.php', 'secure-headers'
-        );
+        $this->mergeConfigFrom($this->configPath(), 'secure-headers');
+    }
+
+    /**
+     * Get config file path.
+     *
+     * @return string
+     */
+    protected function configPath(): string
+    {
+        return __DIR__ . '/../config/secure-headers.php';
     }
 }
