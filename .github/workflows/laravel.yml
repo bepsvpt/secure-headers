@@ -127,7 +127,7 @@ jobs:
         run: composer require "orchestra/testbench:3.1.*" --dev --no-interaction --no-suggest --no-update
 
       - name: Install dependencies
-        run: composer update --optimize-autoloader --prefer-dist --no-interaction --no-progress --no-suggest
+        run: composer update --optimize-autoloader --prefer-dist --no-interaction --no-progress --no-suggest --ignore-platform-reqs
 
       - name: Test against Laravel 5.1
         run: php vendor/bin/phpunit
@@ -136,7 +136,7 @@ jobs:
         run: composer require "orchestra/testbench:3.2.*" --dev --no-interaction --no-suggest --no-update
 
       - name: Install dependencies
-        run: composer update --optimize-autoloader --prefer-dist --no-interaction --no-progress --no-suggest
+        run: composer update --optimize-autoloader --prefer-dist --no-interaction --no-progress --no-suggest --ignore-platform-reqs
 
       - name: Test against Laravel 5.2
         run: php vendor/bin/phpunit
@@ -145,7 +145,7 @@ jobs:
         run: composer require "orchestra/testbench:3.3.*" --dev --no-interaction --no-suggest --no-update
 
       - name: Install dependencies
-        run: composer update --optimize-autoloader --prefer-dist --no-interaction --no-progress --no-suggest
+        run: composer update --optimize-autoloader --prefer-dist --no-interaction --no-progress --no-suggest --ignore-platform-reqs
 
       - name: Test against Laravel 5.3
         run: php vendor/bin/phpunit
@@ -157,7 +157,7 @@ jobs:
         run: composer require "orchestra/testbench:3.4.*" --dev --no-interaction --no-suggest --no-update
 
       - name: Install dependencies
-        run: composer update --optimize-autoloader --prefer-dist --no-interaction --no-progress --no-suggest
+        run: composer update --optimize-autoloader --prefer-dist --no-interaction --no-progress --no-suggest --ignore-platform-reqs
 
       - name: Test against Laravel 5.4
         run: php vendor/bin/phpunit
@@ -166,7 +166,7 @@ jobs:
         run: composer require "orchestra/testbench:3.5.*" --dev --no-interaction --no-suggest --no-update
 
       - name: Install dependencies
-        run: composer update --optimize-autoloader --prefer-dist --no-interaction --no-progress --no-suggest
+        run: composer update --optimize-autoloader --prefer-dist --no-interaction --no-progress --no-suggest --ignore-platform-reqs
 
       - name: Test against Laravel 5.5
         run: php vendor/bin/phpunit
