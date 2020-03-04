@@ -63,7 +63,7 @@ return [
     /*
      * X-XSS-Protection
      *
-     * Reference: https://blogs.msdn.microsoft.com/ieinternals/2011/01/31/controlling-the-xss-filter
+     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection
      *
      * Available Value: '1', '0', '1; mode=block'
      */
@@ -73,7 +73,7 @@ return [
     /*
      * Referrer-Policy
      *
-     * Reference: https://w3c.github.io/webappsec-referrer-policy
+     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
      *
      * Available Value: 'no-referrer', 'no-referrer-when-downgrade', 'origin', 'origin-when-cross-origin',
      *                  'same-origin', 'strict-origin', 'strict-origin-when-cross-origin', 'unsafe-url'
@@ -84,7 +84,7 @@ return [
     /*
      * Clear-Site-Data
      *
-     * Reference: https://w3c.github.io/webappsec-clear-site-data/
+     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Clear-Site-Data
      */
 
     'clear-site-data' => [
