@@ -56,8 +56,8 @@ jobs:
       - name: Test against Laravel 6.x
         run: vendor/bin/phpunit
 
-      - name: Add 5.* Testbench and 9.* PHPUnit to dev dependencies
-        run: composer require "orchestra/testbench:^5.0" "phpunit/phpunit:^9.0" --dev --no-interaction --no-suggest --no-update
+      - name: Add 5.* Testbench and 8.* PHPUnit to dev dependencies
+        run: composer require "orchestra/testbench:^5.0" "phpunit/phpunit:^8.4" --dev --no-interaction --no-suggest --no-update
 
       - name: Install dependencies
         run: composer update --optimize-autoloader --no-interaction --no-progress --no-suggest
