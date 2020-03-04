@@ -136,28 +136,6 @@ return [
     ],
 
     /*
-     * Public Key Pinning
-     *
-     * Reference: https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning
-     *
-     * hpkp will be ignored if hashes is empty.
-     */
-
-    'hpkp' => [
-        'hashes' => [
-            // 'sha256-hash-value',
-        ],
-
-        'include-sub-domains' => false,
-
-        'max-age' => 15552000,
-
-        'report-only' => false,
-
-        'report-uri' => null,
-    ],
-
-    /*
      * Feature Policy
      *
      * Reference: https://wicg.github.io/feature-policy/
