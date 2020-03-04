@@ -47,7 +47,7 @@ jobs:
         run: composer remove "friendsofphp/php-cs-fixer" "phpstan/phpstan" --dev --no-update
 
       - name: Add Testbench and PHPUnit to dev dependencies
-        run: composer require "orchestra/testbench:^5.0" "phpunit/phpunit:^8.0" --dev --no-interaction --no-suggest --no-update
+        run: composer require "orchestra/testbench:^5.0" "phpunit/phpunit:^8.4" --dev --no-interaction --no-suggest --no-update
 
       - name: Install dependencies
         run: composer update --optimize-autoloader --no-interaction --no-progress --no-suggest
