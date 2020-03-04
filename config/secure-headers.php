@@ -112,7 +112,7 @@ return [
     'hsts' => [
         'enable' => false,
 
-        'max-age' => 15552000,
+        'max-age' => 31536000,
 
         'include-sub-domains' => false,
 
