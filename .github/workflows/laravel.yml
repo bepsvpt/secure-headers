@@ -24,7 +24,8 @@ jobs:
       - name: Run PHP-CS-Fixer
         run: vendor/bin/php-cs-fixer fix --verbose --dry-run
 
-  laravel_7_x:
+
+  laravel_6_x_to_7_x:
     runs-on: ${{ matrix.operating-system }}
 
     strategy:
@@ -46,44 +47,22 @@ jobs:
       - name: Remove php-cs-fixer and phpstan
         run: composer remove "friendsofphp/php-cs-fixer" "phpstan/phpstan" --dev --no-update
 
-      - name: Add Testbench and PHPUnit to dev dependencies
-        run: composer require "orchestra/testbench:^5.0" "phpunit/phpunit:^8.4" --dev --no-interaction --no-suggest --no-update
-
-      - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress --no-suggest
-
-      - name: Test against Laravel 7.x
-        run: vendor/bin/phpunit
-
-  laravel_6_x:
-    runs-on: ${{ matrix.operating-system }}
-
-    strategy:
-      fail-fast: false
-
-      matrix:
-        operating-system: [ubuntu-latest, windows-latest, macOS-latest]
-        php-versions: ['7.2', '7.3', '7.4']
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup PHP, Composer and Extensions
-        uses: shivammathur/setup-php@v1
-        with:
-          php-version: ${{ matrix.php-versions }}
-          extensions: dom, fileinfo, mbstring, xdebug
-
-      - name: Remove php-cs-fixer and phpstan
-        run: composer remove "friendsofphp/php-cs-fixer" "phpstan/phpstan" --dev --no-update
-
-      - name: Add Testbench and PHPUnit to dev dependencies
+      - name: Add 4.* Testbench and 8.* PHPUnit to dev dependencies
         run: composer require "orchestra/testbench:^4.0" "phpunit/phpunit:^8.0" --dev --no-interaction --no-suggest --no-update
 
       - name: Install dependencies
         run: composer update --optimize-autoloader --no-interaction --no-progress --no-suggest
 
       - name: Test against Laravel 6.x
+        run: vendor/bin/phpunit
+
+      - name: Add 5.* Testbench and 9.* PHPUnit to dev dependencies
+        run: composer require "orchestra/testbench:^5.0" "phpunit/phpunit:^9.0" --dev --no-interaction --no-suggest --no-update
+
+      - name: Install dependencies
+        run: composer update --optimize-autoloader --no-interaction --no-progress --no-suggest
+
+      - name: Test against Laravel 7.x
         run: vendor/bin/phpunit
 
   laravel_5_6_to_5_8:
