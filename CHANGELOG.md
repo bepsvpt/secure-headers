@@ -3,7 +3,13 @@
 ## 6.x
 
 - 6.0.0 (unreleased)
-  - Disabled HSTS preload by default ([#42](https://github.com/BePsvPT/secure-headers/pull/42))
+  - *BREAKING CHANGE*
+    - Remove HPKP (Public Key Pinning mechanism was deprecated in favor of Certificate Transparency and Expect-CT header)
+    - Feature-Policy remove `speaker` and `vr` directives
+    - Content-Security-Policy remove `custom-csp` key
+    - Disable HSTS preload by default ([#42](https://github.com/BePsvPT/secure-headers/pull/42))
+  - Feature-Policy supports following directives:  `battery`, `execution-while-not-rendered`, `execution-while-out-of-viewport`, `layout-animations`, `legacy-image-formats`,
+    `navigation-override`, `oversized-images`, `publickey-credentials`, `unoptimized-images`, `unsized-media`, `wake-lock`, `xr-spatial-tracking`
 
 ## 5.x
 
