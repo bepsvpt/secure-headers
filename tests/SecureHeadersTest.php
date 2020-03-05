@@ -183,7 +183,7 @@ class SecureHeadersTest extends TestCase
 
         $this->assertArrayHasKey('Strict-Transport-Security', $headers);
 
-        $this->assertSame('max-age=15552000; includeSubDomains', $headers['Strict-Transport-Security']);
+        $this->assertSame('max-age=15552000; includeSubDomains; preload', $headers['Strict-Transport-Security']);
 
         // enable preload
         $config['hsts']['preload'] = true;
@@ -201,7 +201,7 @@ class SecureHeadersTest extends TestCase
 
         $this->assertArrayHasKey('Strict-Transport-Security', $headers);
 
-        $this->assertSame('max-age=15552000; includeSubDomains', $headers['Strict-Transport-Security']);
+        $this->assertSame('max-age=15552000; includeSubDomains; preload', $headers['Strict-Transport-Security']);
     }
 
     public function test_expect_ct()
