@@ -7,6 +7,9 @@
 
 ## 5.x
 
+- 5.6.0 (2020-03-05)
+  - Support Laravel 7.0
+
 - 5.5.0 (2019-09-07)
   - Support Laravel 6.0
   - Support X-Power-By header
