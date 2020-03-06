@@ -155,154 +155,54 @@ return [
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/accelerometer
         'accelerometer' => [
-            'none' => false,
-
-            '*' => false,
-
             'self' => true,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/ambient-light-sensor
         'ambient-light-sensor' => [
-            'none' => false,
-
-            '*' => false,
-
             'self' => true,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/autoplay
         'autoplay' => [
-            'none' => false,
-
-            '*' => false,
-
             'self' => true,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/battery
         'battery' => [
-            'none' => false,
-
-            '*' => false,
-
             'self' => true,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/camera
         'camera' => [
-            'none' => false,
-
-            '*' => false,
-
             'self' => true,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/display-capture
         'display-capture' => [
-            'none' => false,
-
-            '*' => false,
-
             'self' => true,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/document-domain
         'document-domain' => [
-            'none' => false,
-
             '*' => true,
-
-            'self' => false,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // document-write (draft: https://github.com/w3c/webappsec-feature-policy/blob/master/policies/document-write.md)
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/encrypted-media
         'encrypted-media' => [
-            'none' => false,
-
-            '*' => false,
-
             'self' => true,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://wicg.github.io/page-lifecycle/#feature-policies
         'execution-while-not-rendered' => [
-            'none' => false,
-
             '*' => true,
-
-            'self' => false,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://wicg.github.io/page-lifecycle/#feature-policies
         'execution-while-out-of-viewport' => [
-            'none' => false,
-
             '*' => true,
-
-            'self' => false,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // focus-without-user-activation (draft: https://github.com/w3c/webappsec-feature-policy/blob/master/policies/focus-without-user-activation.md)
@@ -311,77 +211,27 @@ return [
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/fullscreen
         'fullscreen' => [
-            'none' => false,
-
-            '*' => false,
-
             'self' => true,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/geolocation
         'geolocation' => [
-            'none' => false,
-
-            '*' => false,
-
             'self' => true,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/gyroscope
         'gyroscope' => [
-            'none' => false,
-
-            '*' => false,
-
             'self' => true,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/layout-animations
         'layout-animations' => [
-            'none' => false,
-
-            '*' => false,
-
             'self' => true,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/legacy-image-formats
         'legacy-image-formats' => [
-            'none' => false,
-
-            '*' => false,
-
             'self' => true,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // loading-frame-default-eager (draft: https://github.com/w3c/webappsec-feature-policy/blob/master/policies/loading-frame-default-eager.md)
@@ -390,214 +240,74 @@ return [
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/magnetometer
         'magnetometer' => [
-            'none' => false,
-
-            '*' => false,
-
             'self' => true,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/microphone
         'microphone' => [
-            'none' => false,
-
-            '*' => false,
-
             'self' => true,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/midi
         'midi' => [
-            'none' => false,
-
-            '*' => false,
-
             'self' => true,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://drafts.csswg.org/css-nav-1/#policy-feature
         'navigation-override' => [
-            'none' => false,
-
-            '*' => false,
-
             'self' => true,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/oversized-images
         'oversized-images' => [
-            'none' => false,
-
             '*' => true,
-
-            'self' => false,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/payment
         'payment' => [
-            'none' => false,
-
-            '*' => false,
-
             'self' => true,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/picture-in-picture
         'picture-in-picture' => [
-            'none' => false,
-
             '*' => true,
-
-            'self' => false,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/publickey-credentials
         'publickey-credentials' => [
-            'none' => false,
-
-            '*' => false,
-
             'self' => true,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/sync-xhr
         'sync-xhr' => [
-            'none' => false,
-
             '*' => true,
-
-            'self' => false,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/unoptimized-images
         'unoptimized-images' => [
-            'none' => false,
-
-            '*' => false,
-
             'self' => true,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/unsized-media
         'unsized-media' => [
-            'none' => false,
-
             '*' => true,
-
-            'self' => false,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/usb
         'usb' => [
-            'none' => false,
-
-            '*' => false,
-
             'self' => true,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // vertical-scroll (draft: https://github.com/w3c/webappsec-feature-policy/blob/master/policies/vertical_scroll.md)
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/wake-lock
         'wake-lock' => [
-            'none' => false,
-
-            '*' => false,
-
             'self' => true,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/xr-spatial-tracking
         'xr-spatial-tracking' => [
-            'none' => false,
-
-            '*' => false,
-
             'self' => true,
-
-            'src' => false,
-
-            'allow' => [
-                // 'url',
-            ],
         ],
     ],
 
