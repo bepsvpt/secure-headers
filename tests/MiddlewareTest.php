@@ -8,7 +8,7 @@ use Illuminate\Contracts\Http\Kernel as HttpKernel;
 use Illuminate\Foundation\Application;
 use Orchestra\Testbench\TestCase;
 
-class MiddlewareTest extends TestCase
+final class MiddlewareTest extends TestCase
 {
     /**
      * Wrapper laravel response for different version.

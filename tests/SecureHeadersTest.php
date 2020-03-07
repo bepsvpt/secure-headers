@@ -5,7 +5,7 @@ namespace Bepsvpt\SecureHeaders\Tests;
 use Bepsvpt\SecureHeaders\SecureHeaders;
 use InvalidArgumentException;
 
-class SecureHeadersTest extends TestCase
+final class SecureHeadersTest extends TestCase
 {
     /**
      * @var string
