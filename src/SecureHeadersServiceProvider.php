@@ -43,10 +43,6 @@ class SecureHeadersServiceProvider extends ServiceProvider
     protected function bootLumen()
     {
         $this->app->configure('secure-headers');
-
-        $this->app->middleware([
-            SecureHeadersMiddleware::class,
-        ]);
     }
 
     /**
