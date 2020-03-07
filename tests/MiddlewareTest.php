@@ -1,6 +1,6 @@
 <?php
 
-namespace Bepsvpt\Tests\SecureHeaders;
+namespace Bepsvpt\SecureHeaders\Tests;
 
 use Bepsvpt\SecureHeaders\SecureHeadersMiddleware;
 use Bepsvpt\SecureHeaders\SecureHeadersServiceProvider;

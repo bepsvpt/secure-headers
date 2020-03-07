@@ -1,6 +1,6 @@
 <?php
 
-namespace Bepsvpt\Tests\SecureHeaders;
+namespace Bepsvpt\SecureHeaders\Tests;
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
 use PHPUnit\Runner\Version;
