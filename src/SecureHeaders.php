@@ -2,34 +2,41 @@
 
 namespace Bepsvpt\SecureHeaders;
 
+use Bepsvpt\SecureHeaders\Builders\ClearSiteDataBuilder;
+use Bepsvpt\SecureHeaders\Builders\ContentSecurityPolicyBuilder;
+use Bepsvpt\SecureHeaders\Builders\ExceptCTBuilder;
+use Bepsvpt\SecureHeaders\Builders\FeaturePolicyBuilder;
+use Bepsvpt\SecureHeaders\Builders\StrictTransportSecurityBuilder;
+use Exception;
 use InvalidArgumentException;
 use RuntimeException;
 
 class SecureHeaders
 {
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $config = [];
 
     /**
-     * @var bool
+     * Nonces for `script-src` and `style-src`.
+     *
+     * @var array<array<string>>
      */
-    protected $compiled = false;
+    protected static $nonces = [
+        'script' => [],
 
-    /**
-     * @var array
-     */
-    protected $headers = [];
+        'style' => [],
+    ];
 
     /**
      * Constructor.
      *
-     * @param array $config
+     * @param array<mixed> $config
      */
     public function __construct(array $config = [])
     {
-        $this->config = $this->preprocessConfig($config);
+        $this->config = $config;
     }
 
     /**
@@ -41,8 +48,10 @@ class SecureHeaders
      */
     public static function fromFile($file)
     {
-        if (! is_file($file)) {
-            throw new InvalidArgumentException("{$file} does not exist.");
+        if (!is_file($file)) {
+            throw new InvalidArgumentException(
+                sprintf('%s does not exist.', $file)
+            );
         }
 
         $config = require $file;
@@ -58,184 +67,137 @@ class SecureHeaders
     public function send()
     {
         if (headers_sent($file, $line)) {
-            throw new RuntimeException("Headers already sent in {$file} on line {$line}."); // @codeCoverageIgnore
+            throw new RuntimeException(
+                sprintf('Headers already sent in %s on line %d.', $file, $line)
+            );
         }
 
         foreach ($this->headers() as $key => $value) {
-            header("{$key}: {$value}", true);
+            header(sprintf('%s: %s', $key, $value), true);
         }
     }
 
     /**
      * Get HTTP headers.
      *
-     * @return array
+     * @return array<string>
      */
     public function headers(): array
     {
-        if (! $this->compiled) {
-            $this->compile();
-        }
-
-        return $this->headers;
-    }
-
-    /**
-     * Compile HTTP headers.
-     *
-     * @return void
-     */
-    protected function compile()
-    {
-        $this->headers = array_merge(
+        $headers = array_merge(
             $this->csp(),
             $this->featurePolicy(),
-            $this->hpkp(),
             $this->hsts(),
             $this->expectCT(),
             $this->clearSiteData(),
             $this->miscellaneous()
         );
 
-        $this->compiled = true;
+        return array_filter($headers);
     }
 
     /**
      * Get CSP header.
      *
-     * @return array
+     * @return array<string>
      */
     protected function csp(): array
     {
-        if (! is_null($this->config['custom-csp'])) {
-            if (empty($this->config['custom-csp'])) {
-                return [];
-            }
+        $config = $this->config['csp'] ?? [];
 
-            return [
-                'Content-Security-Policy' => $this->config['custom-csp'],
-            ];
+        if (!($config['enable'] ?? false)) {
+            return [];
         }
 
-        return Builder::getCSPHeader($this->config['csp']);
+        $config['script-src']['nonces'] = self::$nonces['script'];
+
+        $config['style-src']['nonces'] = self::$nonces['style'];
+
+        $key = ($config['report-only'] ?? false)
+            ? 'Content-Security-Policy-Report-Only'
+            : 'Content-Security-Policy';
+
+        $builder = new ContentSecurityPolicyBuilder($config);
+
+        return [$key => $builder->get()];
     }
 
     /**
      * Get Feature Policy header.
      *
-     * @return array
+     * @return array<string>
      */
     protected function featurePolicy(): array
     {
-        if (! ($this->config['feature-policy']['enable'] ?? false)) {
+        $config = $this->config['feature-policy'] ?? [];
+
+        if (!($config['enable'] ?? false)) {
             return [];
         }
 
-        return Builder::getFeaturePolicyHeader($this->config['feature-policy']);
-    }
+        $builder = new FeaturePolicyBuilder($config);
 
-    /**
-     * Get HPKP header.
-     *
-     * @return array
-     */
-    protected function hpkp(): array
-    {
-        if (empty($this->config['hpkp']['hashes'])) {
-            return [];
-        }
-
-        return Builder::getHPKPHeader($this->config['hpkp']);
+        return ['Feature-Policy' => $builder->get()];
     }
 
     /**
      * Get HSTS header.
      *
-     * @return array
+     * @return array<string>
      */
     protected function hsts(): array
     {
-        if (! $this->config['hsts']['enable']) {
+        $config = $this->config['hsts'] ?? [];
+
+        if (!($config['enable'] ?? false)) {
             return [];
         }
 
-        $hsts = "max-age={$this->config['hsts']['max-age']}";
+        $builder = new StrictTransportSecurityBuilder($config);
 
-        if ($this->config['hsts']['include-sub-domains']) {
-            $hsts .= '; includeSubDomains';
-        }
-
-        if ($this->config['hsts']['preload'] ?? true) {
-            $hsts .= '; preload';
-        }
-
-        return [
-            'Strict-Transport-Security' => $hsts,
-        ];
+        return ['Strict-Transport-Security' => $builder->get()];
     }
 
     /**
      * Generate Expect-CT header.
      *
-     * @return array
+     * @return array<string>
      */
     protected function expectCT(): array
     {
-        if (! ($this->config['expect-ct']['enable'] ?? false)) {
+        $config = $this->config['expect-ct'] ?? [];
+
+        if (!($config['enable'] ?? false)) {
             return [];
         }
 
-        $ct = "max-age={$this->config['expect-ct']['max-age']}";
+        $builder = new ExceptCTBuilder($config);
 
-        if ($this->config['expect-ct']['enforce']) {
-            $ct .= ', enforce';
-        }
-
-        if (! empty($this->config['expect-ct']['report-uri'])) {
-            $ct .= sprintf(', report-uri="%s"', $this->config['expect-ct']['report-uri']);
-        }
-
-        return [
-            'Expect-CT' => $ct,
-        ];
+        return ['Expect-CT' => $builder->get()];
     }
 
     /**
      * Generate Clear-Site-Data header.
      *
-     * @return array
+     * @return array<string>
      */
     protected function clearSiteData(): array
     {
-        if (! ($this->config['clear-site-data']['enable'] ?? false)) {
+        $config = $this->config['clear-site-data'] ?? [];
+
+        if (!($config['enable'] ?? false)) {
             return [];
         }
 
-        if ($this->config['clear-site-data']['all']) {
-            $csd = '"*"';
-        } else {
-            // simulate array_only, filter disabled and get keys
-            $flags = array_keys(array_filter(array_intersect_key(
-                $this->config['clear-site-data'],
-                array_flip(['cache', 'cookies', 'storage', 'executionContexts'])
-            )));
+        $builder = new ClearSiteDataBuilder($config);
 
-            if (empty($flags)) {
-                return [];
-            }
-
-            $csd = sprintf('"%s"', implode('", "', $flags));
-        }
-
-        return [
-            'Clear-Site-Data' => $csd,
-        ];
+        return ['Clear-Site-Data' => $builder->get()];
     }
 
     /**
      * Get miscellaneous headers.
      *
-     * @return array
+     * @return array<string>
      */
     protected function miscellaneous(): array
     {
@@ -244,54 +206,28 @@ class SecureHeaders
             'X-Download-Options' => $this->config['x-download-options'],
             'X-Frame-Options' => $this->config['x-frame-options'],
             'X-Permitted-Cross-Domain-Policies' => $this->config['x-permitted-cross-domain-policies'],
-            'X-Power-By' => $this->config['x-power-by'] ?? '',
+            'X-Power-By' => $this->config['x-power-by'],
             'X-XSS-Protection' => $this->config['x-xss-protection'],
             'Referrer-Policy' => $this->config['referrer-policy'],
-            'Server' => $this->config['server'] ?? '',
+            'Server' => $this->config['server'],
         ]);
-    }
-
-    /**
-     * Preprocess config data.
-     *
-     * @param array $config
-     *
-     * @return array
-     */
-    protected function preprocessConfig(array $config): array
-    {
-        return $this->addGeneratedNonce($config);
-    }
-
-    /**
-     * Add generated nonce value to script-src and style-src.
-     *
-     * @param array $config
-     *
-     * @return array
-     */
-    protected function addGeneratedNonce(array $config): array
-    {
-        if (($config['csp']['script-src']['add-generated-nonce'] ?? false) === true) {
-            $config['csp']['script-src']['nonces'][] = self::nonce();
-        }
-
-        if (($config['csp']['style-src']['add-generated-nonce'] ?? false) === true) {
-            $config['csp']['style-src']['nonces'][] = self::nonce();
-        }
-
-        return $config;
     }
 
     /**
      * Generate random nonce value for current request.
      *
+     * @param string $target
+     *
      * @return string
+     *
+     * @throws Exception
      */
-    public static function nonce(): string
+    public static function nonce(string $target = 'script'): string
     {
-        static $nonce;
+        $nonce = base64_encode(bin2hex(random_bytes(8)));
 
-        return $nonce ?: $nonce = bin2hex(random_bytes(16));
+        self::$nonces[$target][] = $nonce;
+
+        return $nonce;
     }
 }

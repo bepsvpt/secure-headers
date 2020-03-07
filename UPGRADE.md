@@ -1,6 +1,8 @@
 ## 5.6.0 to 6.0.0
 
+- Lumen user need to add SecureHeadersMiddleware manually.
 - HSTS preload is disabled by default now, if your HSTS config does not contain `preload` key and you want to preserve previous behavior, add `preload` to HSTS section and set to `true`.
+- Update `csp` config structure from [config file](https://github.com/bepsvpt/secure-headers/blob/6.0.0/config/secure-headers.php).
 
 ## 5.4.0 to 5.5.0
 
