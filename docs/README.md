@@ -3,7 +3,6 @@
 * [Overall](#overall)
 * [Clear Site Data](#clear-site-data)
 * [HTTP Strict Transport Security](#http-strict-transport-security)
-* [Public Key Pinning](#public-key-pinning)
 * [Content Security Policy](#content-security-policy)
 * [Testing](#testing)
 
@@ -20,15 +19,11 @@
 
 * After setting `hsts` header, you can visit [https://hstspreload.org](https://hstspreload.org) and submit request to add your domain to `preload list`.
 
-## Public Key Pinning
-
-* When `hpkp` `hashes` array is empty, this header will not add to http response.
-
 ## Content Security Policy
 
-* If you want to disable csp header, set `custom-csp` to empty string `''`.
-* When a directive is empty array, it will set to `none`. If you want to omit a directive, just remove it.
-* If you want to allow specific protocol in directive, add them to `schemes` array.
+**You can find real world website examples in [tests](https://github.com/bepsvpt/secure-headers/blob/6.0.0/tests/Builders/ContentSecurityPolicyBuilderTest.php#L241-L945).**
+
+* If you want to allow specific protocol in directive:
     ```php
     'img-src' => [
         'schemes' => [
@@ -37,20 +32,20 @@
         ],
     ],
     ```
-* If you want to use automated generated nonce value, setting `add-generated-nonce` to `true` in `script-src` or `style-src` directives and calling `Bepsvpt\SecureHeaders\SecureHeaders::nonce()` to get nonce value.
+* If you want to use `nonce` in blade template:
 
     using inject
     ```blade
     @inject('headers', 'Bepsvpt\SecureHeaders\SecureHeaders')
 
-    <style nonce="{{ $headers->nonce() }}">
+    <style nonce="{{ $headers->nonce('style') }}">
       // your css
     </style>
     ```
 
     or calling directly
     ```blade
-    <script nonce="{{ Bepsvpt\SecureHeaders\SecureHeaders::nonce() }}">
+    <script nonce="{{ Bepsvpt\SecureHeaders\SecureHeaders::nonce('script') }}">
       // your js
     </script>
     ```
@@ -69,3 +64,5 @@ If you want to run testing, make sure you have the corresponding package version
 |   5.6   |    3.6    |   7.5   |        7.1.3        |
 |   5.7   |    3.7    |   7.5   |        7.1.3        |
 |   5.8   |    3.8    |   7.5   |        7.1.3        |
+|   6.x   |    4.x    |   8.4   |        7.2.0        |
+|   7.x   |    5.x    |   8.4   |        7.2.5        |
