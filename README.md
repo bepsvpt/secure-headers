@@ -9,7 +9,7 @@ Add security related headers to HTTP response. The package includes Service Prov
 
 - [Version](#version)
 - [Installation](#installation)
-- [Usage（non laravel project）](#usage)
+- [Usage（non laravel project）](#usagenon-laravel-project)
 - [Document and Notice](#document-and-notice)
 - [Changelog](#changelog)
 - [Upgrade](#upgrade)
