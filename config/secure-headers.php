@@ -132,6 +132,7 @@ return [
 
         'enforce' => false,
 
+        // report uri must be absolute-URI
         'report-uri' => null,
     ],
 
