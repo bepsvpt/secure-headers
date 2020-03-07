@@ -343,6 +343,11 @@ return [
             //
         ],
 
+        // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/child-src
+        'child-src' => [
+            //
+        ],
+
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/connect-src
         'connect-src' => [
             //
