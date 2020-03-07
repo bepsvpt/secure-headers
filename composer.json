@@ -29,7 +29,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Bepsvpt\\Tests\\SecureHeaders\\": "tests/"
+      "Bepsvpt\\SecureHeaders\\Tests\\": "tests/"
     }
   },
   "minimum-stability": "dev",
