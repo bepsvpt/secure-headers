@@ -23,6 +23,8 @@
 
 **You can find real world website examples in [tests](https://github.com/bepsvpt/secure-headers/blob/6.0.0/tests/Builders/ContentSecurityPolicyBuilderTest.php#L241-L945).**
 
+**After setup csp, you should use [CSP Evaluator](https://csp-evaluator.withgoogle.com) to check up your setting.**
+
 * If you want to allow specific protocol in directive:
     ```php
     'img-src' => [
