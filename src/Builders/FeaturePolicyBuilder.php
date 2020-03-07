@@ -80,7 +80,7 @@ final class FeaturePolicyBuilder extends Builder
     {
         if ($config['none'] ?? false) {
             return "'none'";
-        } else if ($config['*'] ?? false) {
+        } elseif ($config['*'] ?? false) {
             return '*';
         }
 
