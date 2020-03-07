@@ -144,7 +144,7 @@ $secureHeaders->send();
 
 ## Document and Notice
 
-Please see [DOCS](docs) for details.
+Please see [DOCS](DOCS.md) for details.
 
 ## Changelog
 
