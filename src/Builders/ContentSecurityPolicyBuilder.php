@@ -185,18 +185,18 @@ final class ContentSecurityPolicyBuilder extends Builder
                 continue;
             }
 
-            $result[$hash] = array_map(function (string $val) use ($hash) {
-                $trimmed = trim($val);
+            foreach ($items as $item) {
+                $trimmed = trim($item);
 
                 if (base64_decode($trimmed, true) === false) {
-                    return '';
+                    continue;
                 }
 
-                return sprintf("'%s-%s'", $hash, $trimmed);
-            }, $items);
+                $result[] = sprintf("'%s-%s'", $hash, $trimmed);
+            }
         }
 
-        return array_merge(...array_values($result));
+        return $result;
     }
 
     /**
