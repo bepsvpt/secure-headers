@@ -72,7 +72,7 @@ final class FeaturePolicyBuilder extends Builder
     /**
      * Parse specific policy value.
      *
-     * @param array $config
+     * @param array<mixed> $config
      *
      * @return string
      */

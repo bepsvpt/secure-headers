@@ -22,9 +22,9 @@ final class MiddlewareTest extends TestCase
      *
      * @param Application $app
      *
-     * @return array
+     * @return array<string>
      */
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
             SecureHeadersServiceProvider::class,

@@ -7,14 +7,14 @@ abstract class Builder
     /**
      * Builder config.
      *
-     * @var array
+     * @var array<mixed>
      */
     protected $config = [];
 
     /**
      * Builder constructor.
      *
-     * @param array $config
+     * @param array<mixed> $config
      */
     public function __construct(array $config = [])
     {

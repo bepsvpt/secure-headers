@@ -14,7 +14,7 @@ use RuntimeException;
 class SecureHeaders
 {
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $config = [];
 
@@ -32,7 +32,7 @@ class SecureHeaders
     /**
      * Constructor.
      *
-     * @param array $config
+     * @param array<mixed> $config
      */
     public function __construct(array $config = [])
     {

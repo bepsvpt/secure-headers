@@ -172,9 +172,9 @@ final class ContentSecurityPolicyBuilder extends Builder
     /**
      * Build directive hashes.
      *
-     * @param array $groups
+     * @param array<array<string>> $groups
      *
-     * @return array
+     * @return array<string>
      */
     protected function hashes(array $groups): array
     {
@@ -360,10 +360,10 @@ final class ContentSecurityPolicyBuilder extends Builder
     /**
      * Using key to filter config and return keys.
      *
-     * @param array $config
-     * @param array $available
+     * @param array<bool> $config
+     * @param array<bool> $available
      *
-     * @return array
+     * @return array<string>
      */
     protected function filter(array $config, array $available): array
     {
