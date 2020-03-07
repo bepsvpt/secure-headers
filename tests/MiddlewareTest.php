@@ -5,6 +5,7 @@ namespace Bepsvpt\SecureHeaders\Tests;
 use Bepsvpt\SecureHeaders\SecureHeadersMiddleware;
 use Bepsvpt\SecureHeaders\SecureHeadersServiceProvider;
 use Illuminate\Contracts\Http\Kernel as HttpKernel;
+use Illuminate\Foundation\Application;
 use Orchestra\Testbench\TestCase;
 
 class MiddlewareTest extends TestCase
@@ -19,7 +20,7 @@ class MiddlewareTest extends TestCase
     /**
      * Get package providers.
      *
-     * @param \Illuminate\Foundation\Application $app
+     * @param Application $app
      *
      * @return array
      */
@@ -33,7 +34,7 @@ class MiddlewareTest extends TestCase
     /**
      * Define environment setup.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param Application $app
      *
      * @return void
      */
@@ -49,7 +50,7 @@ class MiddlewareTest extends TestCase
         $app->make(HttpKernel::class)->pushMiddleware(SecureHeadersMiddleware::class);
     }
 
-    public function test_middleware()
+    public function testMiddleware()
     {
         $this->app['router']->get('/', function () {
             return 'Hello World!';
@@ -58,18 +59,24 @@ class MiddlewareTest extends TestCase
         $headers = $this->get('/')->{$this->_response}->headers->all();
 
         $this->assertArrayHasKey('x-frame-options', $headers);
-        $this->assertArrayHasKey('content-security-policy', $headers);
     }
 
-    public function test_binary_response()
+    public function testBinaryResponse()
     {
         $this->app['router']->get('/', function () {
-            return response()->download(__DIR__.'/../README.md');
+            return response()->download(__DIR__ . '/../README.md');
         });
 
         $headers = $this->get('/')->{$this->_response}->headers->all();
 
-        $this->assertArrayHasKey('x-content-type-options', $headers);
-        $this->assertArrayHasKey('content-security-policy', $headers);
+        $this->assertArrayHasKey(
+            'x-content-type-options',
+            $headers
+        );
+
+        $this->assertArrayHasKey(
+            'feature-policy',
+            $headers
+        );
     }
 }
