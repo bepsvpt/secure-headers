@@ -1,6 +1,6 @@
 ## 6.x
 
-- 6.0.0 (unreleased)
+- 6.0.0 (2020-03-07)
   - **BREAKING CHANGE**
     - Lumen project does not automatically add SecureHeadersMiddleware to global middleware.
     - Remove HPKP (Public Key Pinning mechanism was deprecated in favor of Certificate Transparency and Expect-CT header)
