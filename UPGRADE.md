@@ -1,4 +1,4 @@
-## 5.6.0 to 6.0.0
+## 5.x.x to 6.0.0
 
 - Lumen user need to add SecureHeadersMiddleware manually.
 - HSTS preload is disabled by default now, if your HSTS config does not contain `preload` key and you want to preserve previous behavior, add `preload` to HSTS section and set to `true`.
