@@ -1,6 +1,6 @@
 # Secure Headers
 
-[![Actions Status](https://github.com/BePsvPT/secure-headers/workflows/Laravel/badge.svg)](https://github.com/BePsvPT/secure-headers/actions)
+[![Financial Contributors on Open Collective](https://opencollective.com/secure-headers/all/badge.svg?label=financial+contributors)](https://opencollective.com/secure-headers) [![Actions Status](https://github.com/BePsvPT/secure-headers/workflows/Laravel/badge.svg)](https://github.com/BePsvPT/secure-headers/actions)
 [![Latest Stable Version](https://poser.pugx.org/bepsvpt/secure-headers/v/stable?format=flat-square)](https://packagist.org/packages/bepsvpt/secure-headers)
 [![Total Downloads](https://poser.pugx.org/bepsvpt/secure-headers/downloads?format=flat-square)](https://packagist.org/packages/bepsvpt/secure-headers)
 [![License](https://poser.pugx.org/bepsvpt/secure-headers/license?format=flat-square)](https://packagist.org/packages/bepsvpt/secure-headers)
@@ -153,6 +153,36 @@ Please see [CHANGELOG](CHANGELOG.md) for details.
 ## Upgrade
 
 Please see [UPGRADE](UPGRADE.md) for details.
+
+## Contributors
+
+### Code Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/bepsvpt/secure-headers/graphs/contributors"><img src="https://opencollective.com/secure-headers/contributors.svg?width=890&button=false" /></a>
+
+### Financial Contributors
+
+Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/secure-headers/contribute)]
+
+#### Individuals
+
+<a href="https://opencollective.com/secure-headers"><img src="https://opencollective.com/secure-headers/individuals.svg?width=890"></a>
+
+#### Organizations
+
+Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/secure-headers/contribute)]
+
+<a href="https://opencollective.com/secure-headers/organization/0/website"><img src="https://opencollective.com/secure-headers/organization/0/avatar.svg"></a>
+<a href="https://opencollective.com/secure-headers/organization/1/website"><img src="https://opencollective.com/secure-headers/organization/1/avatar.svg"></a>
+<a href="https://opencollective.com/secure-headers/organization/2/website"><img src="https://opencollective.com/secure-headers/organization/2/avatar.svg"></a>
+<a href="https://opencollective.com/secure-headers/organization/3/website"><img src="https://opencollective.com/secure-headers/organization/3/avatar.svg"></a>
+<a href="https://opencollective.com/secure-headers/organization/4/website"><img src="https://opencollective.com/secure-headers/organization/4/avatar.svg"></a>
+<a href="https://opencollective.com/secure-headers/organization/5/website"><img src="https://opencollective.com/secure-headers/organization/5/avatar.svg"></a>
+<a href="https://opencollective.com/secure-headers/organization/6/website"><img src="https://opencollective.com/secure-headers/organization/6/avatar.svg"></a>
+<a href="https://opencollective.com/secure-headers/organization/7/website"><img src="https://opencollective.com/secure-headers/organization/7/avatar.svg"></a>
+<a href="https://opencollective.com/secure-headers/organization/8/website"><img src="https://opencollective.com/secure-headers/organization/8/avatar.svg"></a>
+<a href="https://opencollective.com/secure-headers/organization/9/website"><img src="https://opencollective.com/secure-headers/organization/9/avatar.svg"></a>
 
 ## License
 
