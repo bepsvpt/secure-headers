@@ -1,5 +1,8 @@
 ## 6.x
 
+- 6.0.1 (2020-04-15)
+  - Fix nonces are not cleared. ([#46](https://github.com/bepsvpt/secure-headers/issues/46))
+
 - 6.0.0 (2020-03-07)
   - **BREAKING CHANGE**
     - Lumen project does not automatically add SecureHeadersMiddleware to global middleware.
@@ -7,12 +10,12 @@
     - Feature-Policy remove `speaker` and `vr` directives
     - Disable HSTS preload by default ([#42](https://github.com/BePsvPT/secure-headers/pull/42))
     - Content-Security-Policy remove `custom-csp` key
-    - Content-Security-Policy empty directive config will just be omitted(before 6.0 was set to `'none'`). 
+    - Content-Security-Policy empty directive config will just be omitted(before 6.0 was set to `'none'`).
     - Content-Security-Policy directive keyword `unsafe-hashed-attributes` is replaced by `unsafe-hashes`
     - Content-Security-Policy directive `nonces` array had removed(according to RFC, it should generate a unique nonce value each time. Thus, it should not setup by user).
     - `SecureHeaders::nonce` method requires one parameter now, it should be `'script'` or `'style'`(default is `'script'`).
   - Content-Security-Policy directive `add-generated-nonce` key was removed, it is no longer needed.
-  - Content-Security-Policy supports following directives: `report-to`, `child-src`, `navigate-to`, `prefetch-src`, `require-trusted-types-for`, `script-src-attr`, `script-src-elem`, `style-src-attr`, `style-src-elem`, `trusted-types` 
+  - Content-Security-Policy supports following directives: `report-to`, `child-src`, `navigate-to`, `prefetch-src`, `require-trusted-types-for`, `script-src-attr`, `script-src-elem`, `style-src-attr`, `style-src-elem`, `trusted-types`
   - Feature-Policy supports following directives: `battery`, `execution-while-not-rendered`, `execution-while-out-of-viewport`, `layout-animations`, `legacy-image-formats`, `navigation-override`, `oversized-images`, `publickey-credentials`, `unoptimized-images`, `unsized-media`, `wake-lock`, `xr-spatial-tracking`
 
 ## 5.x
