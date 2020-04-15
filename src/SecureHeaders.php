@@ -19,6 +19,13 @@ class SecureHeaders
     protected $config = [];
 
     /**
+     * Determate header had sent or not.
+     *
+     * @var bool
+     */
+    protected $sent = false;
+
+    /**
      * Nonces for `script-src` and `style-src`.
      *
      * @var array<array<string>>
@@ -37,6 +44,16 @@ class SecureHeaders
     public function __construct(array $config = [])
     {
         $this->config = $config;
+    }
+
+    /**
+     * Destructor.
+     */
+    public function __destruct()
+    {
+        if ($this->sent) {
+            self::$nonces['script'] = self::$nonces['style'] = [];
+        }
     }
 
     /**
@@ -75,6 +92,8 @@ class SecureHeaders
         foreach ($this->headers() as $key => $value) {
             header(sprintf('%s: %s', $key, $value), true);
         }
+
+        $this->sent = true;
     }
 
     /**
@@ -92,6 +111,8 @@ class SecureHeaders
             $this->clearSiteData(),
             $this->miscellaneous()
         );
+
+        $this->sent = true;
 
         return array_filter($headers);
     }

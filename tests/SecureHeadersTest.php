@@ -149,6 +149,22 @@ final class SecureHeadersTest extends TestCase
         );
     }
 
+    public function testContentSecurityPolicyNonceWillBeClearedAfterHeaderSent()
+    {
+        $times = 10;
+
+        while ($times--) {
+            $nonce = SecureHeaders::nonce();
+
+            $headers = (new SecureHeaders($this->config()))->headers();
+
+            $this->assertSame(
+                sprintf("script-src 'nonce-%s'", $nonce),
+                $headers['Content-Security-Policy']
+            );
+        }
+    }
+
     public function testFeaturePolicy()
     {
         $config = $this->config();
