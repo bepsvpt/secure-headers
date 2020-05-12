@@ -263,7 +263,7 @@ class SecureHeaders
     {
         if ($target === null) {
             self::$nonces['script'] = self::$nonces['style'] = [];
-        }else if (isset(self::$nonces[$target])) {
+        } elseif (isset(self::$nonces[$target])) {
             self::$nonces[$target] = [];
         }
     }
