@@ -149,6 +149,20 @@ final class SecureHeadersTest extends TestCase
         );
     }
 
+    public function testContentSecurityPolicyClearedNonces()
+    {
+        SecureHeaders::nonce();
+
+        SecureHeaders::clearNonces();
+
+        $headers = (new SecureHeaders($this->config()))->headers();
+
+        $this->assertArrayNotHasKey(
+            'Content-Security-Policy',
+            $headers
+        );
+    }
+
     public function testContentSecurityPolicyNonceWillBeClearedAfterHeaderSent()
     {
         $times = 10;
