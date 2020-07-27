@@ -1,5 +1,8 @@
 ## 6.x
 
+- 6.1.0 (2020-07-27)
+  - Fix X-Powered-By header name. ([#50](https://github.com/bepsvpt/secure-headers/issues/50))
+
 - 6.0.1 (2020-04-15)
   - Fix nonces are not cleared. ([#46](https://github.com/bepsvpt/secure-headers/issues/46))
 
