@@ -76,22 +76,37 @@ final class SecureHeadersTest extends TestCase
         $this->assertSame('Example', $headers['Server']);
     }
 
-    public function testXPowerByHeader()
+    public function testXPoweredByHeader()
     {
         $config = $this->config();
 
         $this->assertArrayNotHasKey(
-            'X-Power-By',
+            'X-Powered-By',
+            (new SecureHeaders($config))->headers()
+        );
+
+        $config['x-powered-by'] = 'Example';
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArrayHasKey('X-Powered-By', $headers);
+
+        $this->assertSame('Example', $headers['X-Powered-By']);
+
+        // ensure backward compatibility
+
+        unset($config['x-powered-by']);
+
+        $this->assertArrayNotHasKey(
+            'X-Powered-By',
             (new SecureHeaders($config))->headers()
         );
 
         $config['x-power-by'] = 'Example';
 
-        $headers = (new SecureHeaders($config))->headers();
+        $this->assertArrayHasKey('X-Powered-By', $headers);
 
-        $this->assertArrayHasKey('X-Power-By', $headers);
-
-        $this->assertSame('Example', $headers['X-Power-By']);
+        $this->assertSame('Example', $headers['X-Powered-By']);
     }
 
     public function testContentSecurityPolicy()

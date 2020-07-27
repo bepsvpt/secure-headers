@@ -53,12 +53,12 @@ return [
     'x-permitted-cross-domain-policies' => 'none',
 
     /*
-     * X-Power-By
+     * X-Powered-By
      *
      * Note: it will not add to response header if the value is empty string.
      */
 
-    'x-power-by' => '',
+    'x-powered-by' => '',
 
     /*
      * X-XSS-Protection
