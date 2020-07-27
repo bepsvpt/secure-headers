@@ -1,3 +1,7 @@
+## 6.0.x to 6.1.0
+
+- `X-Power-By` header renamed to `X-Powered-By`.
+
 ## 5.x.x to 6.0.0
 
 - Lumen user need to add SecureHeadersMiddleware manually.
