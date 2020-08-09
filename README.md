@@ -157,11 +157,6 @@ Please see [UPGRADE](UPGRADE.md) for details.
 
 ## Contributors
 
-### Code Contributors
-
-This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
-<a href="https://github.com/bepsvpt/secure-headers/graphs/contributors"><img src="https://opencollective.com/secure-headers/contributors.svg?width=890&button=false" /></a>
-
 ### Financial Contributors
 
 Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/secure-headers/contribute)]
@@ -177,13 +172,6 @@ Support this project with your organization. Your logo will show up here with a 
 <a href="https://opencollective.com/secure-headers/organization/0/website"><img src="https://opencollective.com/secure-headers/organization/0/avatar.svg"></a>
 <a href="https://opencollective.com/secure-headers/organization/1/website"><img src="https://opencollective.com/secure-headers/organization/1/avatar.svg"></a>
 <a href="https://opencollective.com/secure-headers/organization/2/website"><img src="https://opencollective.com/secure-headers/organization/2/avatar.svg"></a>
-<a href="https://opencollective.com/secure-headers/organization/3/website"><img src="https://opencollective.com/secure-headers/organization/3/avatar.svg"></a>
-<a href="https://opencollective.com/secure-headers/organization/4/website"><img src="https://opencollective.com/secure-headers/organization/4/avatar.svg"></a>
-<a href="https://opencollective.com/secure-headers/organization/5/website"><img src="https://opencollective.com/secure-headers/organization/5/avatar.svg"></a>
-<a href="https://opencollective.com/secure-headers/organization/6/website"><img src="https://opencollective.com/secure-headers/organization/6/avatar.svg"></a>
-<a href="https://opencollective.com/secure-headers/organization/7/website"><img src="https://opencollective.com/secure-headers/organization/7/avatar.svg"></a>
-<a href="https://opencollective.com/secure-headers/organization/8/website"><img src="https://opencollective.com/secure-headers/organization/8/avatar.svg"></a>
-<a href="https://opencollective.com/secure-headers/organization/9/website"><img src="https://opencollective.com/secure-headers/organization/9/avatar.svg"></a>
 
 ## License
 
