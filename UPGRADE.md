@@ -1,3 +1,7 @@
+## 6.1.x to 6.2.0
+
+- Add `use-permissions-policy-header` config key for `feature-policy`, you can find it [here](https://github.com/bepsvpt/secure-headers/blob/6.2.0/config/secure-headers.php#L148-L159).
+
 ## 6.0.x to 6.1.0
 
 - `X-Power-By` header renamed to `X-Powered-By`.
