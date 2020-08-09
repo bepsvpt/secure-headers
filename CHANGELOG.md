@@ -1,5 +1,8 @@
 ## 6.x
 
+- 6.2.0 (2020-08-09)
+  - Support Permissions-Policy without breaking change.
+
 - 6.1.0 (2020-07-27)
   - Fix X-Powered-By header name. ([#50](https://github.com/bepsvpt/secure-headers/issues/50))
 
