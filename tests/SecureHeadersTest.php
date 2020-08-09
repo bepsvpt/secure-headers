@@ -186,17 +186,27 @@ final class SecureHeadersTest extends TestCase
 
         $config['feature-policy']['enable'] = true;
 
-        $this->assertArrayHasKey(
-            'Feature-Policy',
-            (new SecureHeaders($config))->headers()
-        );
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArrayHasKey('Feature-Policy', $headers);
+
+        $this->assertArrayNotHasKey('Permissions-Policy', $headers);
+
+        $config['feature-policy']['use-permissions-policy-header'] = true;
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArrayHasKey('Permissions-Policy', $headers);
+
+        $this->assertArrayNotHasKey('Feature-Policy', $headers);
 
         $config['feature-policy']['enable'] = false;
 
-        $this->assertArrayNotHasKey(
-            'Feature-Policy',
-            (new SecureHeaders($config))->headers()
-        );
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArrayNotHasKey('Feature-Policy', $headers);
+
+        $this->assertArrayNotHasKey('Permissions-Policy', $headers);
     }
 
     public function testStrictTransportSecurity()

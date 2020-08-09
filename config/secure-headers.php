@@ -146,6 +146,17 @@ return [
         'enable' => true,
 
         /*
+         * Feature-Policy was renamed to Permissions-Policy.
+         *
+         * In order to prevent breaking change, before 7.0 version,
+         * it will use this config to specific new header name or
+         * origin header name.
+         *
+         * Reference: https://github.com/w3c/webappsec-permissions-policy/issues/359
+         */
+        'use-permissions-policy-header' => false,
+
+        /*
          * Each directive details can be found on:
          *
          * https://github.com/w3c/webappsec-feature-policy/blob/master/features.md

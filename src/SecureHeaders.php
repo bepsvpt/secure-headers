@@ -158,7 +158,13 @@ class SecureHeaders
 
         $builder = new FeaturePolicyBuilder($config);
 
-        return ['Feature-Policy' => $builder->get()];
+        $header = 'Feature-Policy';
+
+        if ($config['use-permissions-policy-header'] ?? false) {
+            $header = 'Permissions-Policy';
+        }
+
+        return [$header => $builder->get()];
     }
 
     /**
