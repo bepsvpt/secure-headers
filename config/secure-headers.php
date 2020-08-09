@@ -149,8 +149,10 @@ return [
          * Feature-Policy was renamed to Permissions-Policy.
          *
          * In order to prevent breaking change, before 7.0 version,
-         * it will use this config to specific new header name or
-         * origin header name.
+         * it will use this config to choose use `Permissions-Policy`
+         * header name or `Feature-Policy` header name.
+         *
+         * Set `use-permissions-policy-header` to `true` to use `Permissions-Policy` header name.
          *
          * Reference: https://github.com/w3c/webappsec-permissions-policy/issues/359
          */
