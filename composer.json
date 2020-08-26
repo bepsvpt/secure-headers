@@ -12,13 +12,13 @@
   ],
   "require": {
     "php": "^7.0",
-    "illuminate/support": "~5.1|~6.0|~7.0"
+    "illuminate/support": "~5.1|~6.0|~7.0|~8.0"
   },
   "require-dev": {
     "ext-json": "*",
     "ext-xdebug": "*",
     "friendsofphp/php-cs-fixer": "~2.2",
-    "orchestra/testbench": "~3.1|~4.0|~5.0",
+    "orchestra/testbench": "~3.1|~4.0|~5.0|~6.0",
     "phpstan/phpstan": "~0.7",
     "phpunit/phpunit": "~5.7|~6.5|~7.5|~8.4|~9.0"
   },
