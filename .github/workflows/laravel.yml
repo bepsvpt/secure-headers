@@ -10,13 +10,14 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Setup PHP, Composer and Extensions
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@v2
         with:
           php-version: '7.4'
+          tools: composer:v2
           extensions: dom, fileinfo, mbstring, xdebug
 
       - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress --no-suggest
+        run: composer update --optimize-autoloader --no-interaction --no-progress
 
       - name: Run PHPStan
         run: vendor/bin/phpstan analyse --verbose
@@ -39,28 +40,29 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Setup PHP, Composer and Extensions
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-versions }}
+          tools: composer:v2
           extensions: dom, fileinfo, mbstring, xdebug
 
       - name: Remove php-cs-fixer and phpstan
         run: composer remove "friendsofphp/php-cs-fixer" "phpstan/phpstan" --dev --no-update
 
       - name: Add 4.* Testbench and 8.* PHPUnit to dev dependencies
-        run: composer require "orchestra/testbench:^4.0" "phpunit/phpunit:^8.0" --dev --no-interaction --no-suggest --no-update
+        run: composer require "orchestra/testbench:^4.0" "phpunit/phpunit:^8.0" --dev --no-interaction --no-update
 
       - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress --no-suggest
+        run: composer update --optimize-autoloader --no-interaction --no-progress
 
       - name: Test against Laravel 6.x
         run: vendor/bin/phpunit
 
       - name: Add 5.* Testbench and 8.* PHPUnit to dev dependencies
-        run: composer require "orchestra/testbench:^5.0" "phpunit/phpunit:^8.4" --dev --no-interaction --no-suggest --no-update
+        run: composer require "orchestra/testbench:^5.0" "phpunit/phpunit:^8.4" --dev --no-interaction --no-update
 
       - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress --no-suggest
+        run: composer update --optimize-autoloader --no-interaction --no-progress
 
       - name: Test against Laravel 7.x
         run: vendor/bin/phpunit
@@ -79,40 +81,41 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Setup PHP, Composer and Extensions
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-versions }}
+          tools: composer:v2
           extensions: dom, fileinfo, mbstring, xdebug
 
       - name: Remove php-cs-fixer and phpstan
         run: composer remove "friendsofphp/php-cs-fixer" "phpstan/phpstan" --dev --no-update
 
       - name: Add 7.5.* PHPUnit to dev dependencies
-        run: composer require "phpunit/phpunit:7.5.*" --dev --no-interaction --no-suggest --no-update
+        run: composer require "phpunit/phpunit:7.5.*" --dev --no-interaction --no-update
 
       - name: Add 3.6.* Testbench dev dependencies
-        run: composer require "orchestra/testbench:3.6.*" --dev --no-interaction --no-suggest --no-update
+        run: composer require "orchestra/testbench:3.6.*" --dev --no-interaction --no-update
 
       - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress --no-suggest
+        run: composer update --optimize-autoloader --no-interaction --no-progress
 
       - name: Test against Laravel 5.6
         run: vendor/bin/phpunit
 
       - name: Add 3.7.* Testbench dev dependencies
-        run: composer require "orchestra/testbench:3.7.*" --dev --no-interaction --no-suggest --no-update
+        run: composer require "orchestra/testbench:3.7.*" --dev --no-interaction --no-update
 
       - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress --no-suggest
+        run: composer update --optimize-autoloader --no-interaction --no-progress
 
       - name: Test against Laravel 5.7
         run: vendor/bin/phpunit
 
       - name: Add 3.8.* Testbench dev dependencies
-        run: composer require "orchestra/testbench:3.8.*" --dev --no-interaction --no-suggest --no-update
+        run: composer require "orchestra/testbench:3.8.*" --dev --no-interaction --no-update
 
       - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress --no-suggest
+        run: composer update --optimize-autoloader --no-interaction --no-progress
 
       - name: Test against Laravel 5.8
         run: vendor/bin/phpunit
@@ -131,61 +134,62 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Setup PHP, Composer and Extensions
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-versions }}
+          tools: composer:v2
           extensions: dom, fileinfo, mbstring, xdebug
 
       - name: Remove php-cs-fixer and phpstan
         run: composer remove "friendsofphp/php-cs-fixer" "phpstan/phpstan" --dev --no-update
 
       - name: Add 5.7.* PHPUnit to dev dependencies
-        run: composer require "phpunit/phpunit:5.7.*" --dev --no-interaction --no-suggest --no-update
+        run: composer require "phpunit/phpunit:5.7.*" --dev --no-interaction --no-update
 
       - name: Add 3.1.* Testbench dev dependencies
-        run: composer require "orchestra/testbench:3.1.*" --dev --no-interaction --no-suggest --no-update
+        run: composer require "orchestra/testbench:3.1.*" --dev --no-interaction --no-update
 
       - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress --no-suggest
+        run: composer update --optimize-autoloader --no-interaction --no-progress
 
       - name: Test against Laravel 5.1
         run: vendor/bin/phpunit
 
       - name: Add 3.2.* Testbench dev dependencies
-        run: composer require "orchestra/testbench:3.2.*" --dev --no-interaction --no-suggest --no-update
+        run: composer require "orchestra/testbench:3.2.*" --dev --no-interaction --no-update
 
       - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress --no-suggest
+        run: composer update --optimize-autoloader --no-interaction --no-progress
 
       - name: Test against Laravel 5.2
         run: vendor/bin/phpunit
 
       - name: Add 3.3.* Testbench dev dependencies
-        run: composer require "orchestra/testbench:3.3.*" --dev --no-interaction --no-suggest --no-update
+        run: composer require "orchestra/testbench:3.3.*" --dev --no-interaction --no-update
 
       - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress --no-suggest
+        run: composer update --optimize-autoloader --no-interaction --no-progress
 
       - name: Test against Laravel 5.3
         run: vendor/bin/phpunit
 
       - name: Add 6.5.* PHPUnit to dev dependencies
-        run: composer require "phpunit/phpunit:6.5.*" --dev --no-interaction --no-suggest --no-update
+        run: composer require "phpunit/phpunit:6.5.*" --dev --no-interaction --no-update
 
       - name: Add 3.4.* Testbench dev dependencies
-        run: composer require "orchestra/testbench:3.4.*" --dev --no-interaction --no-suggest --no-update
+        run: composer require "orchestra/testbench:3.4.*" --dev --no-interaction --no-update
 
       - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress --no-suggest
+        run: composer update --optimize-autoloader --no-interaction --no-progress
 
       - name: Test against Laravel 5.4
         run: vendor/bin/phpunit
 
       - name: Add 3.5.* Testbench dev dependencies
-        run: composer require "orchestra/testbench:3.5.*" --dev --no-interaction --no-suggest --no-update
+        run: composer require "orchestra/testbench:3.5.*" --dev --no-interaction --no-update
 
       - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress --no-suggest
+        run: composer update --optimize-autoloader --no-interaction --no-progress
 
       - name: Test against Laravel 5.5
         run: vendor/bin/phpunit
