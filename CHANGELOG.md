@@ -1,5 +1,8 @@
 ## 6.x
 
+- 6.3.0 (2020-09-07)
+  - Support Laravel 8
+
 - 6.2.0 (2020-08-09)
   - Support Permissions-Policy without breaking change.
 
