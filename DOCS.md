@@ -1,4 +1,4 @@
-# Document and Notice
+# Document and Notice to secure headers
 
 * [Overall](#overall)
 * [Clear Site Data](#clear-site-data)
@@ -8,7 +8,7 @@
 
 ## Overall
 
-* Each header in config file has a reference link in phpdoc, reading it will help you knowing what the header doing.
+* Each header in config file has a reference link in phpDoc, reading it will help you knowing what the header doing.
 * If you want to disable a string type header, just set the value to `null` or empty string `''`.
 
 ## Clear Site Data
