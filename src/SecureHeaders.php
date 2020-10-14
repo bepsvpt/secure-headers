@@ -5,7 +5,7 @@ namespace Bepsvpt\SecureHeaders;
 use Bepsvpt\SecureHeaders\Builders\ClearSiteDataBuilder;
 use Bepsvpt\SecureHeaders\Builders\ContentSecurityPolicyBuilder;
 use Bepsvpt\SecureHeaders\Builders\ExceptCTBuilder;
-use Bepsvpt\SecureHeaders\Builders\FeaturePolicyBuilder;
+use Bepsvpt\SecureHeaders\Builders\PermissionsPolicyBuilder;
 use Bepsvpt\SecureHeaders\Builders\StrictTransportSecurityBuilder;
 use Exception;
 use InvalidArgumentException;
@@ -105,7 +105,7 @@ class SecureHeaders
     {
         $headers = array_merge(
             $this->csp(),
-            $this->featurePolicy(),
+            $this->permissionsPolicy(),
             $this->hsts(),
             $this->expectCT(),
             $this->clearSiteData(),
@@ -144,27 +144,21 @@ class SecureHeaders
     }
 
     /**
-     * Get Feature Policy header.
+     * Get Permissions Policy header.
      *
      * @return array<string>
      */
-    protected function featurePolicy(): array
+    protected function permissionsPolicy(): array
     {
-        $config = $this->config['feature-policy'] ?? [];
+        $config = $this->config['permissions-policy'] ?? [];
 
         if (!($config['enable'] ?? false)) {
             return [];
         }
 
-        $builder = new FeaturePolicyBuilder($config);
+        $builder = new PermissionsPolicyBuilder($config);
 
-        $header = 'Feature-Policy';
-
-        if ($config['use-permissions-policy-header'] ?? false) {
-            $header = 'Permissions-Policy';
-        }
-
-        return [$header => $builder->get()];
+        return ['Permissions-Policy' => $builder->get()];
     }
 
     /**
