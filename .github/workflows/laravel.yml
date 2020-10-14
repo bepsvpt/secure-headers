@@ -49,7 +49,7 @@ jobs:
         run: composer remove "friendsofphp/php-cs-fixer" "phpstan/phpstan" --dev --no-update
 
       - name: Add 6.* Testbench and 9.* PHPUnit to dev dependencies
-        run: composer require "orchestra/testbench:6.x-dev" "phpunit/phpunit:^9.3" --dev --no-interaction --no-update
+        run: composer require "orchestra/testbench:^6.0" "phpunit/phpunit:^9.3" --dev --no-interaction --no-update
 
       - name: Install dependencies
         run: composer update --optimize-autoloader --no-interaction --no-progress --ignore-platform-reqs
@@ -81,7 +81,7 @@ jobs:
         run: composer remove "friendsofphp/php-cs-fixer" "phpstan/phpstan" --dev --no-update
 
       - name: Add 6.* Testbench and 9.* PHPUnit to dev dependencies
-        run: composer require "orchestra/testbench:6.x-dev" "phpunit/phpunit:^9.3" --dev --no-interaction --no-update
+        run: composer require "orchestra/testbench:^6.0" "phpunit/phpunit:^9.3" --dev --no-interaction --no-update
 
       - name: Install dependencies
         run: composer update --optimize-autoloader --no-interaction --no-progress
