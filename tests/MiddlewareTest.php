@@ -75,7 +75,7 @@ final class MiddlewareTest extends TestCase
         );
 
         $this->assertArrayHasKey(
-            'feature-policy',
+            'permissions-policy',
             $headers
         );
     }

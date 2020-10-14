@@ -46,7 +46,7 @@ final class SecureHeadersTest extends TestCase
     {
         $headers = SecureHeaders::fromFile($this->configPath)->headers();
 
-        $this->assertArrayHasKey('Feature-Policy', $headers);
+        $this->assertArrayHasKey('Permissions-Policy', $headers);
 
         $this->assertArrayHasKey('X-XSS-Protection', $headers);
     }
@@ -180,31 +180,26 @@ final class SecureHeadersTest extends TestCase
         }
     }
 
-    public function testFeaturePolicy()
+    public function testPermissionsPolicy()
     {
         $config = $this->config();
 
-        $config['feature-policy']['enable'] = true;
-
-        $headers = (new SecureHeaders($config))->headers();
-
-        $this->assertArrayHasKey('Feature-Policy', $headers);
-
-        $this->assertArrayNotHasKey('Permissions-Policy', $headers);
-
-        $config['feature-policy']['use-permissions-policy-header'] = true;
+        $config['permissions-policy']['enable'] = true;
 
         $headers = (new SecureHeaders($config))->headers();
 
         $this->assertArrayHasKey('Permissions-Policy', $headers);
 
-        $this->assertArrayNotHasKey('Feature-Policy', $headers);
+        $policy = $headers['Permissions-Policy'];
 
-        $config['feature-policy']['enable'] = false;
+        $this->assertSame(
+            'accelerometer=(self), ambient-light-sensor=(self), autoplay=(self), battery=(self), camera=(self), cross-origin-isolated=(self), display-capture=(self), document-domain=*, encrypted-media=(self), execution-while-not-rendered=*, execution-while-out-of-viewport=*, fullscreen=(self), geolocation=(self), gyroscope=(self), magnetometer=(self), microphone=(self), midi=(self), navigation-override=(self), payment=(self), picture-in-picture=*, publickey-credentials-get=(self), screen-wake-lock=(self), sync-xhr=*, usb=(self), web-share=(self), xr-spatial-tracking=(self)',
+            $policy
+        );
+
+        $config['permissions-policy']['enable'] = false;
 
         $headers = (new SecureHeaders($config))->headers();
-
-        $this->assertArrayNotHasKey('Feature-Policy', $headers);
 
         $this->assertArrayNotHasKey('Permissions-Policy', $headers);
     }
