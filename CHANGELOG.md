@@ -1,3 +1,9 @@
+## 7.x
+
+- 7.0.0 (2020-10-14)
+  - **BREAKING CHANGE**
+    - `Feature-Policy` was replaced with `Permissions-Policy`.
+
 ## 6.x
 
 - 6.3.0 (2020-09-07)

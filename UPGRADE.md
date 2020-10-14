@@ -1,3 +1,7 @@
+## 6.2.0 to 7.0.0
+
+- `feature-policy` was replaced with `permissions-policy`, make sure you add `permissions-policy` config to the config file, you can find it [here](https://github.com/bepsvpt/secure-headers/blob/7.0.0/config/secure-headers.php#L139-L433).
+
 ## 6.1.x to 6.2.0
 
 - Add `use-permissions-policy-header` config key for `feature-policy`, you can find it [here](https://github.com/bepsvpt/secure-headers/blob/6.2.0/config/secure-headers.php#L148-L159).
