@@ -9,250 +9,194 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup PHP, Composer and Extensions
+      - name: Setup PHP, Tools and Extensions
         uses: shivammathur/setup-php@v2
         with:
           php-version: '7.4'
-          tools: composer:v2
+          tools: composer:v2, php-cs-fixer, phpstan
           extensions: dom, fileinfo, mbstring, xdebug
 
       - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress
+        run: composer update --no-suggest --no-progress --no-interaction
 
       - name: Run PHPStan
-        run: vendor/bin/phpstan analyse --verbose
+        run: phpstan analyse --verbose
 
       - name: Run PHP-CS-Fixer
-        run: vendor/bin/php-cs-fixer fix --verbose --dry-run
-
-  v_8_x_with_php_8:
-    runs-on: ${{ matrix.operating-system }}
-
-    strategy:
-      fail-fast: false
-
-      matrix:
-        operating-system: [ubuntu-latest, windows-latest, macOS-latest]
-        php-versions: ['8.0']
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup PHP, Composer and Extensions
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php-versions }}
-          tools: composer:v2
-          extensions: dom, fileinfo, mbstring, xdebug
-
-      - name: Remove php-cs-fixer and phpstan
-        run: composer remove "friendsofphp/php-cs-fixer" "phpstan/phpstan" --dev --no-update
-
-      - name: Add 6.* Testbench and 9.* PHPUnit to dev dependencies
-        run: composer require "orchestra/testbench:^6.0" "phpunit/phpunit:^9.3" --dev --no-interaction --no-update
-
-      - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress --ignore-platform-reqs
-
-      - name: Test against Laravel 8.x
-        run: vendor/bin/phpunit
+        run: php-cs-fixer fix --verbose --dry-run
 
   v_8_x:
-    runs-on: ${{ matrix.operating-system }}
+    name: 8.x (${{ runner.os }, ${{ matrix.php }})
+
+    runs-on: ${{ matrix.os }}
 
     strategy:
       fail-fast: false
 
       matrix:
-        operating-system: [ubuntu-latest, windows-latest, macOS-latest]
-        php-versions: ['7.3', '7.4']
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        php: ['7.3', '7.4', '8.0']
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup PHP, Composer and Extensions
+      - name: Setup PHP, Tools and Extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php-versions }}
-          tools: composer:v2
+          php-version: ${{ matrix.php }}
+          tools: composer:v2, phpunit:9.4.4
           extensions: dom, fileinfo, mbstring, xdebug
 
-      - name: Remove php-cs-fixer and phpstan
-        run: composer remove "friendsofphp/php-cs-fixer" "phpstan/phpstan" --dev --no-update
-
-      - name: Add 6.* Testbench and 9.* PHPUnit to dev dependencies
-        run: composer require "orchestra/testbench:^6.0" "phpunit/phpunit:^9.3" --dev --no-interaction --no-update
-
-      - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress
+      - name: Add 6.* orchestra/testbench to dev dependencies
+        run: composer require "orchestra/testbench:^6.0" --dev --no-suggest --no-progress --no-interaction
 
       - name: Test against Laravel 8.x
-        run: vendor/bin/phpunit
+        run: phpunit
 
   v_6_x_to_7_x:
-    runs-on: ${{ matrix.operating-system }}
+    name: 6.x ~ 7.x (${{ runner.os }, ${{ matrix.php }})
+
+    runs-on: ${{ matrix.os }}
 
     strategy:
       fail-fast: false
 
       matrix:
-        operating-system: [ubuntu-latest, windows-latest, macOS-latest]
-        php-versions: ['7.2', '7.3', '7.4']
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        php: ['7.2', '7.3', '7.4', '8.0']
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup PHP, Composer and Extensions
+      - name: Setup PHP, Tools and Extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php-versions }}
-          tools: composer:v2
+          php-version: ${{ matrix.php }}
+          tools: composer:v2, phpunit:8.5.13
           extensions: dom, fileinfo, mbstring, xdebug
 
-      - name: Remove php-cs-fixer and phpstan
-        run: composer remove "friendsofphp/php-cs-fixer" "phpstan/phpstan" --dev --no-update
-
-      - name: Add 4.* Testbench and 8.* PHPUnit to dev dependencies
-        run: composer require "orchestra/testbench:^4.0" "phpunit/phpunit:^8.0" --dev --no-interaction --no-update
-
-      - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress
+      - name: Add 4.* orchestra/testbench dev dependencies
+        run: composer require "orchestra/testbench:^4.0" --dev --no-suggest --no-progress --no-interaction
 
       - name: Test against Laravel 6.x
-        run: vendor/bin/phpunit
+        run: phpunit
 
-      - name: Add 5.* Testbench and 8.* PHPUnit to dev dependencies
-        run: composer require "orchestra/testbench:^5.0" "phpunit/phpunit:^8.4" --dev --no-interaction --no-update
-
-      - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress
+      - name: Add 5.* orchestra/testbench dev dependencies
+        run: composer require "orchestra/testbench:^5.0" --dev --no-suggest --no-progress --no-interaction
 
       - name: Test against Laravel 7.x
-        run: vendor/bin/phpunit
+        run: phpunit
 
   v_5_6_to_5_8:
-    runs-on: ${{ matrix.operating-system }}
+    name: 5.6 ~ 5.8 (${{ runner.os }, ${{ matrix.php }})
+
+    runs-on: ${{ matrix.os }}
 
     strategy:
       fail-fast: false
 
       matrix:
-        operating-system: [ubuntu-latest, windows-latest, macOS-latest]
-        php-versions: ['7.1', '7.2', '7.3', '7.4']
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        php: ['7.1', '7.2', '7.3', '7.4']
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup PHP, Composer and Extensions
+      - name: Setup PHP, Tools and Extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php-versions }}
-          tools: composer:v2
+          php-version: ${{ matrix.php }}
+          tools: composer:v2, phpunit:7.5.20
           extensions: dom, fileinfo, mbstring, xdebug
 
-      - name: Remove php-cs-fixer and phpstan
-        run: composer remove "friendsofphp/php-cs-fixer" "phpstan/phpstan" --dev --no-update
-
-      - name: Add 7.5.* PHPUnit to dev dependencies
-        run: composer require "phpunit/phpunit:7.5.*" --dev --no-interaction --no-update
-
-      - name: Add 3.6.* Testbench dev dependencies
-        run: composer require "orchestra/testbench:3.6.*" --dev --no-interaction --no-update
-
-      - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress
+      - name: Add 3.6.* orchestra/testbench dev dependencies
+        run: composer require "orchestra/testbench:3.6.*" --dev --no-suggest --no-progress --no-interaction
 
       - name: Test against Laravel 5.6
-        run: vendor/bin/phpunit
+        run: phpunit
 
-      - name: Add 3.7.* Testbench dev dependencies
-        run: composer require "orchestra/testbench:3.7.*" --dev --no-interaction --no-update
-
-      - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress
+      - name: Add 3.7.* orchestra/testbench dev dependencies
+        run: composer require "orchestra/testbench:3.7.*" --dev --no-suggest --no-progress --no-interaction
 
       - name: Test against Laravel 5.7
-        run: vendor/bin/phpunit
+        run: phpunit
 
-      - name: Add 3.8.* Testbench dev dependencies
-        run: composer require "orchestra/testbench:3.8.*" --dev --no-interaction --no-update
-
-      - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress
+      - name: Add 3.8.* orchestra/testbench dev dependencies
+        run: composer require "orchestra/testbench:3.8.*" --dev --no-suggest --no-progress --no-interaction
 
       - name: Test against Laravel 5.8
-        run: vendor/bin/phpunit
+        run: phpunit
 
-  v_5_1_to_5_5:
-    runs-on: ${{ matrix.operating-system }}
+  v_5_4_to_5_5:
+    name: 5.4 ~ 5.5 (${{ runner.os }, ${{ matrix.php }})
+
+    runs-on: ${{ matrix.os }}
 
     strategy:
       fail-fast: false
 
       matrix:
-        operating-system: [ubuntu-latest, windows-latest, macOS-latest]
-        php-versions: ['7.0', '7.1', '7.2', '7.3', '7.4']
+        os: [ ubuntu-latest, windows-latest, macOS-latest ]
+        php: [ '7.0', '7.1', '7.2', '7.3', '7.4' ]
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup PHP, Composer and Extensions
+      - name: Setup PHP, Tools and Extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php-versions }}
-          tools: composer:v2
+          php-version: ${{ matrix.php }}
+          tools: composer:v2, phpunit:6.5.14
           extensions: dom, fileinfo, mbstring, xdebug
 
-      - name: Remove php-cs-fixer and phpstan
-        run: composer remove "friendsofphp/php-cs-fixer" "phpstan/phpstan" --dev --no-update
-
-      - name: Add 5.7.* PHPUnit to dev dependencies
-        run: composer require "phpunit/phpunit:5.7.*" --dev --no-interaction --no-update
-
-      - name: Add 3.1.* Testbench dev dependencies
-        run: composer require "orchestra/testbench:3.1.*" --dev --no-interaction --no-update
-
-      - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress
-
-      - name: Test against Laravel 5.1
-        run: vendor/bin/phpunit
-
-      - name: Add 3.2.* Testbench dev dependencies
-        run: composer require "orchestra/testbench:3.2.*" --dev --no-interaction --no-update
-
-      - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress
-
-      - name: Test against Laravel 5.2
-        run: vendor/bin/phpunit
-
-      - name: Add 3.3.* Testbench dev dependencies
-        run: composer require "orchestra/testbench:3.3.*" --dev --no-interaction --no-update
-
-      - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress
-
-      - name: Test against Laravel 5.3
-        run: vendor/bin/phpunit
-
-      - name: Add 6.5.* PHPUnit to dev dependencies
-        run: composer require "phpunit/phpunit:6.5.*" --dev --no-interaction --no-update
-
-      - name: Add 3.4.* Testbench dev dependencies
-        run: composer require "orchestra/testbench:3.4.*" --dev --no-interaction --no-update
-
-      - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress
+      - name: Add 3.4.* orchestra/testbench dev dependencies
+        run: composer require "orchestra/testbench:3.4.*" --dev --no-suggest --no-progress --no-interaction
 
       - name: Test against Laravel 5.4
-        run: vendor/bin/phpunit
+        run: phpunit
 
-      - name: Add 3.5.* Testbench dev dependencies
-        run: composer require "orchestra/testbench:3.5.*" --dev --no-interaction --no-update
-
-      - name: Install dependencies
-        run: composer update --optimize-autoloader --no-interaction --no-progress
+      - name: Add 3.5.* orchestra/testbench dev dependencies
+        run: composer require "orchestra/testbench:3.5.*" --dev --no-suggest --no-progress --no-interaction
 
       - name: Test against Laravel 5.5
-        run: vendor/bin/phpunit
+        run: phpunit
+
+  v_5_1_to_5_3:
+    name: 5.1 ~ 5.3 (${{ runner.os }, ${{ matrix.php }})
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        php: ['7.0', '7.1', '7.2', '7.3', '7.4']
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup PHP, Tools and Extensions
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: composer:v2, phpunit:5.7.27
+          extensions: dom, fileinfo, mbstring, xdebug
+
+      - name: Add 3.1.* orchestra/testbench dev dependencies
+        run: composer require "orchestra/testbench:3.1.*" --dev --no-suggest --no-progress --no-interaction
+
+      - name: Test against Laravel 5.1
+        run: phpunit
+
+      - name: Add 3.2.* orchestra/testbench dev dependencies
+        run: composer require "orchestra/testbench:3.2.*" --dev --no-suggest --no-progress --no-interaction
+
+      - name: Test against Laravel 5.2
+        run: phpunit
+
+      - name: Add 3.3.* orchestra/testbench dev dependencies
+        run: composer require "orchestra/testbench:3.3.*" --dev --no-suggest --no-progress --no-interaction
+
+      - name: Test against Laravel 5.3
+        run: phpunit
