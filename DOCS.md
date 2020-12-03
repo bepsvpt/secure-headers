@@ -34,6 +34,7 @@
         ],
     ],
     ```
+
 * If you want to use `nonce` in blade template:
 
     using inject
@@ -48,6 +49,13 @@
     or calling directly
     ```blade
     <script nonce="{{ Bepsvpt\SecureHeaders\SecureHeaders::nonce('script') }}">
+      // your js
+    </script>
+    ```
+  
+    or using helper function
+    ```blade
+    <script nonce="{{ csp_nonce('script') }}">
       // your js
     </script>
     ```
@@ -68,3 +76,4 @@ If you want to run testing, make sure you have the corresponding package version
 |   5.8   |    3.8    |   7.5   |        7.1.3        |
 |   6.x   |    4.x    |   8.4   |        7.2.0        |
 |   7.x   |    5.x    |   8.4   |        7.2.5        |
+|   8.x   |    6.x    |   9.4   |         7.3         |
