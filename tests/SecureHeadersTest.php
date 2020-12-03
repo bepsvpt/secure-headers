@@ -162,6 +162,20 @@ final class SecureHeadersTest extends TestCase
             sprintf("script-src 'nonce-%s'", $nonce),
             $headers['Content-Security-Policy']
         );
+
+        $nonce = csp_nonce('style');
+
+        $headers = (new SecureHeaders($this->config()))->headers();
+
+        $this->assertArrayHasKey(
+            'Content-Security-Policy',
+            $headers
+        );
+
+        $this->assertSame(
+            sprintf("style-src 'nonce-%s'", $nonce),
+            $headers['Content-Security-Policy']
+        );
     }
 
     public function testContentSecurityPolicyNonceWillBeClearedAfterHeaderSent()
