@@ -16,5 +16,4 @@ return Config::create()
         '@PSR2' => true,
         'psr4' => true,
     ])
-    ->setRiskyAllowed(true)
-    ->setUsingCache(false);
+    ->setRiskyAllowed(true);
