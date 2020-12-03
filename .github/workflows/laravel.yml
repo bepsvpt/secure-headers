@@ -26,7 +26,7 @@ jobs:
         run: php-cs-fixer fix --verbose --dry-run
 
   v_8_x:
-    name: 8.x (${{ matrix.os }, ${{ matrix.php }})
+    name: 8.x (${{ matrix.os }}, ${{ matrix.php }})
 
     runs-on: ${{ matrix.os }}
 
@@ -54,7 +54,7 @@ jobs:
         run: phpunit
 
   v_6_x_to_7_x:
-    name: 6.x ~ 7.x (${{ matrix.os }, ${{ matrix.php }})
+    name: 6.x ~ 7.x (${{ matrix.os }}, ${{ matrix.php }})
 
     runs-on: ${{ matrix.os }}
 
@@ -88,7 +88,7 @@ jobs:
         run: phpunit
 
   v_5_6_to_5_8:
-    name: 5.6 ~ 5.8 (${{ matrix.os }, ${{ matrix.php }})
+    name: 5.6 ~ 5.8 (${{ matrix.os }}, ${{ matrix.php }})
 
     runs-on: ${{ matrix.os }}
 
@@ -128,7 +128,7 @@ jobs:
         run: phpunit
 
   v_5_4_to_5_5:
-    name: 5.4 ~ 5.5 (${{ matrix.os }, ${{ matrix.php }})
+    name: 5.4 ~ 5.5 (${{ matrix.os }}, ${{ matrix.php }})
 
     runs-on: ${{ matrix.os }}
 
@@ -162,7 +162,7 @@ jobs:
         run: phpunit
 
   v_5_1_to_5_3:
-    name: 5.1 ~ 5.3 (${{ matrix.os }, ${{ matrix.php }})
+    name: 5.1 ~ 5.3 (${{ matrix.os }}, ${{ matrix.php }})
 
     runs-on: ${{ matrix.os }}
 
