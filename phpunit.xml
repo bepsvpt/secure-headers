@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="vendor/autoload.php"
-         cacheResult="false"
-         colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         executionOrder="random"
-         processIsolation="true"
-         stopOnError="true"
-         stopOnFailure="true"
-         stderr="true"
+<phpunit
+  bootstrap="vendor/autoload.php"
+  colors="true"
+  convertErrorsToExceptions="true"
+  convertNoticesToExceptions="true"
+  convertWarningsToExceptions="true"
+  executionOrder="random"
+  processIsolation="true"
+  stopOnError="true"
+  stopOnFailure="true"
+  stderr="true"
 >
   <testsuites>
     <testsuite name="Secure Headers Test">
