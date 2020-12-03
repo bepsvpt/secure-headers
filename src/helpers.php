@@ -1,14 +1,20 @@
 <?php
 
-/**
- * This helper function makes it easier to use a nonce for inline scripts in views.
- * It matches the function used by similar package spatie/laravel-csp so libraries could check for it.
- *
- * Usage: <script nonce="{{ csp_nonce() }}">
- */
-if (! function_exists('csp_nonce')) {
-    function csp_nonce() : string
+use Bepsvpt\SecureHeaders\SecureHeaders;
+
+if (!function_exists('csp_nonce')) {
+    /**
+     * This helper function makes it easier to generate
+     * nonce for inline scripts and styles in views.
+     *
+     * @param string $target
+     *
+     * @return string
+     *
+     * @throws Exception
+     */
+    function csp_nonce(string $target = 'script'): string
     {
-        return Bepsvpt\SecureHeaders\SecureHeaders::nonce();
+        return SecureHeaders::nonce($target);
     }
 }
