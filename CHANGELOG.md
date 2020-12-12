@@ -1,5 +1,8 @@
 ## 7.x
 
+- 7.1.0 (2020-12-12)
+  - Add `csp_nonce` helper function, it is alias of `Bepsvpt\SecureHeaders\SecureHeaders::nonce` method.
+
 - 7.0.0 (2020-10-14)
   - **BREAKING CHANGE**
     - `Feature-Policy` was replaced with `Permissions-Policy`.
