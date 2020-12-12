@@ -1,9 +1,16 @@
 name: Laravel
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+  schedule:
+    # run tests on every week Monday
+    - cron: '0 0 * * 1'
 
 jobs:
   static_analysis:
+    name: Static Analysis
+
     runs-on: ubuntu-latest
 
     steps:
@@ -13,20 +20,36 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '7.4'
-          tools: composer:v2, php-cs-fixer, phpstan
+          tools: composer:v2, composer-normalize, php-cs-fixer, phpstan
           extensions: dom, fileinfo, mbstring, xdebug
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-static-analysis-${{ hashFiles('**/composer.json') }}
 
       - name: Install dependencies
         run: composer update --no-progress --no-interaction
 
+      - name: Run Composer Validate
+        run: composer validate --strict
+
+      - name: Run Composer Normalize
+        run: composer-normalize --dry-run
+
       - name: Run PHPStan
-        run: phpstan analyse --verbose
+        run: phpstan analyse --memory-limit=-1 -vvv
 
       - name: Run PHP-CS-Fixer
-        run: php-cs-fixer fix --verbose --dry-run
+        run: php-cs-fixer fix --dry-run -vvv
 
-  v_8_x:
-    name: 8.x (${{ matrix.os }}, ${{ matrix.php }})
+  unit_tests:
+    name: Laravel ${{ matrix.laravel }} (${{ matrix.php }}, ${{ matrix.os }})
 
     runs-on: ${{ matrix.os }}
 
@@ -34,8 +57,28 @@ jobs:
       fail-fast: false
 
       matrix:
+        laravel: ['8.0', '7.0', '6.0', '5.8.0', '5.7.0', '5.6.0', '5.5.0', '5.4.0', '5.3.0', '5.2.0', '5.1.0']
+        php: ['8.0', '7.4', '7.3', '7.2', '7.1', '7.0']
         os: [ubuntu-latest, windows-latest, macOS-latest]
-        php: ['7.3', '7.4', '8.0']
+        exclude:
+          - { laravel: '5.1.0', php: '8.0' }
+          - { laravel: '5.2.0', php: '8.0' }
+          - { laravel: '5.3.0', php: '8.0' }
+          - { laravel: '5.4.0', php: '8.0' }
+          - { laravel: '5.5.0', php: '8.0' }
+          - { laravel: '5.6.0', php: '7.0' }
+          - { laravel: '5.6.0', php: '8.0' }
+          - { laravel: '5.7.0', php: '7.0' }
+          - { laravel: '5.7.0', php: '8.0' }
+          - { laravel: '5.8.0', php: '7.0' }
+          - { laravel: '5.8.0', php: '8.0' }
+          - { laravel: '6.0', php: '7.0' }
+          - { laravel: '6.0', php: '7.1' }
+          - { laravel: '7.0', php: '7.0' }
+          - { laravel: '7.0', php: '7.1' }
+          - { laravel: '8.0', php: '7.0' }
+          - { laravel: '8.0', php: '7.1' }
+          - { laravel: '8.0', php: '7.2' }
 
     steps:
       - uses: actions/checkout@v2
@@ -44,159 +87,25 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          tools: composer:v2, phpunit:9.4.4
+          tools: composer:v2
           extensions: dom, fileinfo, mbstring, xdebug
 
-      - name: Add 6.* orchestra/testbench to dev dependencies
-        run: composer update --with "orchestra/testbench:^6.0" --no-progress --no-interaction
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
 
-      - name: Test against Laravel 8.x
-        run: phpunit
-
-  v_6_x_to_7_x:
-    name: 6.x ~ 7.x (${{ matrix.os }}, ${{ matrix.php }})
-
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      fail-fast: false
-
-      matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-        php: ['7.2', '7.3', '7.4', '8.0']
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup PHP, Tools and Extensions
-        uses: shivammathur/setup-php@v2
+      - name: Cache dependencies
+        uses: actions/cache@v2
         with:
-          php-version: ${{ matrix.php }}
-          tools: composer:v2, phpunit:8.5.13
-          extensions: dom, fileinfo, mbstring, xdebug
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-${{ hashFiles('**/composer.json') }}
 
-      - name: Add 4.* orchestra/testbench dev dependencies
-        run: composer update --with "orchestra/testbench:^4.0" --no-progress --no-interaction
+      - name: Add PHPUnit to Laravel 5.4 and older versions
+        if: ${{ '5.4.0' >= matrix.laravel }}
+        run: composer require phpunit/phpunit:~5.7 --dev --no-interaction --no-progress --no-update
 
-      - name: Test against Laravel 6.x
-        run: phpunit
+      - name: Install dependencies
+        run: composer update --with illuminate/support:~${{ matrix.laravel }} --with-all-dependencies --no-interaction --no-progress
 
-      - name: Add 5.* orchestra/testbench dev dependencies
-        run: composer update --with "orchestra/testbench:^5.0" --no-progress --no-interaction
-
-      - name: Test against Laravel 7.x
-        run: phpunit
-
-  v_5_6_to_5_8:
-    name: 5.6 ~ 5.8 (${{ matrix.os }}, ${{ matrix.php }})
-
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      fail-fast: false
-
-      matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-        php: ['7.1', '7.2', '7.3', '7.4']
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup PHP, Tools and Extensions
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php }}
-          tools: composer:v2, phpunit:7.5.20
-          extensions: dom, fileinfo, mbstring, xdebug
-
-      - name: Add 3.6.* orchestra/testbench dev dependencies
-        run: composer update --with "orchestra/testbench:3.6.*" --no-progress --no-interaction
-
-      - name: Test against Laravel 5.6
-        run: phpunit
-
-      - name: Add 3.7.* orchestra/testbench dev dependencies
-        run: composer update --with "orchestra/testbench:3.7.*" --no-progress --no-interaction
-
-      - name: Test against Laravel 5.7
-        run: phpunit
-
-      - name: Add 3.8.* orchestra/testbench dev dependencies
-        run: composer update --with "orchestra/testbench:3.8.*" --no-progress --no-interaction
-
-      - name: Test against Laravel 5.8
-        run: phpunit
-
-  v_5_4_to_5_5:
-    name: 5.4 ~ 5.5 (${{ matrix.os }}, ${{ matrix.php }})
-
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      fail-fast: false
-
-      matrix:
-        os: [ ubuntu-latest, windows-latest, macOS-latest ]
-        php: [ '7.0', '7.1', '7.2', '7.3', '7.4' ]
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup PHP, Tools and Extensions
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php }}
-          tools: composer:v2, phpunit:6.5.14
-          extensions: dom, fileinfo, mbstring, xdebug
-
-      - name: Add 3.4.* orchestra/testbench dev dependencies
-        run: composer update --with "orchestra/testbench:3.4.*" --no-progress --no-interaction
-
-      - name: Test against Laravel 5.4
-        run: phpunit
-
-      - name: Add 3.5.* orchestra/testbench dev dependencies
-        run: composer update --with "orchestra/testbench:3.5.*" --no-progress --no-interaction
-
-      - name: Test against Laravel 5.5
-        run: phpunit
-
-  v_5_1_to_5_3:
-    name: 5.1 ~ 5.3 (${{ matrix.os }}, ${{ matrix.php }})
-
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      fail-fast: false
-
-      matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-        php: ['7.0', '7.1', '7.2', '7.3', '7.4']
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup PHP, Tools and Extensions
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php }}
-          tools: composer:v2, phpunit:5.7.27
-          extensions: dom, fileinfo, mbstring, xdebug
-
-      - name: Add 3.1.* orchestra/testbench dev dependencies
-        run: composer update --with "orchestra/testbench:3.1.*" --no-progress --no-interaction
-
-      - name: Test against Laravel 5.1
-        run: phpunit
-
-      - name: Add 3.2.* orchestra/testbench dev dependencies
-        run: composer update --with "orchestra/testbench:3.2.*" --no-progress --no-interaction
-
-      - name: Test against Laravel 5.2
-        run: phpunit
-
-      - name: Add 3.3.* orchestra/testbench dev dependencies
-        run: composer update --with "orchestra/testbench:3.3.*" --no-progress --no-interaction
-
-      - name: Test against Laravel 5.3
-        run: phpunit
+      - name: Run PHPUnit
+        run: vendor/bin/phpunit -d memory_limit=-1 -vvv
