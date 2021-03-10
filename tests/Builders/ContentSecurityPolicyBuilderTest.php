@@ -949,7 +949,7 @@ final class ContentSecurityPolicyBuilderTest extends TestCase
      *
      * @param string $csp
      *
-     * @return array<string>
+     * @return array<int, array<int, string>>
      */
     protected function split(string $csp): array
     {
