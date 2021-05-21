@@ -304,6 +304,17 @@ return [
             'origins' => [],
         ],
 
+        // https://web.dev/floc/
+        'interest-cohort' => [
+            'none' => false,
+
+            '*' => false,
+
+            'self' => true,
+
+            'origins' => [],
+        ],
+
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/magnetometer
         'magnetometer' => [
             'none' => false,
