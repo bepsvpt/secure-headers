@@ -6,14 +6,11 @@ use PhpCsFixer\Finder;
 $finder = Finder::create()
     ->in(__DIR__ . '/src')
     ->in(__DIR__ . '/tests')
-    ->name('*.php')
     ->ignoreDotFiles(true)
     ->ignoreVCS(true);
 
-return Config::create()
+return (new Config())
     ->setFinder($finder)
     ->setRules([
-        '@PSR2' => true,
-        'psr4' => true,
-    ])
-    ->setRiskyAllowed(true);
+        '@PSR12' => true,
+    ]);
