@@ -77,3 +77,4 @@ If you want to run testing, make sure you have the corresponding package version
 |   6.x   |    4.x    |   8.4   |        7.2.0        |
 |   7.x   |    5.x    |   8.4   |        7.2.5        |
 |   8.x   |    6.x    |   9.4   |         7.3         |
+|   9.x   |    7.x    |   9.4   |         8.0         |
