@@ -1,5 +1,8 @@
 ## 7.x
 
+- 7.2.0 (2022-02-10)
+  - Support Laravel 9
+
 - 7.1.0 (2020-12-12)
   - Add `csp_nonce` helper function, it is alias of `Bepsvpt\SecureHeaders\SecureHeaders::nonce` method.
 
