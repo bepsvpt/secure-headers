@@ -663,4 +663,28 @@ return [
             //
         ],
     ],
+
+    /*
+     * set Access-Control-Allow-Methods
+     */
+
+
+    'accepted-methods' => [
+        'enable' => true,
+        'post' => true,
+        'get' => true,
+        'put' => true,
+        'patch' => true,
+        'delete' => true,
+        'copy' => false,
+        'head' => false,
+        'options' => false,
+        'link' => false,
+        'unlink' => false,
+        'purge' => false,
+        'lock' => false,
+        'unlock' => false,
+        'propfind' => false,
+        'view' => false,
+    ],
 ];

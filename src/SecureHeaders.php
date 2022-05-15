@@ -109,7 +109,8 @@ class SecureHeaders
             $this->hsts(),
             $this->expectCT(),
             $this->clearSiteData(),
-            $this->miscellaneous()
+            $this->miscellaneous(),
+            $this->acceptedMethods()
         );
 
         $this->sent = true;
@@ -232,6 +233,33 @@ class SecureHeaders
             'Referrer-Policy' => $this->config['referrer-policy'],
             'Server' => $this->config['server'],
         ]);
+    }
+
+    protected function acceptedMethods(): array
+    {
+        $config = $this->config['accepted-methods'] ?? [];
+        if (!($config['enable'] ?? false)) {
+            return [];
+        }
+
+        $config=array_keys(array_filter([
+            'POST' => $config['post'],
+            'GET' => $config['get'],
+            'PUT' => $config['put'],
+            'PATCH' => $config['patch'],
+            'DELETE' => $config['delete'],
+            'copy' => $config['copy'],
+            'HEAD' => $config['head'],
+            'OPTIONS' => $config['options'],
+            'LINK' => $config['link'],
+            'UNLINK' => $config['unlink'],
+            'PURGE' => $config['purge'],
+            'LOCK' => $config['lock'],
+            'UNLOCK' => $config['unlock'],
+            'PROPFIND' => $config['propfind'],
+            'VIEW' => $config['view'],
+        ]));
+        return ['Access-Control-Allow-Methods' => implode(",",$config)];
     }
 
     /**
