@@ -1,9 +1,9 @@
 <?php
 
-namespace Bepsvpt\SecureHeaders\Tests\Builders;
+namespace Behnam\SecureHeaders\Tests\Behnam;
 
-use Bepsvpt\SecureHeaders\Builders\ContentSecurityPolicyBuilder;
-use Bepsvpt\SecureHeaders\Tests\TestCase;
+use Behnam\SecureHeaders\Behnam\ContentSecurityPolicyBuilder;
+use Behnam\SecureHeaders\Tests\TestCase;
 
 final class ContentSecurityPolicyBuilderTest extends TestCase
 {

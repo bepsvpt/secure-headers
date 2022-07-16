@@ -1,6 +1,6 @@
 <?php
 
-namespace Bepsvpt\SecureHeaders;
+namespace Behnam\SecureHeaders;
 
 use Illuminate\Support\ServiceProvider;
 use Laravel\Lumen\Application;

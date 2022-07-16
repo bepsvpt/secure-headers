@@ -21,7 +21,7 @@
 
 ## Content Security Policy
 
-**You can find real world website examples in [tests](https://github.com/bepsvpt/secure-headers/blob/6.0.0/tests/Builders/ContentSecurityPolicyBuilderTest.php#L241-L945).**
+**You can find real world website examples in [tests](https://github.com/Behnam/secure-headers/blob/6.0.0/tests/Builders/ContentSecurityPolicyBuilderTest.php#L241-L945).**
 
 **After setup csp, you should use [CSP Evaluator](https://csp-evaluator.withgoogle.com) to check up your setting.**
 
@@ -39,7 +39,7 @@
 
     using inject
     ```blade
-    @inject('headers', 'Bepsvpt\SecureHeaders\SecureHeaders')
+    @inject('headers', 'Behnam\SecureHeaders\SecureHeaders')
 
     <style nonce="{{ $headers->nonce('style') }}">
       // your css
@@ -48,7 +48,7 @@
 
     or calling directly
     ```blade
-    <script nonce="{{ Bepsvpt\SecureHeaders\SecureHeaders::nonce('script') }}">
+    <script nonce="{{ Behnam\SecureHeaders\SecureHeaders::nonce('script') }}">
       // your js
     </script>
     ```

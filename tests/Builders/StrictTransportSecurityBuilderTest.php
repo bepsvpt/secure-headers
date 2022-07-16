@@ -1,9 +1,9 @@
 <?php
 
-namespace Bepsvpt\SecureHeaders\Tests\Builders;
+namespace Behnam\SecureHeaders\Tests\Behnam;
 
-use Bepsvpt\SecureHeaders\Builders\StrictTransportSecurityBuilder;
-use Bepsvpt\SecureHeaders\Tests\TestCase;
+use Behnam\SecureHeaders\Behnam\StrictTransportSecurityBuilder;
+use Behnam\SecureHeaders\Tests\TestCase;
 
 final class StrictTransportSecurityBuilderTest extends TestCase
 {

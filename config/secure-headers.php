@@ -60,7 +60,7 @@ return [
      * Also, verify that expose_php is turned Off in php.ini.
      * Otherwise the header will still be included in the response.
      *
-     * Reference: https://github.com/bepsvpt/secure-headers/issues/58#issuecomment-782332442
+     * Reference: https://github.com/behnam/secure-headers/issues/58#issuecomment-782332442
      */
 
     'x-powered-by' => '',
@@ -662,5 +662,29 @@ return [
         'worker-src' => [
             //
         ],
+    ],
+
+    /*
+     * set Access-Control-Allow-Methods
+     */
+
+
+    'accepted-methods' => [
+        'enable' => true,
+        'post' => true,
+        'get' => true,
+        'put' => true,
+        'patch' => true,
+        'delete' => true,
+        'copy' => false,
+        'head' => false,
+        'options' => false,
+        'link' => false,
+        'unlink' => false,
+        'purge' => false,
+        'lock' => false,
+        'unlock' => false,
+        'propfind' => false,
+        'view' => false,
     ],
 ];

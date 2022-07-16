@@ -1,8 +1,8 @@
 <?php
 
-namespace Bepsvpt\SecureHeaders\Tests;
+namespace Behnam\SecureHeaders\Tests;
 
-use Bepsvpt\SecureHeaders\SecureHeaders;
+use Behnam\SecureHeaders\SecureHeaders;
 use InvalidArgumentException;
 
 final class SecureHeadersTest extends TestCase

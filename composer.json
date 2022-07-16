@@ -1,5 +1,5 @@
 {
-  "name": "bepsvpt/secure-headers",
+  "name": "behnam/secure-headers",
   "description": "Add security related headers to HTTP response. The package includes Service Providers for easy Laravel integration.",
   "license": "MIT",
   "type": "library",
@@ -17,11 +17,11 @@
   ],
   "authors": [
     {
-      "name": "bepsvpt",
+      "name": "behnam",
       "email": "og7lsrszah6y3lz@infinitefa.email"
     }
   ],
-  "homepage": "https://github.com/bepsvpt/secure-headers",
+  "homepage": "https://github.com/behnamhosseini/secure-headers",
   "require": {
     "php": "^7.0 || ^8.0",
     "illuminate/support": "~5.1 || ~6.0 || ~7.0 || ~8.0 || ~9.0"
@@ -40,7 +40,7 @@
   "prefer-stable": true,
   "autoload": {
     "psr-4": {
-      "Bepsvpt\\SecureHeaders\\": "src/"
+      "Behnam\\SecureHeaders\\": "src/"
     },
     "files": [
       "src/helpers.php"
@@ -48,7 +48,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Bepsvpt\\SecureHeaders\\Tests\\": "tests/"
+      "Behnam\\SecureHeaders\\Tests\\": "tests/"
     }
   },
   "config": {
@@ -59,7 +59,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Bepsvpt\\SecureHeaders\\SecureHeadersServiceProvider"
+        "Behnam\\SecureHeaders\\SecureHeadersServiceProvider"
       ]
     }
   }
