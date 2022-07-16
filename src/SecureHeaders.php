@@ -1,12 +1,12 @@
 <?php
 
-namespace Bepsvpt\SecureHeaders;
+namespace Behnam\SecureHeaders;
 
-use Bepsvpt\SecureHeaders\Builders\ClearSiteDataBuilder;
-use Bepsvpt\SecureHeaders\Builders\ContentSecurityPolicyBuilder;
-use Bepsvpt\SecureHeaders\Builders\ExceptCTBuilder;
-use Bepsvpt\SecureHeaders\Builders\PermissionsPolicyBuilder;
-use Bepsvpt\SecureHeaders\Builders\StrictTransportSecurityBuilder;
+use Behnam\SecureHeaders\Behnam\ClearSiteDataBuilder;
+use Behnam\SecureHeaders\Behnam\ContentSecurityPolicyBuilder;
+use Behnam\SecureHeaders\Behnam\ExceptCTBuilder;
+use Behnam\SecureHeaders\Behnam\PermissionsPolicyBuilder;
+use Behnam\SecureHeaders\Behnam\StrictTransportSecurityBuilder;
 use Exception;
 use InvalidArgumentException;
 use RuntimeException;

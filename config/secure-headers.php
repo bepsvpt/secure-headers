@@ -60,7 +60,7 @@ return [
      * Also, verify that expose_php is turned Off in php.ini.
      * Otherwise the header will still be included in the response.
      *
-     * Reference: https://github.com/bepsvpt/secure-headers/issues/58#issuecomment-782332442
+     * Reference: https://github.com/behnam/secure-headers/issues/58#issuecomment-782332442
      */
 
     'x-powered-by' => '',

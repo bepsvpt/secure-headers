@@ -1,9 +1,9 @@
 <?php
 
-namespace Bepsvpt\SecureHeaders\Tests\Builders;
+namespace Behnam\SecureHeaders\Tests\Behnam;
 
-use Bepsvpt\SecureHeaders\Builders\ClearSiteDataBuilder;
-use Bepsvpt\SecureHeaders\Tests\TestCase;
+use Behnam\SecureHeaders\Behnam\ClearSiteDataBuilder;
+use Behnam\SecureHeaders\Tests\TestCase;
 
 final class ClearSiteDataBuilderTest extends TestCase
 {

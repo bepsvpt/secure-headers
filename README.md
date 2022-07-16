@@ -1,10 +1,10 @@
 # Secure Headers
 
 [![Financial Contributors on Open Collective](https://opencollective.com/secure-headers/all/badge.svg?label=financial+contributors)](https://opencollective.com/secure-headers)
-[![Actions Status](https://github.com/BePsvPT/secure-headers/workflows/Laravel/badge.svg)](https://github.com/BePsvPT/secure-headers/actions)
-[![Latest Stable Version](https://poser.pugx.org/bepsvpt/secure-headers/v/stable)](https://packagist.org/packages/bepsvpt/secure-headers)
-[![Total Downloads](https://poser.pugx.org/bepsvpt/secure-headers/downloads)](https://packagist.org/packages/bepsvpt/secure-headers)
-[![License](https://poser.pugx.org/bepsvpt/secure-headers/license)](https://packagist.org/packages/bepsvpt/secure-headers)
+[![Actions Status](https://github.com/Behnam/secure-headers/workflows/Laravel/badge.svg)](https://github.com/Behnam/secure-headers/actions)
+[![Latest Stable Version](https://poser.pugx.org/behnam/secure-headers/v/stable)](https://packagist.org/packages/behnam/secure-headers)
+[![Total Downloads](https://poser.pugx.org/behnam/secure-headers/downloads)](https://packagist.org/packages/behnam/secure-headers)
+[![License](https://poser.pugx.org/behnam/secure-headers/license)](https://packagist.org/packages/behnam/secure-headers)
 
 Add security related headers to HTTP response. The package includes Service Providers for easy [Laravel](https://laravel.com) integration.
 
@@ -31,13 +31,13 @@ Add security related headers to HTTP response. The package includes Service Prov
 Install using composer
 
 ```sh
-composer require bepsvpt/secure-headers
+composer require Behnam/secure-headers
 ```
 
 Copy config file to your project directory
 
 ```sh
-cp vendor/bepsvpt/secure-headers/config/secure-headers.php path/to/your/project/directory
+cp vendor/behnam/secure-headers/config/secure-headers.php path/to/your/project/directory
 ```
 
 Set up config file
@@ -49,25 +49,25 @@ Done!
 Install using composer
 
 ```sh
-composer require bepsvpt/secure-headers
+composer require behnam/secure-headers
 ```
 
 Add service provider in `config/app.php` ( laravel version < 5.5 )
 
 ```php
-Bepsvpt\SecureHeaders\SecureHeadersServiceProvider::class,
+Behnam\SecureHeaders\SecureHeadersServiceProvider::class,
 ```
 
 Publish config file
 
 ```sh
-php artisan vendor:publish --provider="Bepsvpt\SecureHeaders\SecureHeadersServiceProvider"
+php artisan vendor:publish --provider="Behnam\SecureHeaders\SecureHeadersServiceProvider"
 ```
 
 Add global middleware in `app/Http/Kernel.php`
 
 ```php
-\Bepsvpt\SecureHeaders\SecureHeadersMiddleware::class,
+\Behnam\SecureHeaders\SecureHeadersMiddleware::class,
 ```
 
 Set up config file `config/secure-headers.php`
@@ -79,27 +79,27 @@ Done!
 Install using composer
 
 ```sh
-composer require bepsvpt/secure-headers
+composer require behnam/secure-headers
 ```
 
 Add service provider in `bootstrap/app.php`
 
 ```php
-$app->register(Bepsvpt\SecureHeaders\SecureHeadersServiceProvider::class);
+$app->register(Behnam\SecureHeaders\SecureHeadersServiceProvider::class);
 ```
 
 Copy config file to project directory
 
 ```sh
 mkdir config
-cp vendor/bepsvpt/secure-headers/config/secure-headers.php config/secure-headers.php
+cp vendor/behnam/secure-headers/config/secure-headers.php config/secure-headers.php
 ```
 
 Add global middleware in `bootstrap/app.php`
 
 ```php
 $app->middleware([
-   \Bepsvpt\SecureHeaders\SecureHeadersMiddleware::class,
+   \Behnam\SecureHeaders\SecureHeadersMiddleware::class,
 ]);
 ```
 
@@ -115,7 +115,7 @@ Done!
 ```php
 <?php
 
-use \Bepsvpt\SecureHeaders\SecureHeaders;
+use \Behnam\SecureHeaders\SecureHeaders;
 ```
 
 #### Instance

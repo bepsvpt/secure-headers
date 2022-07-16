@@ -1,6 +1,6 @@
 <?php
 
-namespace Bepsvpt\SecureHeaders\Builders;
+namespace Behnam\SecureHeaders\Behnam;
 
 final class StrictTransportSecurityBuilder extends Builder
 {

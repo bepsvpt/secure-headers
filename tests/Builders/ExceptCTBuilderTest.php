@@ -1,9 +1,9 @@
 <?php
 
-namespace Bepsvpt\SecureHeaders\Tests\Builders;
+namespace Behnam\SecureHeaders\Tests\Behnam;
 
-use Bepsvpt\SecureHeaders\Builders\ExceptCTBuilder;
-use Bepsvpt\SecureHeaders\Tests\TestCase;
+use Behnam\SecureHeaders\Behnam\ExceptCTBuilder;
+use Behnam\SecureHeaders\Tests\TestCase;
 
 final class ExceptCTBuilderTest extends TestCase
 {
