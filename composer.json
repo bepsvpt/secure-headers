@@ -52,6 +52,9 @@
     }
   },
   "config": {
+    "allow-plugins": {
+      "kylekatarnls/update-helper": true
+    },
     "optimize-autoloader": true,
     "preferred-install": "dist",
     "sort-packages": true
