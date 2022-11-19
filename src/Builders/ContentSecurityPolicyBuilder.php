@@ -34,7 +34,7 @@ final class ContentSecurityPolicyBuilder extends Builder
     ];
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function get(): string
     {
@@ -80,8 +80,7 @@ final class ContentSecurityPolicyBuilder extends Builder
     /**
      * Build directive.
      *
-     * @param array<mixed> $config
-     *
+     * @param  array<mixed>  $config
      * @return string
      */
     protected function directive(array $config): string
@@ -106,8 +105,7 @@ final class ContentSecurityPolicyBuilder extends Builder
     /**
      * Build directive keywords.
      *
-     * @param array<bool> $config
-     *
+     * @param  array<bool>  $config
      * @return array<string>
      */
     protected function keywords(array $config): array
@@ -132,8 +130,7 @@ final class ContentSecurityPolicyBuilder extends Builder
     /**
      * Build directive schemes.
      *
-     * @param array<string> $schemes
-     *
+     * @param  array<string>  $schemes
      * @return array<string>
      */
     protected function schemes(array $schemes): array
@@ -152,8 +149,7 @@ final class ContentSecurityPolicyBuilder extends Builder
     /**
      * Build directive nonces.
      *
-     * @param array<string> $nonces
-     *
+     * @param  array<string>  $nonces
      * @return array<string>
      */
     protected function nonces(array $nonces): array
@@ -172,8 +168,7 @@ final class ContentSecurityPolicyBuilder extends Builder
     /**
      * Build directive hashes.
      *
-     * @param array<array<string>> $groups
-     *
+     * @param  array<array<string>>  $groups
      * @return array<string>
      */
     protected function hashes(array $groups): array
@@ -360,9 +355,8 @@ final class ContentSecurityPolicyBuilder extends Builder
     /**
      * Using key to filter config and return keys.
      *
-     * @param array<bool> $config
-     * @param array<bool> $available
-     *
+     * @param  array<bool>  $config
+     * @param  array<bool>  $available
      * @return array<string>
      */
     protected function filter(array $config, array $available): array
@@ -377,9 +371,8 @@ final class ContentSecurityPolicyBuilder extends Builder
     /**
      * Implode strings using glue.
      *
-     * @param array<string> $payload
-     * @param string $glue
-     *
+     * @param  array<string>  $payload
+     * @param  string  $glue
      * @return string
      */
     protected function implode(array $payload, string $glue = ' '): string

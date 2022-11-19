@@ -7,8 +7,7 @@ if (!function_exists('csp_nonce')) {
      * This helper function makes it easier to generate
      * nonce for inline scripts and styles in views.
      *
-     * @param string $target
-     *
+     * @param  string  $target
      * @return string
      *
      * @throws Exception

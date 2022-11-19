@@ -5,7 +5,7 @@ namespace Bepsvpt\SecureHeaders\Builders;
 final class PermissionsPolicyBuilder extends Builder
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function get(): string
     {
@@ -29,8 +29,7 @@ final class PermissionsPolicyBuilder extends Builder
     /**
      * Parse specific policy value.
      *
-     * @param array<mixed> $config
-     *
+     * @param  array<mixed>  $config
      * @return string
      */
     protected function directive(array $config): string
@@ -53,8 +52,7 @@ final class PermissionsPolicyBuilder extends Builder
     /**
      * Get valid origins.
      *
-     * @param array<string> $origins
-     *
+     * @param  array<string>  $origins
      * @return array<string>
      */
     protected function origins(array $origins): array

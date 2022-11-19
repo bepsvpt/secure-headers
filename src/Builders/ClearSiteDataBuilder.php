@@ -17,7 +17,7 @@ final class ClearSiteDataBuilder extends Builder
     ];
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function get(): string
     {

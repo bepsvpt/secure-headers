@@ -188,7 +188,7 @@ final class ContentSecurityPolicyBuilderTest extends TestCase
         ];
 
         $this->assertSame(
-            "img-src https: blob: data:",
+            'img-src https: blob: data:',
             (new ContentSecurityPolicyBuilder($config))->get()
         );
     }
@@ -947,8 +947,7 @@ final class ContentSecurityPolicyBuilderTest extends TestCase
     /**
      * Split and sort csp to let it comparetable.
      *
-     * @param string $csp
-     *
+     * @param  string  $csp
      * @return array<int, array<int, string>>
      */
     protected function split(string $csp): array

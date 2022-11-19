@@ -39,7 +39,7 @@ class SecureHeaders
     /**
      * Constructor.
      *
-     * @param array<mixed> $config
+     * @param  array<mixed>  $config
      */
     public function __construct(array $config = [])
     {
@@ -59,8 +59,7 @@ class SecureHeaders
     /**
      * Load data from file.
      *
-     * @param string $file
-     *
+     * @param  string  $file
      * @return SecureHeaders
      */
     public static function fromFile($file)
@@ -237,8 +236,7 @@ class SecureHeaders
     /**
      * Generate random nonce value for current request.
      *
-     * @param string $target
-     *
+     * @param  string  $target
      * @return string
      *
      * @throws Exception
