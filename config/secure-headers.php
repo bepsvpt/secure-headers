@@ -87,6 +87,33 @@ return [
     'referrer-policy' => 'no-referrer',
 
     /*
+     * Cross-Origin-Embedder-Policy
+     *
+     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy
+     *
+     * Available Value: 'unsafe-none', 'require-corp'
+     */
+    'cross-origin-embedder-policy' => 'unsafe-none',
+
+    /*
+     * Cross-Origin-Opener-Policy
+     *
+     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy
+     *
+     * Available Value: 'unsafe-none', 'same-origin-allow-popups', 'same-origin'
+     */
+    'cross-origin-opener-policy' => 'unsafe-none',
+
+    /*
+     * Cross-Origin-Resource-Policy
+     *
+     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Resource-Policy
+     *
+     * Available Value: 'same-site', 'same-origin', 'cross-origin'
+     */
+    'cross-origin-resource-policy' => 'cross-origin',
+
+    /*
      * Clear-Site-Data
      *
      * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Clear-Site-Data
