@@ -14,7 +14,7 @@ abstract class Builder
     /**
      * Builder constructor.
      *
-     * @param array<mixed> $config
+     * @param  array<mixed>  $config
      */
     public function __construct(array $config = [])
     {

@@ -5,7 +5,7 @@ namespace Bepsvpt\SecureHeaders\Builders;
 final class StrictTransportSecurityBuilder extends Builder
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function get(): string
     {

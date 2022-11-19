@@ -12,7 +12,7 @@ final class ExceptCTBuilder extends Builder
     protected $max = 2147483648;
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function get(): string
     {

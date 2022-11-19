@@ -20,8 +20,7 @@ final class MiddlewareTest extends TestCase
     /**
      * Get package providers.
      *
-     * @param Application $app
-     *
+     * @param  Application  $app
      * @return array<string>
      */
     protected function getPackageProviders($app): array
@@ -34,8 +33,7 @@ final class MiddlewareTest extends TestCase
     /**
      * Define environment setup.
      *
-     * @param Application $app
-     *
+     * @param  Application  $app
      * @return void
      */
     protected function getEnvironmentSetUp($app)

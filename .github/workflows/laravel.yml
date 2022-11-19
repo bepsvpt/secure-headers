@@ -14,24 +14,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - name: Setup PHP, Tools and Extensions
+      - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'
-          tools: composer:v2, composer-normalize, php-cs-fixer, phpstan
+          php-version: '8.1'
           extensions: dom, fileinfo, mbstring, xdebug
 
       - name: Get composer cache directory
-        id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+        run: echo "COMPOSER_DIR=$(composer config cache-files-dir)" >> $GITHUB_ENV
 
       - name: Cache dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
-          path: ${{ steps.composer-cache.outputs.dir }}
+          path: ${{ env.COMPOSER_DIR }}
           key: ${{ runner.os }}-composer-static-analysis-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-composer-static-analysis-
 
       - name: Install dependencies
         run: composer update --no-progress --no-interaction
@@ -39,17 +38,17 @@ jobs:
       - name: Check runtime dependencies
         run: composer check-platform-reqs
 
-      - name: Run Composer Validate
+      - name: Run composer validate
         run: composer validate --strict
 
-      - name: Run Composer Normalize
-        run: composer-normalize --dry-run
+      - name: Run composer normalize
+        run: composer normalize --dry-run
 
-      - name: Run PHPStan
-        run: phpstan analyse --memory-limit=-1 -vvv
+      - name: Run static analysis
+        run: vendor/bin/phpstan --xdebug -vvv
 
-      - name: Run PHP-CS-Fixer
-        run: php-cs-fixer fix --dry-run -vvv
+      - name: Run coding style checker
+        run: vendor/bin/pint -v --test
 
   unit_tests:
     name: Laravel ${{ matrix.laravel }} (${{ matrix.php }}, ${{ matrix.os }})
@@ -99,31 +98,41 @@ jobs:
           - { laravel: '9.0', php: '7.4' }
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - name: Setup PHP, Tools and Extensions
+      - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          tools: composer:v2
           extensions: dom, fileinfo, mbstring, xdebug
 
-      - name: Get composer cache directory
-        id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Get composer cache directory for Windows
+        if: runner.os == 'Windows'
+        run: echo "COMPOSER_DIR=$(composer config cache-files-dir)" >> $env:GITHUB_ENV
+
+      - name: Get composer cache directory for other OS
+        if: runner.os != 'Windows'
+        run: echo "COMPOSER_DIR=$(composer config cache-files-dir)" >> $GITHUB_ENV
 
       - name: Cache dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
-          path: ${{ steps.composer-cache.outputs.dir }}
+          path: ${{ env.COMPOSER_DIR }}
           key: ${{ runner.os }}-composer-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-composer-laravel-
 
-      - name: Add PHPUnit to Laravel 5.4 and older versions
+      - name: Remove ergebnis/composer-normalize, laravel/pint and phpstan/phpstan to prevent platform issue
+        run: composer remove --dev --no-update ergebnis/composer-normalize laravel/pint phpstan/phpstan
+
+      - name: Add illuminate/support to restrict Laravel testing version
+        run: composer require --no-update illuminate/support:~${{ matrix.laravel }}
+
+      - name: Restrict phpunit/phpunit version to fix dependencies issue for Laravel <= 5.4
         if: ${{ '5.4.0' >= matrix.laravel }}
-        run: composer require phpunit/phpunit:~5.7 --dev --no-interaction --no-progress --no-update
+        run: composer require --dev --no-update phpunit/phpunit:~5.7
 
       - name: Install dependencies
-        run: composer update --with illuminate/support:~${{ matrix.laravel }} --with-all-dependencies --no-interaction --no-progress
+        run: composer update --no-interaction --no-progress
 
-      - name: Run PHPUnit
-        run: vendor/bin/phpunit -d memory_limit=-1 -vvv
+      - name: Run tests
+        run: vendor/bin/phpunit
