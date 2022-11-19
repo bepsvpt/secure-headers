@@ -107,7 +107,13 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: dom, fileinfo, mbstring, xdebug
 
-      - name: Get composer cache directory
+      - name: Get composer cache directory for Windows
+        if: runner.os == 'Windows'
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $env:GITHUB_OUTPUT
+
+      - name: Get composer cache directory for other OS
+        if: runner.os != 'Windows'
         id: composer-cache
         run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
