@@ -122,7 +122,11 @@ jobs:
         run: composer remove --dev --no-update ergebnis/composer-normalize laravel/pint phpstan/phpstan
 
       - name: Add illuminate/support to restrict Laravel testing version
-        run: composer require illuminate/support:~${{ matrix.laravel }} --no-update
+        run: composer require --no-update illuminate/support:~${{ matrix.laravel }}
+
+      - name: Restrict phpunit/phpunit version to fix dependencies issue for Laravel <= 5.4
+        if: ${{ '5.4.0' >= matrix.laravel }}
+        run: composer require --dev --no-update phpunit/phpunit:~5.7
 
       - name: Install dependencies
         run: composer update --no-interaction --no-progress
