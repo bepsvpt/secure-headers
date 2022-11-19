@@ -119,7 +119,7 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-laravel-
 
       - name: Remove ergebnis/composer-normalize, laravel/pint and phpstan/phpstan to prevent platform issue
-        run: composer remove --dev --no-update laravel/pint phpstan/phpstan
+        run: composer remove --dev --no-update ergebnis/composer-normalize laravel/pint phpstan/phpstan
 
       - name: Add illuminate/support to restrict Laravel testing version
         run: composer require illuminate/support:~${{ matrix.laravel }} --no-update
