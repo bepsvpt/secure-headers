@@ -23,18 +23,16 @@
   ],
   "homepage": "https://github.com/bepsvpt/secure-headers",
   "require": {
-    "php": "^7.0 || ^8.0",
-    "illuminate/support": "~5.1 || ~6.0 || ~7.0 || ~8.0 || ~9.0"
+    "php": "^7.0 || ^8.0"
   },
   "require-dev": {
     "ext-json": "*",
     "ext-xdebug": "*",
-    "orchestra/testbench": "~3.1 || ~4.0 || ~5.0 || ~6.0 || ~7.0"
-  },
-  "suggest": {
-    "friendsofphp/php-cs-fixer": "Coding style fixer",
-    "phpstan/phpstan": "Static analysis tool",
-    "phpunit/phpunit": "PHP unit testing framework"
+    "ergebnis/composer-normalize": "~2.28",
+    "laravel/pint": "~1.2",
+    "orchestra/testbench": "~3.1 || ~4.18 || ~5.20 || ~6.25 || ~7.13",
+    "phpstan/phpstan": "~1.9",
+    "phpunit/phpunit": "~5.7 || ~6.5 || ~7.5|| ~8.5 || ~9.5"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
@@ -53,7 +51,8 @@
   },
   "config": {
     "allow-plugins": {
-      "kylekatarnls/update-helper": true
+      "kylekatarnls/update-helper": true,
+      "ergebnis/composer-normalize": true
     },
     "optimize-autoloader": true,
     "preferred-install": "dist",
