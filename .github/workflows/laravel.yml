@@ -121,8 +121,11 @@ jobs:
       - name: Remove laravel/pint and phpstan/phpstan to prevent dependencies installing issue
         run: composer remove --dev --no-update laravel/pint phpstan/phpstan
 
+      - name: Add illuminate/support to restrict Laravel testing version
+        run: composer require illuminate/support:~${{ matrix.laravel }} --no-update
+
       - name: Install dependencies
-        run: composer update --with illuminate/support:~${{ matrix.laravel }} --with-all-dependencies --no-interaction --no-progress
+        run: composer update --no-interaction --no-progress
 
       - name: Run tests
         run: vendor/bin/phpunit
