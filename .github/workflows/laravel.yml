@@ -31,7 +31,7 @@ jobs:
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-static-analysis-${{ hashFiles('**/composer.json') }}
-          restore-keys: ${{ runner.os }}-composer-
+          restore-keys: ${{ runner.os }}-composer-static-analysis-
 
       - name: Install dependencies
         run: composer update --no-progress --no-interaction
@@ -46,7 +46,7 @@ jobs:
         run: composer normalize --dry-run
 
       - name: Run static analysis
-        run: vendor/bin/phpstan -vvv
+        run: vendor/bin/phpstan --xdebug -vvv
 
       - name: Run coding style checker
         run: vendor/bin/pint -v --test
@@ -118,7 +118,7 @@ jobs:
           key: ${{ runner.os }}-composer-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-composer-laravel-
 
-      - name: Remove laravel/pint and phpstan/phpstan to prevent dependencies installing issue
+      - name: Remove ergebnis/composer-normalize, laravel/pint and phpstan/phpstan to prevent platform issue
         run: composer remove --dev --no-update laravel/pint phpstan/phpstan
 
       - name: Add illuminate/support to restrict Laravel testing version
