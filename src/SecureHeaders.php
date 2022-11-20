@@ -230,6 +230,9 @@ class SecureHeaders
             'X-XSS-Protection' => $this->config['x-xss-protection'],
             'Referrer-Policy' => $this->config['referrer-policy'],
             'Server' => $this->config['server'],
+            'Cross-Origin-Embedder-Policy' => $this->config['cross-origin-embedder-policy'] ?? '',
+            'Cross-Origin-Opener-Policy' => $this->config['cross-origin-opener-policy'] ?? '',
+            'Cross-Origin-Resource-Policy' => $this->config['cross-origin-resource-policy'] ?? '',
         ]);
     }
 

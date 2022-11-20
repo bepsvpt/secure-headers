@@ -275,6 +275,28 @@ final class SecureHeadersTest extends TestCase
         );
     }
 
+    public function testCrossOriginPolicy()
+    {
+        $config = $this->config();
+
+        $config['cross-origin-resource-policy'] = 'same-origin';
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArrayHasKey('Cross-Origin-Resource-Policy', $headers);
+
+        $this->assertSame('same-origin', $headers['Cross-Origin-Resource-Policy']);
+
+        // ensure backward compatibility
+
+        unset($config['cross-origin-resource-policy']);
+
+        $this->assertArrayNotHasKey(
+            'Cross-Origin-Resource-Policy',
+            (new SecureHeaders($config))->headers()
+        );
+    }
+
     /**
      * Get secure-headers config.
      *
