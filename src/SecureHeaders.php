@@ -4,7 +4,7 @@ namespace Bepsvpt\SecureHeaders;
 
 use Bepsvpt\SecureHeaders\Builders\ClearSiteDataBuilder;
 use Bepsvpt\SecureHeaders\Builders\ContentSecurityPolicyBuilder;
-use Bepsvpt\SecureHeaders\Builders\ExceptCTBuilder;
+use Bepsvpt\SecureHeaders\Builders\ExpectCertificateTransparencyBuilder;
 use Bepsvpt\SecureHeaders\Builders\PermissionsPolicyBuilder;
 use Bepsvpt\SecureHeaders\Builders\StrictTransportSecurityBuilder;
 use Exception;
@@ -191,7 +191,7 @@ class SecureHeaders
             return [];
         }
 
-        $builder = new ExceptCTBuilder($config);
+        $builder = new ExpectCertificateTransparencyBuilder($config);
 
         return ['Expect-CT' => $builder->get()];
     }

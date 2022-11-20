@@ -7,7 +7,7 @@ final class ClearSiteDataBuilder extends Builder
     /**
      * Clear Site Data whitelist directives.
      *
-     * @var array<bool>
+     * @var array<string, bool>
      */
     protected $whitelist = [
         'cache' => true,

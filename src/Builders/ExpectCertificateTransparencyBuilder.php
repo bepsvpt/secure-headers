@@ -2,7 +2,7 @@
 
 namespace Bepsvpt\SecureHeaders\Builders;
 
-final class ExceptCTBuilder extends Builder
+final class ExpectCertificateTransparencyBuilder extends Builder
 {
     /**
      * Max age max value.

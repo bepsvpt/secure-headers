@@ -276,7 +276,7 @@ final class SecureHeadersTest extends TestCase
         );
     }
 
-    public function testExpectCT()
+    public function testExpectCertificateTransparency()
     {
         $config = $this->config();
 

@@ -2,12 +2,12 @@
 
 namespace Bepsvpt\SecureHeaders\Tests\Builders;
 
-use Bepsvpt\SecureHeaders\Builders\ExceptCTBuilder;
+use Bepsvpt\SecureHeaders\Builders\ExpectCertificateTransparencyBuilder;
 use Bepsvpt\SecureHeaders\Tests\TestCase;
 
-final class ExceptCTBuilderTest extends TestCase
+final class ExpectCertificateTransparencyBuilderTest extends TestCase
 {
-    public function testExceptCT()
+    public function testExpectCertificateTransparency()
     {
         $config = [
             'max-age' => 1440,
@@ -15,7 +15,7 @@ final class ExceptCTBuilderTest extends TestCase
 
         $this->assertSame(
             'max-age=1440',
-            (new ExceptCTBuilder($config))->get()
+            (new ExpectCertificateTransparencyBuilder($config))->get()
         );
 
         $config = [
@@ -26,7 +26,7 @@ final class ExceptCTBuilderTest extends TestCase
 
         $this->assertSame(
             'max-age=1440, enforce',
-            (new ExceptCTBuilder($config))->get()
+            (new ExpectCertificateTransparencyBuilder($config))->get()
         );
 
         $config = [
@@ -37,7 +37,7 @@ final class ExceptCTBuilderTest extends TestCase
 
         $this->assertSame(
             'max-age=1440, report-uri="https://ct.example.com/report"',
-            (new ExceptCTBuilder($config))->get()
+            (new ExpectCertificateTransparencyBuilder($config))->get()
         );
 
         $config = [
@@ -50,7 +50,7 @@ final class ExceptCTBuilderTest extends TestCase
 
         $this->assertSame(
             'max-age=1440, enforce, report-uri="https://ct.example.com/report"',
-            (new ExceptCTBuilder($config))->get()
+            (new ExpectCertificateTransparencyBuilder($config))->get()
         );
     }
 
@@ -62,7 +62,7 @@ final class ExceptCTBuilderTest extends TestCase
 
         $this->assertSame(
             'max-age=0',
-            (new ExceptCTBuilder($config))->get()
+            (new ExpectCertificateTransparencyBuilder($config))->get()
         );
     }
 
@@ -76,7 +76,7 @@ final class ExceptCTBuilderTest extends TestCase
 
         $this->assertSame(
             'max-age=86400',
-            (new ExceptCTBuilder($config))->get()
+            (new ExpectCertificateTransparencyBuilder($config))->get()
         );
     }
 }

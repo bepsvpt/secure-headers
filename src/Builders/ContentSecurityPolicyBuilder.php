@@ -7,7 +7,7 @@ final class ContentSecurityPolicyBuilder extends Builder
     /**
      * Content Security Policy whitelist directives.
      *
-     * @var array<bool>
+     * @var array<string, bool>
      */
     protected $whitelist = [
         'base-uri' => true,
