@@ -178,17 +178,42 @@ final class SecureHeadersTest extends TestCase
         );
     }
 
-    public function testContentSecurityPolicyClearedNonces()
+    public function testContentSecurityPolicyRemoveNonce()
     {
-        SecureHeaders::nonce();
+        SecureHeaders::nonce('script');
+        SecureHeaders::nonce('style');
 
-        SecureHeaders::clearNonces();
+        SecureHeaders::removeNonce();
 
         $headers = (new SecureHeaders($this->config()))->headers();
 
         $this->assertArrayNotHasKey(
             'Content-Security-Policy',
             $headers
+        );
+
+        $nonce = SecureHeaders::nonce('script');
+        SecureHeaders::nonce('style');
+
+        SecureHeaders::removeNonce('style');
+
+        $headers = (new SecureHeaders($this->config()))->headers();
+
+        $this->assertSame(
+            sprintf("script-src 'nonce-%s'", $nonce),
+            $headers['Content-Security-Policy']
+        );
+
+        $nonce1 = SecureHeaders::nonce('script');
+        $nonce2 = SecureHeaders::nonce('script');
+
+        SecureHeaders::removeNonce('script', $nonce1);
+
+        $headers = (new SecureHeaders($this->config()))->headers();
+
+        $this->assertSame(
+            sprintf("script-src 'nonce-%s'", $nonce2),
+            $headers['Content-Security-Policy']
         );
     }
 
