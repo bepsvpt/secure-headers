@@ -52,7 +52,7 @@ class SecureHeaders
     public function __destruct()
     {
         if ($this->sent) {
-            self::$nonces['script'] = self::$nonces['style'] = [];
+            self::clearNonces();
         }
     }
 
@@ -251,5 +251,21 @@ class SecureHeaders
         self::$nonces[$target][] = $nonce;
 
         return $nonce;
+    }
+
+    /**
+     * Remove all nonces for given target. When is null, all targets are cleared
+     *
+     * @param string|null $target
+     *
+     * @return void
+     */
+    public static function clearNonces(string $target = null)
+    {
+        if ($target === null) {
+            self::$nonces['script'] = self::$nonces['style'] = [];
+        } elseif (isset(self::$nonces[$target])) {
+            self::$nonces[$target] = [];
+        }
     }
 }
