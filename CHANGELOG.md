@@ -1,6 +1,6 @@
 ## 7.x
 
-- 7.3.0
+- 7.3.0 (2022-11-20)
   - remove `illuminate/support` from dependencies. ([#78](https://github.com/bepsvpt/secure-headers/pull/78))
   - support Cross-Origin-Policy headers. ([#79](https://github.com/bepsvpt/secure-headers/pull/79))
     - `Cross-Origin-Embedder-Policy`
