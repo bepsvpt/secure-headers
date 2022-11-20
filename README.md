@@ -155,24 +155,6 @@ Please see [CHANGELOG](CHANGELOG.md) for details.
 
 Please see [UPGRADE](UPGRADE.md) for details.
 
-## Contributors
-
-### Financial Contributors
-
-Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/secure-headers/contribute)]
-
-#### Individuals
-
-<a href="https://opencollective.com/secure-headers"><img src="https://opencollective.com/secure-headers/individuals.svg?width=890"></a>
-
-#### Organizations
-
-Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/secure-headers/contribute)]
-
-<a href="https://opencollective.com/secure-headers/organization/0/website"><img src="https://opencollective.com/secure-headers/organization/0/avatar.svg"></a>
-<a href="https://opencollective.com/secure-headers/organization/1/website"><img src="https://opencollective.com/secure-headers/organization/1/avatar.svg"></a>
-<a href="https://opencollective.com/secure-headers/organization/2/website"><img src="https://opencollective.com/secure-headers/organization/2/avatar.svg"></a>
-
 ## License
 
 Secure Headers is licensed under [The MIT License (MIT)](LICENSE).
