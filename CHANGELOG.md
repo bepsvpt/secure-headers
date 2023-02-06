@@ -1,5 +1,8 @@
 ## 7.x
 
+- 7.4.0 (2023-02-07)
+  - Support Laravel 10
+
 - 7.3.0 (2022-11-20)
   - remove `illuminate/support` from dependencies. ([#78](https://github.com/bepsvpt/secure-headers/pull/78))
   - support Cross-Origin-Policy headers. ([#79](https://github.com/bepsvpt/secure-headers/pull/79))
