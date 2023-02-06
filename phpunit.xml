@@ -6,8 +6,6 @@
   colors="true"
   executionOrder="random"
   processIsolation="true"
-  stopOnError="true"
-  stopOnFailure="true"
   stderr="true"
   verbose="true"
 >
