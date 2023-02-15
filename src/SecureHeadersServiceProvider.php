@@ -57,8 +57,6 @@ class SecureHeadersServiceProvider extends ServiceProvider
 
     /**
      * Get config file path.
-     *
-     * @return string
      */
     protected function configPath(): string
     {

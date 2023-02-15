@@ -24,8 +24,6 @@ final class StrictTransportSecurityBuilder extends Builder
 
     /**
      * Get max-age directive.
-     *
-     * @return string
      */
     protected function maxAge(): string
     {

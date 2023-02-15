@@ -947,7 +947,6 @@ final class ContentSecurityPolicyBuilderTest extends TestCase
     /**
      * Split and sort csp to let it comparetable.
      *
-     * @param  string  $csp
      * @return array<int, array<int, string>>
      */
     protected function split(string $csp): array

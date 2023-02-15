@@ -55,8 +55,6 @@ final class ContentSecurityPolicyBuilder extends Builder
 
     /**
      * Build directives.
-     *
-     * @return string
      */
     protected function directives(): string
     {
@@ -81,7 +79,6 @@ final class ContentSecurityPolicyBuilder extends Builder
      * Build directive.
      *
      * @param  array<mixed>  $config
-     * @return string
      */
     protected function directive(array $config): string
     {
@@ -196,8 +193,6 @@ final class ContentSecurityPolicyBuilder extends Builder
 
     /**
      * Build plugin-types directive.
-     *
-     * @return string
      */
     protected function pluginTypes(): string
     {
@@ -216,8 +211,6 @@ final class ContentSecurityPolicyBuilder extends Builder
 
     /**
      * Build sandbox directive.
-     *
-     * @return string
      */
     protected function sandbox(): string
     {
@@ -252,8 +245,6 @@ final class ContentSecurityPolicyBuilder extends Builder
 
     /**
      * Build require-trusted-types-for directive.
-     *
-     * @return string
      */
     protected function requireTrustedTypesFor(): string
     {
@@ -268,8 +259,6 @@ final class ContentSecurityPolicyBuilder extends Builder
 
     /**
      * Build trusted-types directive.
-     *
-     * @return string
      */
     protected function trustedTypes(): string
     {
@@ -296,8 +285,6 @@ final class ContentSecurityPolicyBuilder extends Builder
 
     /**
      * Build block-all-mixed-content directive.
-     *
-     * @return string
      */
     protected function blockAllMixedContent(): string
     {
@@ -310,8 +297,6 @@ final class ContentSecurityPolicyBuilder extends Builder
 
     /**
      * Build upgrade-insecure-requests directive.
-     *
-     * @return string
      */
     protected function upgradeInsecureRequests(): string
     {
@@ -324,8 +309,6 @@ final class ContentSecurityPolicyBuilder extends Builder
 
     /**
      * Build report-to directive.
-     *
-     * @return string
      */
     protected function reportTo(): string
     {
@@ -338,8 +321,6 @@ final class ContentSecurityPolicyBuilder extends Builder
 
     /**
      * Build report-uri directive.
-     *
-     * @return string
      */
     protected function reportUri(): string
     {
@@ -372,8 +353,6 @@ final class ContentSecurityPolicyBuilder extends Builder
      * Implode strings using glue.
      *
      * @param  array<string>  $payload
-     * @param  string  $glue
-     * @return string
      */
     protected function implode(array $payload, string $glue = ' '): string
     {

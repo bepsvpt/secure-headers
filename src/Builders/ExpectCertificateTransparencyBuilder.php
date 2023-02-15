@@ -31,8 +31,6 @@ final class ExpectCertificateTransparencyBuilder extends Builder
 
     /**
      * Get max-age directive.
-     *
-     * @return string
      */
     protected function maxAge(): string
     {
@@ -49,8 +47,6 @@ final class ExpectCertificateTransparencyBuilder extends Builder
 
     /**
      * Get report-uri directive.
-     *
-     * @return string
      */
     protected function reportUri(): string
     {

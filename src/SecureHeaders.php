@@ -239,8 +239,6 @@ class SecureHeaders
     /**
      * Generate random nonce value for current request.
      *
-     * @param  string  $target
-     * @return string
      *
      * @throws Exception
      */
@@ -256,8 +254,6 @@ class SecureHeaders
     /**
      * Remove specific nonce value or flush all nonce for the given target.
      *
-     * @param  string|null  $target
-     * @param  string|null  $nonce
      * @return void
      */
     public static function removeNonce(string $target = null, string $nonce = null)

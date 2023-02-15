@@ -23,8 +23,6 @@ abstract class Builder
 
     /**
      * Get result.
-     *
-     * @return string
      */
     abstract public function get(): string;
 }

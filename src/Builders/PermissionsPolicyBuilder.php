@@ -30,7 +30,6 @@ final class PermissionsPolicyBuilder extends Builder
      * Parse specific policy value.
      *
      * @param  array<mixed>  $config
-     * @return string
      */
     protected function directive(array $config): string
     {
