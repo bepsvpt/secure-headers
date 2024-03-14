@@ -1,0 +1,2 @@
+providers:
+  - Bepsvpt\SecureHeaders\SecureHeadersServiceProvider

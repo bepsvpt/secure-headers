@@ -1,7 +1,11 @@
+/.fleet
 /.idea
-/build
+/.vscode
+/coverage
 /vendor
-.php_cs.cache
+.DS_Store
 .phpunit.result.cache
 clover.xml
+composer.phar
 composer.lock
+Thumbs.db
