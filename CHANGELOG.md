@@ -1,5 +1,8 @@
 ## 7.x
 
+- 7.5.0 (2024-03-14)
+  - Support Laravel 11
+
 - 7.4.0 (2023-02-07)
   - Support Laravel 10
 
