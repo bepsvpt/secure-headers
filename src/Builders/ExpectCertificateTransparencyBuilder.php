@@ -22,7 +22,7 @@ final class ExpectCertificateTransparencyBuilder extends Builder
             $directives[] = 'enforce';
         }
 
-        if (!empty($this->config['report-uri'])) {
+        if (! empty($this->config['report-uri'])) {
             $directives[] = $this->reportUri();
         }
 

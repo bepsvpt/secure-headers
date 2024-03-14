@@ -64,7 +64,7 @@ class SecureHeaders
      */
     public static function fromFile($file)
     {
-        if (!is_file($file)) {
+        if (! is_file($file)) {
             throw new InvalidArgumentException(
                 sprintf('%s does not exist.', $file)
             );
@@ -125,7 +125,7 @@ class SecureHeaders
     {
         $config = $this->config['csp'] ?? [];
 
-        if (!($config['enable'] ?? false)) {
+        if (! ($config['enable'] ?? false)) {
             return [];
         }
 
@@ -151,7 +151,7 @@ class SecureHeaders
     {
         $config = $this->config['permissions-policy'] ?? [];
 
-        if (!($config['enable'] ?? false)) {
+        if (! ($config['enable'] ?? false)) {
             return [];
         }
 
@@ -169,7 +169,7 @@ class SecureHeaders
     {
         $config = $this->config['hsts'] ?? [];
 
-        if (!($config['enable'] ?? false)) {
+        if (! ($config['enable'] ?? false)) {
             return [];
         }
 
@@ -187,7 +187,7 @@ class SecureHeaders
     {
         $config = $this->config['expect-ct'] ?? [];
 
-        if (!($config['enable'] ?? false)) {
+        if (! ($config['enable'] ?? false)) {
             return [];
         }
 
@@ -205,7 +205,7 @@ class SecureHeaders
     {
         $config = $this->config['clear-site-data'] ?? [];
 
-        if (!($config['enable'] ?? false)) {
+        if (! ($config['enable'] ?? false)) {
             return [];
         }
 

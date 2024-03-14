@@ -60,6 +60,6 @@ class SecureHeadersServiceProvider extends ServiceProvider
      */
     protected function configPath(): string
     {
-        return __DIR__ . '/../config/secure-headers.php';
+        return __DIR__.'/../config/secure-headers.php';
     }
 }

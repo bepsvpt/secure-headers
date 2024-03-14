@@ -61,7 +61,7 @@ final class ContentSecurityPolicyBuilder extends Builder
         $result = [];
 
         foreach ($this->config as $name => $config) {
-            if (!($this->whitelist[$name] ?? false)) {
+            if (! ($this->whitelist[$name] ?? false)) {
                 continue;
             }
 
@@ -173,7 +173,7 @@ final class ContentSecurityPolicyBuilder extends Builder
         $result = [];
 
         foreach ($groups as $hash => $items) {
-            if (!in_array($hash, ['sha256', 'sha384', 'sha512'], true)) {
+            if (! in_array($hash, ['sha256', 'sha384', 'sha512'], true)) {
                 continue;
             }
 
@@ -202,7 +202,7 @@ final class ContentSecurityPolicyBuilder extends Builder
             return preg_match('/^[a-z\-]+\/[a-z\-]+$/i', $mime);
         });
 
-        if (!empty($passes)) {
+        if (! empty($passes)) {
             array_unshift($passes, 'plugin-types');
         }
 
@@ -216,7 +216,7 @@ final class ContentSecurityPolicyBuilder extends Builder
     {
         $sandbox = $this->config['sandbox'] ?? [];
 
-        if (!($sandbox['enable'] ?? false)) {
+        if (! ($sandbox['enable'] ?? false)) {
             return '';
         }
 
@@ -250,7 +250,7 @@ final class ContentSecurityPolicyBuilder extends Builder
     {
         $config = $this->config['require-trusted-types-for'] ?? [];
 
-        if (!($config['script'] ?? false)) {
+        if (! ($config['script'] ?? false)) {
             return '';
         }
 
@@ -264,7 +264,7 @@ final class ContentSecurityPolicyBuilder extends Builder
     {
         $trustedTypes = $this->config['trusted-types'] ?? [];
 
-        if (!($trustedTypes['enable'] ?? false)) {
+        if (! ($trustedTypes['enable'] ?? false)) {
             return '';
         }
 
@@ -288,7 +288,7 @@ final class ContentSecurityPolicyBuilder extends Builder
      */
     protected function blockAllMixedContent(): string
     {
-        if (!($this->config['block-all-mixed-content'] ?? false)) {
+        if (! ($this->config['block-all-mixed-content'] ?? false)) {
             return '';
         }
 
@@ -300,7 +300,7 @@ final class ContentSecurityPolicyBuilder extends Builder
      */
     protected function upgradeInsecureRequests(): string
     {
-        if (!($this->config['upgrade-insecure-requests'] ?? false)) {
+        if (! ($this->config['upgrade-insecure-requests'] ?? false)) {
             return '';
         }
 

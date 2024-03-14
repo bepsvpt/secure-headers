@@ -62,7 +62,7 @@ final class MiddlewareTest extends TestCase
     public function testBinaryResponse()
     {
         $this->app['router']->get('/', function () {
-            return response()->download(__DIR__ . '/../README.md');
+            return response()->download(__DIR__.'/../README.md');
         });
 
         $headers = $this->get('/')->{$this->_response}->headers->all();

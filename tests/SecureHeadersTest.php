@@ -10,7 +10,7 @@ final class SecureHeadersTest extends TestCase
     /**
      * @var string
      */
-    protected $configPath = __DIR__ . '/../config/secure-headers.php';
+    protected $configPath = __DIR__.'/../config/secure-headers.php';
 
     public function testSendHeaders()
     {
@@ -55,7 +55,7 @@ final class SecureHeadersTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        SecureHeaders::fromFile(__DIR__ . '/not-found');
+        SecureHeaders::fromFile(__DIR__.'/not-found');
     }
 
     public function testServerHeader()
