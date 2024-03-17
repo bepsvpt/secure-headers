@@ -159,8 +159,11 @@ jobs:
         if: ${{ contains(fromJSON('["5.4.0", "5.3.0", "5.2.0", "5.1.0"]'), matrix.laravel) }}
         run: composer require --dev --no-update phpunit/phpunit:~5.7
 
-      - name: Install dependencies with specific Laravel version
-        run: composer update --with illuminate/support:~${{ matrix.laravel }} --no-progress --no-interaction
+      - name: Add illuminate/support to restrict Laravel testing version
+        run: composer require --no-update illuminate/support:~${{ matrix.laravel }}
+
+      - name: Install dependencies
+        run: composer update --no-progress --no-interaction
 
       - name: Run tests
         run: vendor/bin/phpunit
