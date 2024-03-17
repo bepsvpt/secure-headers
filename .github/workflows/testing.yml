@@ -1,4 +1,4 @@
-name: Laravel
+name: Testing
 
 on:
   push:
@@ -152,18 +152,15 @@ jobs:
           key: ${{ runner.os }}-composer-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-composer-laravel-
 
-      - name: Remove ergebnis/composer-normalize, laravel/pint and phpstan/phpstan to prevent platform issue
+      - name: Remove static analysis packages to prevent platform issues
         run: composer remove --dev --no-update ergebnis/composer-normalize laravel/pint phpstan/phpstan
-
-      - name: Add illuminate/support to restrict Laravel testing version
-        run: composer require --no-update illuminate/support:~${{ matrix.laravel }}
 
       - name: Restrict phpunit/phpunit version to fix dependencies issue for Laravel <= 5.4
         if: ${{ contains(fromJSON('["5.4.0", "5.3.0", "5.2.0", "5.1.0"]'), matrix.laravel) }}
         run: composer require --dev --no-update phpunit/phpunit:~5.7
 
-      - name: Install dependencies
-        run: composer update --no-interaction --no-progress
+      - name: Install dependencies with specific Laravel version
+        run: composer update --with illuminate/support:~${{ matrix.laravel }} --no-progress --no-interaction
 
       - name: Run tests
         run: vendor/bin/phpunit
