@@ -3,12 +3,14 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/7.5/phpunit.xsd"
   bootstrap="vendor/autoload.php"
+  beStrictAboutChangesToGlobalState="true"
   colors="true"
+  columns="max"
   executionOrder="random"
   stderr="true"
 >
   <testsuites>
-    <testsuite name="Secure Headers Test">
+    <testsuite name="Test Suite">
       <directory>./tests</directory>
     </testsuite>
   </testsuites>
