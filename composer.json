@@ -34,7 +34,7 @@
     "phpstan/phpstan": "^1.10",
     "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.5 || ^9.6 || ^10.5"
   },
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "prefer-stable": true,
   "autoload": {
     "psr-4": {
