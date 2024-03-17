@@ -2,10 +2,8 @@ name: Laravel
 
 on:
   push:
-  pull_request:
   schedule:
-    # run tests on every week Monday
-    - cron: '0 0 * * 1'
+    - cron: '0 0 * * 1' # run tests on every week Monday
 
 jobs:
   static_analysis:
@@ -45,10 +43,10 @@ jobs:
         run: composer normalize --dry-run
 
       - name: Run static analysis
-        run: vendor/bin/phpstan --verbose
+        run: vendor/bin/phpstan --memory-limit=-1 --verbose
 
       - name: Run coding style checker
-        run: vendor/bin/pint --verbose --test
+        run: vendor/bin/pint -v --test
 
   unit_tests:
     name: Laravel ${{ matrix.laravel }} (${{ matrix.php }}, ${{ matrix.os }})
@@ -59,9 +57,9 @@ jobs:
       fail-fast: false
 
       matrix:
-        laravel: ['11.0', '10.0', '9.0', '8.0', '7.0', '6.0', '5.8.0', '5.7.0', '5.6.0', '5.5.0', '5.4.0', '5.3.0', '5.2.0', '5.1.0']
-        php: ['8.3', '8.2', '8.1', '8.0', '7.4', '7.3', '7.2', '7.1', '7.0']
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        laravel: [ '11.0', '10.0', '9.0', '8.0', '7.0', '6.0', '5.8.0', '5.7.0', '5.6.0', '5.5.0', '5.4.0', '5.3.0', '5.2.0', '5.1.0' ]
+        php: [ '8.3', '8.2', '8.1', '8.0', '7.4', '7.3', '7.2', '7.1', '7.0' ]
+        os: [ ubuntu-latest, windows-latest, macOS-latest ]
         exclude:
           - { laravel: '5.1.0', php: '8.0' }
           - { laravel: '5.1.0', php: '8.1' }
