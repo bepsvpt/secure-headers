@@ -23,6 +23,16 @@ return [
     'x-content-type-options' => 'nosniff',
 
     /*
+     * X-DNS-Prefetch-Control
+     *
+     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-DNS-Prefetch-Control
+     *
+     * Available Value: 'on', 'off'
+     */
+
+    'x-dns-prefetch-control' => '',
+
+    /*
      * X-Download-Options
      *
      * Reference: https://msdn.microsoft.com/en-us/library/jj542450(v=vs.85).aspx
