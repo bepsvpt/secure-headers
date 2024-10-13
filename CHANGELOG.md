@@ -1,3 +1,42 @@
+## 8.x
+
+- 8.0.0 (2024-10-13)
+  - Support `X-DNS-Prefetch-Control` header.
+  - Support `clientHints` for `Clear-Site-Data` header.
+  - Support `Reporting-Endpoints` and `NEL` headers.  ([#49](https://github.com/bepsvpt/secure-headers/issues/49))
+  - Update directives for `Content-Security-Policy` header.
+    - The following directives were updated:
+      - `sandbox`
+      - `trusted-types`
+    - The following directives were added:
+      - `fenced-frame-src`
+    - The following directives were removed:
+      - `navigate-to`
+      - `plugin-types`
+  - Update directives for `Permissions-Policy` header.
+    - The following directives were added:
+      - `attribution-reporting`
+      - `bluetooth`
+      - `browsing-topics`
+      - `compute-pressure`
+      - `gamepad`
+      - `hid`
+      - `identity-credentials-get`
+      - `idle-detection`
+      - `local-fonts`
+      - `otp-credentials`
+      - `publickey-credentials-create`
+      - `serial`
+      - `speaker-selection`
+      - `storage-access`
+      - `window-management`
+    - The following directives were removed:
+      - `battery`
+      - `execution-while-not-rendered`
+      - `execution-while-out-of-viewport`
+      - `navigation-override`
+      - `sync-xhr`
+
 ## 7.x
 
 - 7.5.0 (2024-03-14)
