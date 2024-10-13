@@ -143,6 +143,8 @@ return [
 
         'cache' => true,
 
+        'clientHints' => true,
+
         'cookies' => true,
 
         'storage' => true,
