@@ -57,7 +57,7 @@ return [
     /*
      * X-Permitted-Cross-Domain-Policies
      *
-     * Reference: https://www.adobe.com/devnet/adobe-media-server/articles/cross-domain-xml-for-streaming.html
+     * Reference: https://www.adobe.com/devnet-docs/acrobatetk/tools/AppSec/xdomain.html
      *
      * Available Value: 'all', 'none', 'master-only', 'by-content-type', 'by-ftp-filename'
      */
@@ -105,8 +105,9 @@ return [
      *
      * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy
      *
-     * Available Value: 'unsafe-none', 'require-corp'
+     * Available Value: 'unsafe-none', 'require-corp', 'credentialless'
      */
+
     'cross-origin-embedder-policy' => 'unsafe-none',
 
     /*
@@ -116,6 +117,7 @@ return [
      *
      * Available Value: 'unsafe-none', 'same-origin-allow-popups', 'same-origin'
      */
+
     'cross-origin-opener-policy' => 'unsafe-none',
 
     /*
@@ -125,6 +127,7 @@ return [
      *
      * Available Value: 'same-site', 'same-origin', 'cross-origin'
      */
+
     'cross-origin-resource-policy' => 'cross-origin',
 
     /*
