@@ -48,6 +48,8 @@ return [
      * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
      *
      * Available Value: 'deny', 'sameorigin', 'allow-from <uri>'
+     *
+     * Note: The X-Frame-Options is no longer recommended for use; please use Content-Security-Policy (CSP) instead.
      */
 
     'x-frame-options' => 'sameorigin',
@@ -81,6 +83,8 @@ return [
      * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection
      *
      * Available Value: '1', '0', '1; mode=block'
+     *
+     * Note: The X-XSS-Protection is no longer recommended for use; please use Content-Security-Policy (CSP) instead.
      */
 
     'x-xss-protection' => '',
@@ -165,6 +169,8 @@ return [
      * Expect-CT
      *
      * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expect-CT
+     *
+     * Note: This feature is no longer recommended.
      */
 
     'expect-ct' => [
