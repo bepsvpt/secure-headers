@@ -14,6 +14,7 @@ final class ContentSecurityPolicyBuilder extends Builder
         'child-src' => true,
         'connect-src' => true,
         'default-src' => true,
+        'fenced-frame-src' => true,
         'font-src' => true,
         'form-action' => true,
         'frame-ancestors' => true,
@@ -21,7 +22,6 @@ final class ContentSecurityPolicyBuilder extends Builder
         'img-src' => true,
         'manifest-src' => true,
         'media-src' => true,
-        'navigate-to' => true,
         'object-src' => true,
         'prefetch-src' => true,
         'script-src' => true,
@@ -40,7 +40,6 @@ final class ContentSecurityPolicyBuilder extends Builder
     {
         $builds = [
             $this->directives(),
-            $this->pluginTypes(),
             $this->sandbox(),
             $this->requireTrustedTypesFor(),
             $this->trustedTypes(),
@@ -192,24 +191,6 @@ final class ContentSecurityPolicyBuilder extends Builder
     }
 
     /**
-     * Build plugin-types directive.
-     */
-    protected function pluginTypes(): string
-    {
-        $pluginTypes = $this->config['plugin-types'] ?? [];
-
-        $passes = array_filter($pluginTypes, function (string $mime) {
-            return preg_match('/^[a-z\-]+\/[a-z\-]+$/i', $mime);
-        });
-
-        if (! empty($passes)) {
-            array_unshift($passes, 'plugin-types');
-        }
-
-        return $this->implode($passes);
-    }
-
-    /**
      * Build sandbox directive.
      */
     protected function sandbox(): string
@@ -221,7 +202,7 @@ final class ContentSecurityPolicyBuilder extends Builder
         }
 
         $whitelist = [
-            'allow-downloads-without-user-activation' => true,
+            'allow-downloads' => true,
             'allow-forms' => true,
             'allow-modals' => true,
             'allow-orientation-lock' => true,
@@ -234,6 +215,7 @@ final class ContentSecurityPolicyBuilder extends Builder
             'allow-storage-access-by-user-activation' => true,
             'allow-top-navigation' => true,
             'allow-top-navigation-by-user-activation' => true,
+            'allow-top-navigation-to-custom-protocols' => true,
         ];
 
         $passes = $this->filter($sandbox, $whitelist);
@@ -268,17 +250,17 @@ final class ContentSecurityPolicyBuilder extends Builder
             return '';
         }
 
-        $policies = array_map('trim', $trustedTypes['policies'] ?? []);
+        $policies = ['trusted-types'];
 
-        if ($trustedTypes['default'] ?? false) {
-            $policies[] = 'default';
+        if ($trustedTypes['none'] ?? false) {
+            $policies[] = "'none'";
+        } else {
+            array_push($policies, ...array_map('trim', $trustedTypes['policies'] ?? []));
+
+            if ($trustedTypes['allow-duplicates'] ?? false) {
+                $policies[] = "'allow-duplicates'";
+            }
         }
-
-        if ($trustedTypes['allow-duplicates'] ?? false) {
-            $policies[] = "'allow-duplicates'";
-        }
-
-        array_unshift($policies, 'trusted-types');
 
         return $this->implode($policies);
     }

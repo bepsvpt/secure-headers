@@ -641,6 +641,11 @@ return [
             //
         ],
 
+        // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/fenced-frame-src
+        'fenced-frame-src' => [
+            //
+        ],
+
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/font-src
         'font-src' => [
             //
@@ -676,19 +681,9 @@ return [
             //
         ],
 
-        // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/navigate-to
-        'navigate-to' => [
-            'unsafe-allow-redirects' => false,
-        ],
-
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/object-src
         'object-src' => [
             //
-        ],
-
-        // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/plugin-types
-        'plugin-types' => [
-            // 'application/pdf',
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/prefetch-src
@@ -696,7 +691,7 @@ return [
             //
         ],
 
-        // https://w3c.github.io/webappsec-trusted-types/dist/spec/#integration-with-content-security-policy
+        // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/require-trusted-types-for
         'require-trusted-types-for' => [
             'script' => false,
         ],
@@ -705,7 +700,7 @@ return [
         'sandbox' => [
             'enable' => false,
 
-            'allow-downloads-without-user-activation' => false,
+            'allow-downloads' => false,
 
             'allow-forms' => false,
 
@@ -730,6 +725,8 @@ return [
             'allow-top-navigation' => false,
 
             'allow-top-navigation-by-user-activation' => false,
+
+            'allow-top-navigation-to-custom-protocols' => false,
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src
@@ -803,13 +800,13 @@ return [
             //
         ],
 
-        // https://w3c.github.io/webappsec-trusted-types/dist/spec/#trusted-types-csp-directive
+        // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/trusted-types
         'trusted-types' => [
             'enable' => false,
 
-            'allow-duplicates' => false,
+            'none' => false,
 
-            'default' => false,
+            'allow-duplicates' => false,
 
             'policies' => [
                 //

@@ -49,19 +49,6 @@ final class ContentSecurityPolicyBuilderTest extends TestCase
 
     public function testSeldomUsedDirectives()
     {
-        // plugin-types
-        $config = [
-            'plugin-types' => [
-                'application/x-shockwave-flash',
-                'application/x-java-applet',
-            ],
-        ];
-
-        $this->assertSame(
-            'plugin-types application/x-shockwave-flash application/x-java-applet',
-            (new ContentSecurityPolicyBuilder($config))->get()
-        );
-
         // sandbox
         $config = [
             'sandbox' => [
@@ -132,24 +119,6 @@ final class ContentSecurityPolicyBuilderTest extends TestCase
             'trusted-types' => [
                 'enable' => true,
 
-                'default' => true,
-
-                'policies' => [
-                    'one',
-                    'two',
-                ],
-            ],
-        ];
-
-        $this->assertSame(
-            'trusted-types one two default',
-            (new ContentSecurityPolicyBuilder($config))->get()
-        );
-
-        $config = [
-            'trusted-types' => [
-                'enable' => true,
-
                 'allow-duplicates' => true,
 
                 'policies' => [
@@ -161,6 +130,24 @@ final class ContentSecurityPolicyBuilderTest extends TestCase
 
         $this->assertSame(
             "trusted-types one two 'allow-duplicates'",
+            (new ContentSecurityPolicyBuilder($config))->get()
+        );
+
+        $config = [
+            'trusted-types' => [
+                'enable' => true,
+
+                'none' => true,
+
+                'policies' => [
+                    'one',
+                    'two',
+                ],
+            ],
+        ];
+
+        $this->assertSame(
+            "trusted-types 'none'",
             (new ContentSecurityPolicyBuilder($config))->get()
         );
 
