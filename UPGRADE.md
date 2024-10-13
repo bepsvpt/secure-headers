@@ -1,3 +1,7 @@
+## 7.5.0 to 8.0.0
+
+- Please refer to the changelog of version [8.0.0](https://github.com/bepsvpt/secure-headers/blob/8.0.0/CHANGELOG.md#8x) to make corresponding adjustments based on your existing settings.
+
 ## 7.x.x to 7.3.0
 
 - The following new headers are added, you can find it [here](https://github.com/bepsvpt/secure-headers/blob/7.3.0/config/secure-headers.php#L89-L114) and copy to your config file.
