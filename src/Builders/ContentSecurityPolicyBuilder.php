@@ -250,12 +250,12 @@ final class ContentSecurityPolicyBuilder extends Builder
             return '';
         }
 
-        $policies = ['trusted-types'];
-
         if ($trustedTypes['none'] ?? false) {
-            $policies[] = "'none'";
+            $policies = ['trusted-types', "'none'"];
         } else {
-            array_push($policies, ...array_map('trim', $trustedTypes['policies'] ?? []));
+            $policies = array_map('trim', $trustedTypes['policies'] ?? []);
+
+            array_unshift($policies, 'trusted-types');
 
             if ($trustedTypes['allow-duplicates'] ?? false) {
                 $policies[] = "'allow-duplicates'";
