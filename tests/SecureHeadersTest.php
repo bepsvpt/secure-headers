@@ -48,7 +48,7 @@ final class SecureHeadersTest extends TestCase
 
         $this->assertArrayHasKey('Permissions-Policy', $headers);
 
-        $this->assertArrayHasKey('X-XSS-Protection', $headers);
+        $this->assertArrayHasKey('X-Frame-Options', $headers);
     }
 
     public function testFileNotFound()
