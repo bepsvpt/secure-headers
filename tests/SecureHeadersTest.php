@@ -246,7 +246,7 @@ final class SecureHeadersTest extends TestCase
         $policy = $headers['Permissions-Policy'];
 
         $this->assertSame(
-            'accelerometer=(self), ambient-light-sensor=(self), autoplay=(self), battery=(self), camera=(self), cross-origin-isolated=(self), display-capture=(self), document-domain=*, encrypted-media=(self), execution-while-not-rendered=*, execution-while-out-of-viewport=*, fullscreen=(self), geolocation=(self), gyroscope=(self), magnetometer=(self), microphone=(self), midi=(self), navigation-override=(self), payment=(self), picture-in-picture=*, publickey-credentials-get=(self), screen-wake-lock=(self), sync-xhr=*, usb=(self), web-share=(self), xr-spatial-tracking=(self)',
+            'accelerometer=(self), ambient-light-sensor=(self), attribution-reporting=*, autoplay=(self), bluetooth=(self), browsing-topics=*, camera=(self), compute-pressure=(self), cross-origin-isolated=(self), display-capture=(self), document-domain=*, encrypted-media=(self), fullscreen=(self), gamepad=(self), geolocation=(self), gyroscope=(self), hid=(self), identity-credentials-get=(self), idle-detection=(self), local-fonts=(self), magnetometer=(self), microphone=(self), midi=(self), otp-credentials=(self), payment=(self), picture-in-picture=*, publickey-credentials-create=(self), publickey-credentials-get=(self), screen-wake-lock=(self), serial=(self), speaker-selection=(self), storage-access=*, usb=(self), web-share=(self), window-management=(self), xr-spatial-tracking=(self)',
             $policy
         );
 
