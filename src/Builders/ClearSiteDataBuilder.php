@@ -11,6 +11,7 @@ final class ClearSiteDataBuilder extends Builder
      */
     protected $whitelist = [
         'cache' => true,
+        'clientHints' => true,
         'cookies' => true,
         'storage' => true,
         'executionContexts' => true,

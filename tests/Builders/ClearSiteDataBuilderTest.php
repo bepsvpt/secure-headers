@@ -37,11 +37,13 @@ final class ClearSiteDataBuilderTest extends TestCase
         );
 
         $config = [
+            'clientHints' => true,
+
             'executionContexts' => true,
         ];
 
         $this->assertSame(
-            '"executionContexts"',
+            '"clientHints", "executionContexts"',
             (new ClearSiteDataBuilder($config))->get()
         );
     }
