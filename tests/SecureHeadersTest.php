@@ -336,6 +336,77 @@ final class SecureHeadersTest extends TestCase
         );
     }
 
+    public function testReportingEndpoints()
+    {
+        $config = $this->config();
+
+        $config['reporting'] = [
+            'nel' => 'https://example.com/nel',
+            'csp' => 'https://example.com/csp',
+        ];
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArrayHasKey('Reporting-Endpoints', $headers);
+
+        $this->assertSame('nel="https://example.com/nel", csp="https://example.com/csp"', $headers['Reporting-Endpoints']);
+
+        // ensure backward compatibility
+
+        unset($config['reporting']);
+
+        $this->assertArrayNotHasKey(
+            'Reporting-Endpoints',
+            (new SecureHeaders($config))->headers()
+        );
+    }
+
+    public function testNetworkErrorLogging()
+    {
+        $config = $this->config();
+
+        $config['nel']['enable'] = true;
+
+        $this->assertArrayNotHasKey(
+            'NEL',
+            (new SecureHeaders($config))->headers()
+        );
+
+        $config['nel']['report-to'] = 'nel';
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArrayHasKey('NEL', $headers);
+
+        $this->assertSame('{"report_to":"nel","max_age":86400,"include_subdomains":false,"success_fraction":0.0,"failure_fraction":1.0}', $headers['NEL']);
+
+        $config['nel']['include-subdomains'] = true;
+
+        $config['nel']['failure-fraction'] = 0.01;
+
+        $headers = (new SecureHeaders($config))->headers();
+
+        $this->assertArrayHasKey('NEL', $headers);
+
+        $this->assertSame('{"report_to":"nel","max_age":86400,"include_subdomains":true,"success_fraction":0.0,"failure_fraction":0.01}', $headers['NEL']);
+
+        $config['nel']['enable'] = false;
+
+        $this->assertArrayNotHasKey(
+            'NEL',
+            (new SecureHeaders($config))->headers()
+        );
+
+        // ensure backward compatibility
+
+        unset($config['reporting-endpoints']);
+
+        $this->assertArrayNotHasKey(
+            'NEL',
+            (new SecureHeaders($config))->headers()
+        );
+    }
+
     /**
      * Get secure-headers config.
      *

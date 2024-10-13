@@ -23,10 +23,10 @@
   ],
   "homepage": "https://github.com/bepsvpt/secure-headers",
   "require": {
-    "php": "^7.0 || ^8.0"
+    "php": "^7.0 || ^8.0",
+    "ext-json": "*"
   },
   "require-dev": {
-    "ext-json": "*",
     "ext-xdebug": "*",
     "ergebnis/composer-normalize": "^2.42",
     "laravel/pint": "^1.14",

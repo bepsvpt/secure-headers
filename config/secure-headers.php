@@ -171,6 +171,41 @@ return [
     ],
 
     /*
+     * Reporting Endpoints
+     *
+     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Reporting-Endpoints
+     *
+     * The array key is the endpoint name, and the value is the URL.
+     */
+
+    'reporting' => [
+        // 'csp' => 'https://example.com/csp-reports',
+        // 'nel' => 'https://example.com/nel-reports',
+    ],
+
+    /*
+     * Network Error Logging
+     *
+     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Network_Error_Logging
+     */
+
+    'nel' => [
+        'enable' => false,
+
+        // The name of reporting API, not the endpoint URL.
+        // @see https://developer.mozilla.org/en-US/docs/Web/API/Reporting_API
+        'report-to' => '',
+
+        'max-age' => 86400,
+
+        'include-subdomains' => false,
+
+        'success-fraction' => 0.0,
+
+        'failure-fraction' => 1.0,
+    ],
+
+    /*
      * Expect-CT
      *
      * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expect-CT

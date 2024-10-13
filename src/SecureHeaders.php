@@ -103,17 +103,41 @@ class SecureHeaders
     public function headers(): array
     {
         $headers = array_merge(
+            $this->reporting(),
             $this->csp(),
             $this->permissionsPolicy(),
             $this->hsts(),
             $this->expectCT(),
             $this->clearSiteData(),
+            $this->networkErrorLogging(),
             $this->miscellaneous()
         );
 
         $this->sent = true;
 
         return array_filter($headers);
+    }
+
+    /**
+     * Get Reporting Endpoints header.
+     *
+     * @return array<string>
+     */
+    protected function reporting(): array
+    {
+        $config = $this->config['reporting'] ?? [];
+
+        if (empty($config)) {
+            return [];
+        }
+
+        $endpoints = [];
+
+        foreach ($config as $name => $url) {
+            $endpoints[] = sprintf('%s="%s"', $name, $url);
+        }
+
+        return ['Reporting-Endpoints' => implode(', ', $endpoints)];
     }
 
     /**
@@ -212,6 +236,42 @@ class SecureHeaders
         $builder = new ClearSiteDataBuilder($config);
 
         return ['Clear-Site-Data' => $builder->get()];
+    }
+
+    /**
+     * Generate NEL header.
+     *
+     * @return array<string>
+     */
+    protected function networkErrorLogging(): array
+    {
+        $config = $this->config['nel'] ?? [];
+
+        if (! ($config['enable'] ?? false)) {
+            return [];
+        }
+
+        if (empty($config['report-to'])) {
+            return [];
+        }
+
+        unset($config['enable']);
+
+        $nel = [];
+
+        foreach ($config as $key => $value) {
+            $key = str_replace('-', '_', $key);
+
+            $nel[$key] = $value;
+        }
+
+        $encoded = json_encode($nel, JSON_PRESERVE_ZERO_FRACTION);
+
+        if ($encoded === false) {
+            return [];
+        }
+
+        return ['NEL' => $encoded];
     }
 
     /**
