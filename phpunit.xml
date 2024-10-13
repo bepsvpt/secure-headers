@@ -15,10 +15,11 @@
     </testsuite>
   </testsuites>
   <php>
-    <ini name="memory_limit" value="-1"/>
     <ini name="error_reporting" value="-1"/>
-    <ini name="log_errors_max_len" value="0"/>
     <ini name="xdebug.show_exception_trace" value="0"/>
+    <ini name="xdebug.mode" value="coverage"/>
+    <ini name="zend.assertions" value="1"/>
     <ini name="assert.exception" value="1"/>
+    <ini name="memory_limit" value="-1"/>
   </php>
 </phpunit>
