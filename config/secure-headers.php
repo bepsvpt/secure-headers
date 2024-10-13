@@ -9,7 +9,6 @@ return [
      *
      * Note: When server is empty string, it will not be added to the response header.
      */
-
     'server' => '',
 
     /**
@@ -19,7 +18,6 @@ return [
      *
      * Available Value: 'nosniff'
      */
-
     'x-content-type-options' => 'nosniff',
 
     /**
@@ -29,7 +27,6 @@ return [
      *
      * Available Value: 'on', 'off'
      */
-
     'x-dns-prefetch-control' => '',
 
     /**
@@ -39,19 +36,16 @@ return [
      *
      * Available Value: 'noopen'
      */
-
     'x-download-options' => 'noopen',
 
     /**
      * X-Frame-Options
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
+     * @deprecated The X-Frame-Options is no longer recommended for use; please use Content-Security-Policy (CSP) instead.
      *
      * Available Value: 'deny', 'sameorigin', 'allow-from <uri>'
-     *
-     * @deprecated The X-Frame-Options is no longer recommended for use; please use Content-Security-Policy (CSP) instead.
      */
-
     'x-frame-options' => 'sameorigin',
 
     /**
@@ -61,7 +55,6 @@ return [
      *
      * Available Value: 'all', 'none', 'master-only', 'by-content-type', 'by-ftp-filename'
      */
-
     'x-permitted-cross-domain-policies' => 'none',
 
     /**
@@ -74,19 +67,16 @@ return [
      *
      * @see https://github.com/bepsvpt/secure-headers/issues/58#issuecomment-782332442
      */
-
     'x-powered-by' => '',
 
     /**
      * X-XSS-Protection
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection
+     * @deprecated The X-XSS-Protection is no longer recommended for use; please use Content-Security-Policy (CSP) instead.
      *
      * Available Value: '1', '0', '1; mode=block'
-     *
-     * @deprecated The X-XSS-Protection is no longer recommended for use; please use Content-Security-Policy (CSP) instead.
      */
-
     'x-xss-protection' => '',
 
     /**
@@ -97,7 +87,6 @@ return [
      * Available Value: 'no-referrer', 'no-referrer-when-downgrade', 'origin', 'origin-when-cross-origin',
      *                  'same-origin', 'strict-origin', 'strict-origin-when-cross-origin', 'unsafe-url'
      */
-
     'referrer-policy' => 'no-referrer',
 
     /**
@@ -107,7 +96,6 @@ return [
      *
      * Available Value: 'unsafe-none', 'require-corp', 'credentialless'
      */
-
     'cross-origin-embedder-policy' => 'unsafe-none',
 
     /**
@@ -117,7 +105,6 @@ return [
      *
      * Available Value: 'unsafe-none', 'same-origin-allow-popups', 'same-origin'
      */
-
     'cross-origin-opener-policy' => 'unsafe-none',
 
     /**
@@ -127,7 +114,6 @@ return [
      *
      * Available Value: 'same-site', 'same-origin', 'cross-origin'
      */
-
     'cross-origin-resource-policy' => 'cross-origin',
 
     /**
@@ -135,7 +121,6 @@ return [
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Clear-Site-Data
      */
-
     'clear-site-data' => [
         'enable' => false,
 
@@ -159,7 +144,6 @@ return [
      *
      * Note: Please ensure your website had set up ssl/tls before enable hsts.
      */
-
     'hsts' => [
         'enable' => false,
 
@@ -177,7 +161,6 @@ return [
      *
      * Note: The array key is the endpoint name, and the value is the URL.
      */
-
     'reporting' => [
         // 'csp' => 'https://example.com/csp-reports',
         // 'nel' => 'https://example.com/nel-reports',
@@ -189,7 +172,6 @@ return [
      * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Network_Error_Logging
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Reporting_API
      */
-
     'nel' => [
         'enable' => false,
 
@@ -209,10 +191,8 @@ return [
      * Expect-CT
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expect-CT
-     *
      * @deprecated This feature is no longer recommended.
      */
-
     'expect-ct' => [
         'enable' => false,
 
@@ -229,7 +209,6 @@ return [
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy
      */
-
     'permissions-policy' => [
         'enable' => true,
 
@@ -635,7 +614,6 @@ return [
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
      */
-
     'csp' => [
         'enable' => true,
 
