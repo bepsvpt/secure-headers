@@ -2,97 +2,97 @@
 
 return [
 
-    /*
+    /**
      * Server
      *
-     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Server
+     * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Server
      *
-     * Note: when server is empty string, it will not add to response header
+     * Note: When server is empty string, it will not be added to the response header.
      */
 
     'server' => '',
 
-    /*
+    /**
      * X-Content-Type-Options
      *
-     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
+     * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
      *
      * Available Value: 'nosniff'
      */
 
     'x-content-type-options' => 'nosniff',
 
-    /*
+    /**
      * X-DNS-Prefetch-Control
      *
-     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-DNS-Prefetch-Control
+     * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-DNS-Prefetch-Control
      *
      * Available Value: 'on', 'off'
      */
 
     'x-dns-prefetch-control' => '',
 
-    /*
+    /**
      * X-Download-Options
      *
-     * Reference: https://msdn.microsoft.com/en-us/library/jj542450(v=vs.85).aspx
+     * @see https://msdn.microsoft.com/en-us/library/jj542450(v=vs.85).aspx
      *
      * Available Value: 'noopen'
      */
 
     'x-download-options' => 'noopen',
 
-    /*
+    /**
      * X-Frame-Options
      *
-     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
+     * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
      *
      * Available Value: 'deny', 'sameorigin', 'allow-from <uri>'
      *
-     * Note: The X-Frame-Options is no longer recommended for use; please use Content-Security-Policy (CSP) instead.
+     * @deprecated The X-Frame-Options is no longer recommended for use; please use Content-Security-Policy (CSP) instead.
      */
 
     'x-frame-options' => 'sameorigin',
 
-    /*
+    /**
      * X-Permitted-Cross-Domain-Policies
      *
-     * Reference: https://www.adobe.com/devnet-docs/acrobatetk/tools/AppSec/xdomain.html
+     * @see https://www.adobe.com/devnet-docs/acrobatetk/tools/AppSec/xdomain.html
      *
      * Available Value: 'all', 'none', 'master-only', 'by-content-type', 'by-ftp-filename'
      */
 
     'x-permitted-cross-domain-policies' => 'none',
 
-    /*
+    /**
      * X-Powered-By
      *
      * Note: it will not add to response header if the value is empty string.
      *
      * Also, verify that expose_php is turned Off in php.ini.
-     * Otherwise the header will still be included in the response.
+     * Otherwise, the header will still be included in the response.
      *
-     * Reference: https://github.com/bepsvpt/secure-headers/issues/58#issuecomment-782332442
+     * @see https://github.com/bepsvpt/secure-headers/issues/58#issuecomment-782332442
      */
 
     'x-powered-by' => '',
 
-    /*
+    /**
      * X-XSS-Protection
      *
-     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection
+     * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection
      *
      * Available Value: '1', '0', '1; mode=block'
      *
-     * Note: The X-XSS-Protection is no longer recommended for use; please use Content-Security-Policy (CSP) instead.
+     * @deprecated The X-XSS-Protection is no longer recommended for use; please use Content-Security-Policy (CSP) instead.
      */
 
     'x-xss-protection' => '',
 
-    /*
+    /**
      * Referrer-Policy
      *
-     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
+     * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
      *
      * Available Value: 'no-referrer', 'no-referrer-when-downgrade', 'origin', 'origin-when-cross-origin',
      *                  'same-origin', 'strict-origin', 'strict-origin-when-cross-origin', 'unsafe-url'
@@ -100,40 +100,40 @@ return [
 
     'referrer-policy' => 'no-referrer',
 
-    /*
+    /**
      * Cross-Origin-Embedder-Policy
      *
-     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy
+     * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy
      *
      * Available Value: 'unsafe-none', 'require-corp', 'credentialless'
      */
 
     'cross-origin-embedder-policy' => 'unsafe-none',
 
-    /*
+    /**
      * Cross-Origin-Opener-Policy
      *
-     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy
+     * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy
      *
      * Available Value: 'unsafe-none', 'same-origin-allow-popups', 'same-origin'
      */
 
     'cross-origin-opener-policy' => 'unsafe-none',
 
-    /*
+    /**
      * Cross-Origin-Resource-Policy
      *
-     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Resource-Policy
+     * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Resource-Policy
      *
      * Available Value: 'same-site', 'same-origin', 'cross-origin'
      */
 
     'cross-origin-resource-policy' => 'cross-origin',
 
-    /*
+    /**
      * Clear-Site-Data
      *
-     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Clear-Site-Data
+     * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Clear-Site-Data
      */
 
     'clear-site-data' => [
@@ -152,12 +152,12 @@ return [
         'executionContexts' => true,
     ],
 
-    /*
+    /**
      * HTTP Strict Transport Security
      *
-     * Reference: https://developer.mozilla.org/en-US/docs/Web/Security/HTTP_strict_transport_security
+     * @see https://developer.mozilla.org/en-US/docs/Web/Security/HTTP_strict_transport_security
      *
-     * Please ensure your website had set up ssl/tls before enable hsts.
+     * Note: Please ensure your website had set up ssl/tls before enable hsts.
      */
 
     'hsts' => [
@@ -170,12 +170,12 @@ return [
         'preload' => false,
     ],
 
-    /*
+    /**
      * Reporting Endpoints
      *
-     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Reporting-Endpoints
+     * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Reporting-Endpoints
      *
-     * The array key is the endpoint name, and the value is the URL.
+     * Note: The array key is the endpoint name, and the value is the URL.
      */
 
     'reporting' => [
@@ -183,17 +183,17 @@ return [
         // 'nel' => 'https://example.com/nel-reports',
     ],
 
-    /*
+    /**
      * Network Error Logging
      *
-     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Network_Error_Logging
+     * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Network_Error_Logging
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/Reporting_API
      */
 
     'nel' => [
         'enable' => false,
 
         // The name of reporting API, not the endpoint URL.
-        // @see https://developer.mozilla.org/en-US/docs/Web/API/Reporting_API
         'report-to' => '',
 
         'max-age' => 86400,
@@ -205,12 +205,12 @@ return [
         'failure-fraction' => 1.0,
     ],
 
-    /*
+    /**
      * Expect-CT
      *
-     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expect-CT
+     * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expect-CT
      *
-     * Note: This feature is no longer recommended.
+     * @deprecated This feature is no longer recommended.
      */
 
     'expect-ct' => [
@@ -224,10 +224,10 @@ return [
         'report-uri' => null,
     ],
 
-    /*
+    /**
      * Permissions Policy
      *
-     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy
+     * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy
      */
 
     'permissions-policy' => [
@@ -630,10 +630,10 @@ return [
         ],
     ],
 
-    /*
+    /**
      * Content Security Policy
      *
-     * Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
+     * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
      */
 
     'csp' => [
