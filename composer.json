@@ -11,6 +11,7 @@
     "csp",
     "except-ct",
     "feature-policy",
+    "permissions-policy",
     "clear-site-data",
     "referrer-policy",
     "content-security-policy"
