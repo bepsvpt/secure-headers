@@ -160,6 +160,17 @@ final class ContentSecurityPolicyBuilderTest extends TestCase
             'report-to csp-report',
             (new ContentSecurityPolicyBuilder($config))->get()
         );
+
+        $config = [
+            'frame-ancestors' => [
+                'none' => true,
+            ],
+        ];
+
+        $this->assertSame(
+            "frame-ancestors 'none'",
+            (new ContentSecurityPolicyBuilder($config))->get()
+        );
     }
 
     public function testSchemeAutoAppendColon()
