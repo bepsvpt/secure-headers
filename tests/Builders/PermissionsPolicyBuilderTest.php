@@ -7,7 +7,7 @@ use Bepsvpt\SecureHeaders\Tests\TestCase;
 
 final class PermissionsPolicyBuilderTest extends TestCase
 {
-    public function testPolicies()
+    public function test_policies()
     {
         $config = [
             'autoplay' => [
@@ -40,7 +40,7 @@ final class PermissionsPolicyBuilderTest extends TestCase
         );
     }
 
-    public function testPolicyKeyPriority()
+    public function test_policy_key_priority()
     {
         $config = [
             'accelerometer' => [
@@ -69,7 +69,7 @@ final class PermissionsPolicyBuilderTest extends TestCase
         );
     }
 
-    public function testPolicyMissingKeys()
+    public function test_policy_missing_keys()
     {
         $config = [
             'accelerometer' => [
@@ -85,7 +85,7 @@ final class PermissionsPolicyBuilderTest extends TestCase
         );
     }
 
-    public function testInvalidPolicyAllowList()
+    public function test_invalid_policy_allow_list()
     {
         $config = [
             'accelerometer' => [

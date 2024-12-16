@@ -48,7 +48,7 @@ final class MiddlewareTest extends TestCase
         $app->make(HttpKernel::class)->pushMiddleware(SecureHeadersMiddleware::class);
     }
 
-    public function testMiddleware()
+    public function test_middleware()
     {
         $this->app['router']->get('/', function () {
             return 'Hello World!';
@@ -59,7 +59,7 @@ final class MiddlewareTest extends TestCase
         $this->assertArrayHasKey('x-frame-options', $headers);
     }
 
-    public function testBinaryResponse()
+    public function test_binary_response()
     {
         $this->app['router']->get('/', function () {
             return response()->download(__DIR__.'/../README.md');

@@ -7,7 +7,7 @@ use Bepsvpt\SecureHeaders\Tests\TestCase;
 
 final class StrictTransportSecurityBuilderTest extends TestCase
 {
-    public function testStrictTransportSecurity()
+    public function test_strict_transport_security()
     {
         $config = [
             'max-age' => 1440,
@@ -54,7 +54,7 @@ final class StrictTransportSecurityBuilderTest extends TestCase
         );
     }
 
-    public function testNegativeMaxAge()
+    public function test_negative_max_age()
     {
         $config = [
             'max-age' => -666,

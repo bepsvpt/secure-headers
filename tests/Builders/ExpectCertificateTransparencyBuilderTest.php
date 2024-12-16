@@ -7,7 +7,7 @@ use Bepsvpt\SecureHeaders\Tests\TestCase;
 
 final class ExpectCertificateTransparencyBuilderTest extends TestCase
 {
-    public function testExpectCertificateTransparency()
+    public function test_expect_certificate_transparency()
     {
         $config = [
             'max-age' => 1440,
@@ -54,7 +54,7 @@ final class ExpectCertificateTransparencyBuilderTest extends TestCase
         );
     }
 
-    public function testNegativeMaxAge()
+    public function test_negative_max_age()
     {
         $config = [
             'max-age' => -666,
@@ -66,7 +66,7 @@ final class ExpectCertificateTransparencyBuilderTest extends TestCase
         );
     }
 
-    public function testInvalidReportUri()
+    public function test_invalid_report_uri()
     {
         $config = [
             'max-age' => 86400,

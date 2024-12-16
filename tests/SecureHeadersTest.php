@@ -12,7 +12,7 @@ final class SecureHeadersTest extends TestCase
      */
     protected $configPath = __DIR__.'/../config/secure-headers.php';
 
-    public function testSendHeaders()
+    public function test_send_headers()
     {
         (new SecureHeaders($this->config()))->send();
 
@@ -29,7 +29,7 @@ final class SecureHeadersTest extends TestCase
         );
     }
 
-    public function testDisableHeader()
+    public function test_disable_header()
     {
         $config = $this->config();
 
@@ -42,7 +42,7 @@ final class SecureHeadersTest extends TestCase
         $this->assertArrayNotHasKey('X-Download-Options', $headers);
     }
 
-    public function testLoadFromFile()
+    public function test_load_from_file()
     {
         $headers = SecureHeaders::fromFile($this->configPath)->headers();
 
@@ -51,14 +51,14 @@ final class SecureHeadersTest extends TestCase
         $this->assertArrayHasKey('X-Frame-Options', $headers);
     }
 
-    public function testFileNotFound()
+    public function test_file_not_found()
     {
         $this->expectException(InvalidArgumentException::class);
 
         SecureHeaders::fromFile(__DIR__.'/not-found');
     }
 
-    public function testServerHeader()
+    public function test_server_header()
     {
         $config = $this->config();
 
@@ -76,7 +76,7 @@ final class SecureHeadersTest extends TestCase
         $this->assertSame('Example', $headers['Server']);
     }
 
-    public function testXPoweredByHeader()
+    public function test_x_powered_by_header()
     {
         $config = $this->config();
 
@@ -109,7 +109,7 @@ final class SecureHeadersTest extends TestCase
         $this->assertSame('Example', $headers['X-Powered-By']);
     }
 
-    public function testContentSecurityPolicy()
+    public function test_content_security_policy()
     {
         $config = $this->config();
 
@@ -147,7 +147,7 @@ final class SecureHeadersTest extends TestCase
         );
     }
 
-    public function testContentSecurityPolicyNonce()
+    public function test_content_security_policy_nonce()
     {
         $nonce = SecureHeaders::nonce();
 
@@ -178,7 +178,7 @@ final class SecureHeadersTest extends TestCase
         );
     }
 
-    public function testContentSecurityPolicyRemoveNonce()
+    public function test_content_security_policy_remove_nonce()
     {
         SecureHeaders::nonce('script');
         SecureHeaders::nonce('style');
@@ -217,7 +217,7 @@ final class SecureHeadersTest extends TestCase
         );
     }
 
-    public function testContentSecurityPolicyNonceWillBeClearedAfterHeaderSent()
+    public function test_content_security_policy_nonce_will_be_cleared_after_header_sent()
     {
         $times = 10;
 
@@ -233,7 +233,7 @@ final class SecureHeadersTest extends TestCase
         }
     }
 
-    public function testPermissionsPolicy()
+    public function test_permissions_policy()
     {
         $config = $this->config();
 
@@ -257,7 +257,7 @@ final class SecureHeadersTest extends TestCase
         $this->assertArrayNotHasKey('Permissions-Policy', $headers);
     }
 
-    public function testStrictTransportSecurity()
+    public function test_strict_transport_security()
     {
         $config = $this->config();
 
@@ -276,7 +276,7 @@ final class SecureHeadersTest extends TestCase
         );
     }
 
-    public function testExpectCertificateTransparency()
+    public function test_expect_certificate_transparency()
     {
         $config = $this->config();
 
@@ -295,7 +295,7 @@ final class SecureHeadersTest extends TestCase
         );
     }
 
-    public function testClearSiteData()
+    public function test_clear_site_data()
     {
         $config = $this->config();
 
@@ -314,7 +314,7 @@ final class SecureHeadersTest extends TestCase
         );
     }
 
-    public function testCrossOriginPolicy()
+    public function test_cross_origin_policy()
     {
         $config = $this->config();
 
@@ -336,7 +336,7 @@ final class SecureHeadersTest extends TestCase
         );
     }
 
-    public function testReportingEndpoints()
+    public function test_reporting_endpoints()
     {
         $config = $this->config();
 
@@ -361,7 +361,7 @@ final class SecureHeadersTest extends TestCase
         );
     }
 
-    public function testNetworkErrorLogging()
+    public function test_network_error_logging()
     {
         $config = $this->config();
 

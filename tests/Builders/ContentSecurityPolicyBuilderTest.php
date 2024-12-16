@@ -7,7 +7,7 @@ use Bepsvpt\SecureHeaders\Tests\TestCase;
 
 final class ContentSecurityPolicyBuilderTest extends TestCase
 {
-    public function testEmptyDirective()
+    public function test_empty_directive()
     {
         $config = [
             'img-src' => [],
@@ -47,7 +47,7 @@ final class ContentSecurityPolicyBuilderTest extends TestCase
         );
     }
 
-    public function testSeldomUsedDirectives()
+    public function test_seldom_used_directives()
     {
         // sandbox
         $config = [
@@ -173,7 +173,7 @@ final class ContentSecurityPolicyBuilderTest extends TestCase
         );
     }
 
-    public function testSchemeAutoAppendColon()
+    public function test_scheme_auto_append_colon()
     {
         $config = [
             'img-src' => [
@@ -191,7 +191,7 @@ final class ContentSecurityPolicyBuilderTest extends TestCase
         );
     }
 
-    public function testInvalidNonce()
+    public function test_invalid_nonce()
     {
         $config = [
             'img-src' => [
@@ -208,7 +208,7 @@ final class ContentSecurityPolicyBuilderTest extends TestCase
         );
     }
 
-    public function testInvalidHash()
+    public function test_invalid_hash()
     {
         $config = [
             'font-src' => [
@@ -239,7 +239,7 @@ final class ContentSecurityPolicyBuilderTest extends TestCase
     /*
      * https://signin.104.com.tw
      */
-    public function testUsing104ContentSecurityPolicy()
+    public function test_using_104_content_security_policy()
     {
         $csp = "default-src api.rollbar.com 'self'; font-src 'self' fonts.gstatic.com heapanalytics.com data:; style-src 'self' 'unsafe-inline' tagmanager.google.com fonts.googleapis.com heapanalytics.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' tagmanager.google.com www.googletagmanager.com www.google-analytics.com ssl.google-analytics.com cdn.heapanalytics.com heapanalytics.com www.google.com.tw certify-js.alexametrics.com cdnjs.cloudflare.com static.104.com.tw data:; img-src 'self' ssl.gstatic.com www.gstatic.com www.googletagmanager.com www.google-analytics.com heapanalytics.com certify.alexametrics.com tls-detect.support.104.com.tw www.google.com.tw stats.g.doubleclick.net www.google.com ac.clazzrooms.com ac.beagiver.com signin.104dc.com signin.104.com.tw graphicwb.104.com.tw static.104.com.tw data:; frame-src 'self' www.google.com; connect-src 'self' www.google-analytics.com heapanalytics.com";
 
@@ -357,7 +357,7 @@ final class ContentSecurityPolicyBuilderTest extends TestCase
     /*
      * https://user.gamer.com.tw/login.php
      */
-    public function testUsingGamerContentSecurityPolicy()
+    public function test_using_gamer_content_security_policy()
     {
         $csp = "frame-ancestors 'self' https://*.gamer.com.tw";
 
@@ -381,7 +381,7 @@ final class ContentSecurityPolicyBuilderTest extends TestCase
     /*
      * https://secure2.store.apple.com/shop/sign_in
      */
-    public function testUsingAppleContentSecurityPolicy()
+    public function test_using_apple_content_security_policy()
     {
         $csp = "frame-ancestors 'self'";
 
@@ -401,7 +401,7 @@ final class ContentSecurityPolicyBuilderTest extends TestCase
     /*
      * https://dash.cloudflare.com/login
      */
-    public function testUsingCloudflareContentSecurityPolicy()
+    public function test_using_cloudflare_content_security_policy()
     {
         $csp = "object-src 'none'; script-src 'nonce-Mzk3Nzg4MTcwMiw2MjQ3MTQ3OTk=' 'unsafe-eval' 'strict-dynamic' 'report-sample' https:; base-uri 'self'";
 
@@ -441,7 +441,7 @@ final class ContentSecurityPolicyBuilderTest extends TestCase
     /*
      * https://www.facebook.com
      */
-    public function testUsingFacebookContentSecurityPolicy()
+    public function test_using_facebook_content_security_policy()
     {
         $csp = "default-src * data: blob: 'self'; script-src *.facebook.com *.fbcdn.net *.facebook.net *.google-analytics.com *.virtualearth.net *.google.com 127.0.0.1:* *.spotilocal.com:* 'unsafe-inline' 'unsafe-eval' blob: data: 'self'; style-src data: blob: 'unsafe-inline' *; connect-src *.facebook.com facebook.com *.fbcdn.net *.facebook.net *.spotilocal.com:* wss://*.facebook.com:* https://fb.scanandcleanlocal.com:* attachment.fbsbx.com ws://localhost:* blob: *.cdninstagram.com 'self'; block-all-mixed-content; upgrade-insecure-requests";
 
@@ -532,7 +532,7 @@ final class ContentSecurityPolicyBuilderTest extends TestCase
     /*
      * https://github.com/
      */
-    public function testUsingGitHubContentSecurityPolicy()
+    public function test_using_github_content_security_policy()
     {
         $csp = "default-src 'none'; base-uri 'self'; block-all-mixed-content; connect-src 'self' uploads.github.com www.githubstatus.com collector.githubapp.com api.github.com www.google-analytics.com github-cloud.s3.amazonaws.com github-production-repository-file-5c1aeb.s3.amazonaws.com github-production-upload-manifest-file-7fdce7.s3.amazonaws.com github-production-user-asset-6210df.s3.amazonaws.com wss://live.github.com; font-src github.githubassets.com; form-action 'self' github.com gist.github.com; frame-ancestors 'none'; frame-src render.githubusercontent.com; img-src 'self' data: github.githubassets.com identicons.github.com collector.githubapp.com github-cloud.s3.amazonaws.com *.githubusercontent.com customer-stories-feed.github.com spotlights-feed.github.com; manifest-src 'self'; media-src 'none'; script-src github.githubassets.com; style-src 'unsafe-inline' github.githubassets.com";
 
@@ -640,7 +640,7 @@ final class ContentSecurityPolicyBuilderTest extends TestCase
     /*
      * https://accounts.google.com
      */
-    public function testUsingGoogleContentSecurityPolicy()
+    public function test_using_google_content_security_policy()
     {
         $csp = "script-src 'nonce-oYvCFuvmnmawgMYMpObFBw' 'unsafe-inline' 'unsafe-eval'; object-src 'none'; base-uri 'self'; report-uri /cspreport";
 
@@ -678,7 +678,7 @@ final class ContentSecurityPolicyBuilderTest extends TestCase
     /*
      * https://www.paypal.com/tw/signin
      */
-    public function testUsingPayPalContentSecurityPolicy()
+    public function test_using_paypal_content_security_policy()
     {
         $csp = "default-src 'self' https://*.paypal.com https://*.paypalobjects.com; frame-src 'self' https://*.brighttalk.com https://*.paypal.com https://*.paypalobjects.com https://www.youtube-nocookie.com https://www.xoom.com https://www.wootag.com; script-src 'nonce-JTDEJ1tJpkGVoRUcTBE9s6EbWk0sVDYtLrZ909/1KRzJcxGE' 'self' https://*.paypal.com https://*.paypalobjects.com https://assets-cdn.s-xoom.com 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https://nominatim.openstreetmap.org https://*.paypal.com https://*.paypalobjects.com https://*.google-analytics.com https://*.salesforce.com https://*.force.com https://*.eloqua.com https://nexus.ensighten.com https://api.paypal-retaillocator.com https://*.brighttalk.com https://*.sperse.io https://*.dialogtech.com; style-src 'self' https://*.paypal.com https://*.paypalobjects.com https://assets-cdn.s-xoom.com 'unsafe-inline'; font-src 'self' https://*.paypal.com https://*.paypalobjects.com https://assets-cdn.s-xoom.com data:; img-src 'self' https: data:; form-action 'self' https://*.paypal.com https://*.salesforce.com https://*.eloqua.com https://secure.opinionlab.com; base-uri 'self' https://*.paypal.com; object-src 'none'; frame-ancestors 'self' https://*.paypal.com; block-all-mixed-content; report-uri https://www.paypal.com/csplog/api/log/csp";
 
@@ -825,7 +825,7 @@ final class ContentSecurityPolicyBuilderTest extends TestCase
     /*
      * https://beta.protonmail.com/
      */
-    public function testUsingProtonMailContentSecurityPolicy()
+    public function test_using_proton_mail_content_security_policy()
     {
         $csp = "default-src 'self'; connect-src 'self' blob:; script-src 'self' blob: 'sha256-eAhF1Kdccp0BTXM6nMW7SYBdV0c3fZwzcC177TQ692g='; style-src 'self' 'unsafe-inline'; img-src http: https: data: blob: cid:; frame-src 'self' blob: https://secure.protonmail.com; object-src 'self' blob:; child-src 'self' data: blob:; report-uri https://reports.protonmail.ch/reports/csp; frame-ancestors 'none'";
 
@@ -920,7 +920,7 @@ final class ContentSecurityPolicyBuilderTest extends TestCase
     /*
      * https://www.reddit.com/login
      */
-    public function testUsingRedditContentSecurityPolicy()
+    public function test_using_reddit_content_security_policy()
     {
         $csp = "frame-ancestors 'self' https://www.reddit.com https://new.reddit.com";
 

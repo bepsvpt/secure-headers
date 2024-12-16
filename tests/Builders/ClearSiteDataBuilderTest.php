@@ -7,7 +7,7 @@ use Bepsvpt\SecureHeaders\Tests\TestCase;
 
 final class ClearSiteDataBuilderTest extends TestCase
 {
-    public function testClearSiteData()
+    public function test_clear_site_data()
     {
         $config = [];
 
