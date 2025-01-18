@@ -24,7 +24,7 @@
   ],
   "homepage": "https://github.com/bepsvpt/secure-headers",
   "require": {
-    "php": "^7.0 || ^8.0",
+    "php": "^7.1 || ^8.0",
     "ext-json": "*"
   },
   "require-dev": {
