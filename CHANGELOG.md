@@ -1,3 +1,10 @@
+## 9.x
+
+- 9.0.0 (2025-01-18)
+  - **BREAKING CHANGE**
+    - PHP 7.0 is no longer supported.
+  - Fix PHP 8.4 deprecation warning.
+
 ## 8.x
 
 - 8.0.0 (2024-10-13)
