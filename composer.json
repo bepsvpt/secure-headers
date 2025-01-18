@@ -65,5 +65,19 @@
         "Bepsvpt\\SecureHeaders\\SecureHeadersServiceProvider"
       ]
     }
+  },
+  "scripts": {
+    "analyse": [
+      "@putenv XDEBUG_MODE=off",
+      "phpstan analyse --ansi -v --memory-limit=-1"
+    ],
+    "format": [
+      "@putenv XDEBUG_MODE=off",
+      "pint --ansi -vvv"
+    ],
+    "test": [
+      "@putenv XDEBUG_MODE=coverage",
+      "phpunit"
+    ]
   }
 }
