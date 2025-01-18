@@ -317,7 +317,7 @@ class SecureHeaders
      *
      * @return void
      */
-    public static function removeNonce(string $target = null, string $nonce = null)
+    public static function removeNonce(?string $target = null, ?string $nonce = null)
     {
         if ($target === null) {
             self::$nonces['script'] = self::$nonces['style'] = [];
