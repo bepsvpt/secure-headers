@@ -29,11 +29,11 @@
   },
   "require-dev": {
     "ext-xdebug": "*",
-    "ergebnis/composer-normalize": "^2.42",
-    "laravel/pint": "^1.14",
-    "orchestra/testbench": "^3.1 || ^4.18 || ^5.20 || ^6.47 || ^7.42 || ^8.33 || ^9.11 || ^10.0",
-    "phpstan/phpstan": "^1.10",
-    "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.5 || ^9.6 || ^10.5"
+    "ergebnis/composer-normalize": "^2.45",
+    "laravel/pint": "^1.21",
+    "orchestra/testbench": "^3.1 || ^4.18 || ^5.20 || ^6.47 || ^7.53 || ^8.34 || ^9.12 || ^10.1",
+    "phpstan/phpstan": "^1.12",
+    "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.5 || ^9.6 || ^10.5 || ^11.5 || ^12.0"
   },
   "minimum-stability": "stable",
   "prefer-stable": true,
@@ -67,10 +67,7 @@
     }
   },
   "scripts": {
-    "analyse": [
-      "@putenv XDEBUG_MODE=off",
-      "phpstan analyse --ansi -v --memory-limit=-1"
-    ],
+    "analyse": "phpstan analyse --ansi -v --memory-limit=-1",
     "format": [
       "@putenv XDEBUG_MODE=off",
       "pint --ansi -vvv"
