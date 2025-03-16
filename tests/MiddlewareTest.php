@@ -45,7 +45,7 @@ final class MiddlewareTest extends TestCase
                 $this->_response = 'response';
         }
 
-        $app->make(HttpKernel::class)->pushMiddleware(SecureHeadersMiddleware::class);
+        $app->make(HttpKernel::class)->pushMiddleware(SecureHeadersMiddleware::class); // @phpstan-ignore-line
     }
 
     public function test_middleware()
