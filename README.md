@@ -22,7 +22,7 @@ Add security related headers to HTTP response. The package includes Service Prov
 
 ### Supported Laravel Version
 
-5.1 ~ 11.x
+5.1 ~ 12.x
 
 ## Installation
 
@@ -64,10 +64,18 @@ Publish config file
 php artisan vendor:publish --provider="Bepsvpt\SecureHeaders\SecureHeadersServiceProvider"
 ```
 
-Add global middleware in `app/Http/Kernel.php`
+Add global middleware in `app/Http/Kernel.php` ( laravel version < 12 )
 
 ```php
 \Bepsvpt\SecureHeaders\SecureHeadersMiddleware::class,
+```
+
+Add global middleware in `bootstrap/app.php` ( laravel version >= 12 )
+
+```php
+->withMiddleware(function (Middleware $middleware): void {
+    $middleware->append(\Bepsvpt\SecureHeaders\SecureHeadersMiddleware::class);
+})
 ```
 
 Set up config file `config/secure-headers.php`
