@@ -56,6 +56,7 @@
   "config": {
     "allow-plugins": {
       "ergebnis/composer-normalize": true,
+      "kylekatarnls/update-helper": true,
       "phpstan/extension-installer": true
     },
     "optimize-autoloader": true,
