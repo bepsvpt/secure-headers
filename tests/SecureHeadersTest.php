@@ -104,6 +104,8 @@ final class SecureHeadersTest extends TestCase
 
         $config['x-power-by'] = 'Example';
 
+        $headers = (new SecureHeaders($config))->headers();
+
         $this->assertArrayHasKey('X-Powered-By', $headers);
 
         $this->assertSame('Example', $headers['X-Powered-By']);
