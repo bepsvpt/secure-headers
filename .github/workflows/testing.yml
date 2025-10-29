@@ -161,7 +161,7 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-laravel-
 
       - name: Remove static analysis packages to prevent platform issues
-        run: composer remove --dev --no-update ergebnis/composer-normalize laravel/pint phpstan/phpstan
+        run: composer remove --dev --no-update ergebnis/composer-normalize laravel/pint phpstan/extension-installer phpstan/phpstan phpstan/phpstan-deprecation-rules phpstan/phpstan-phpunit
 
       - name: Restrict phpunit/phpunit version to fix dependencies issue for Laravel <= 5.4
         if: ${{ contains(fromJSON('["5.4.0", "5.3.0", "5.2.0", "5.1.0"]'), matrix.laravel) }}
