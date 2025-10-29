@@ -29,11 +29,14 @@
   },
   "require-dev": {
     "ext-xdebug": "*",
-    "ergebnis/composer-normalize": "^2.45",
-    "laravel/pint": "^1.21",
-    "orchestra/testbench": "^3.1 || ^4.18 || ^5.20 || ^6.47 || ^7.53 || ^8.34 || ^9.12 || ^10.1",
+    "ergebnis/composer-normalize": "^2.48",
+    "laravel/pint": "^1.25",
+    "orchestra/testbench": "^3.1 || ^4.18 || ^5.20 || ^6.47 || ^7.55 || ^8.36 || ^9.15 || ^10.6",
+    "phpstan/extension-installer": "^1.4",
     "phpstan/phpstan": "^2.1",
-    "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.5 || ^9.6 || ^10.5 || ^11.5 || ^12.0"
+    "phpstan/phpstan-deprecation-rules": "^2.0",
+    "phpstan/phpstan-phpunit": "^2.0",
+    "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.5 || ^9.6 || ^10.5 || ^11.5 || ^12.4"
   },
   "minimum-stability": "stable",
   "prefer-stable": true,
@@ -53,7 +56,7 @@
   "config": {
     "allow-plugins": {
       "ergebnis/composer-normalize": true,
-      "kylekatarnls/update-helper": true
+      "phpstan/extension-installer": true
     },
     "optimize-autoloader": true,
     "preferred-install": "dist",
