@@ -12,22 +12,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.4'
+          php-version: '8.5'
           extensions: dom, fileinfo, mbstring, xdebug
 
       - name: Get composer cache directory
-        run: echo "COMPOSER_DIR=$(composer config cache-files-dir)" >> $GITHUB_ENV
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
-      - name: Cache dependencies
-        uses: actions/cache@v4
+      - uses: actions/cache@v4
         with:
-          path: ${{ env.COMPOSER_DIR }}
-          key: ${{ runner.os }}-composer-static-analysis-${{ hashFiles('**/composer.json') }}
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-static-analysis-${{ hashFiles('/composer.json') }}
           restore-keys: ${{ runner.os }}-composer-static-analysis-
 
       - name: Install dependencies
@@ -146,7 +146,7 @@ jobs:
           - { laravel: '12.0', php: '8.1' }
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
@@ -155,19 +155,14 @@ jobs:
           extensions: dom, fileinfo, mbstring, xdebug
           ini-values: zend.assertions=1
 
-      - name: Get composer cache directory for Windows
-        if: runner.os == 'Windows'
-        run: echo "COMPOSER_DIR=$(composer config cache-files-dir)" >> $env:GITHUB_ENV
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
-      - name: Get composer cache directory for other OS
-        if: runner.os != 'Windows'
-        run: echo "COMPOSER_DIR=$(composer config cache-files-dir)" >> $GITHUB_ENV
-
-      - name: Cache dependencies
-        uses: actions/cache@v4
+      - uses: actions/cache@v4
         with:
-          path: ${{ env.COMPOSER_DIR }}
-          key: ${{ runner.os }}-composer-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-${{ hashFiles('**/composer.json') }}
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-${{ hashFiles('/composer.json') }}
           restore-keys: ${{ runner.os }}-composer-laravel-
 
       - name: Remove static analysis packages to prevent platform issues
