@@ -27,8 +27,10 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-static-analysis-${{ hashFiles('/composer.json') }}
-          restore-keys: ${{ runner.os }}-composer-static-analysis-
+          key: ${{ runner.os }}-composer-static-analysis-${{ hashFiles('**/composer.json') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-static-analysis-
+            ${{ runner.os }}-composer-
 
       - name: Install dependencies
         run: composer update --no-progress --no-interaction
@@ -163,8 +165,13 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-${{ hashFiles('/composer.json') }}
-          restore-keys: ${{ runner.os }}-composer-laravel-
+          key: ${{ runner.os }}-composer-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-${{ hashFiles('**/composer.json') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-
+            ${{ runner.os }}-composer-laravel-${{ matrix.laravel }}-php-
+            ${{ runner.os }}-composer-laravel-${{ matrix.laravel }}-
+            ${{ runner.os }}-composer-laravel-
+            ${{ runner.os }}-composer-
 
       - name: Remove static analysis packages to prevent platform issues
         run: composer remove --dev --no-update ergebnis/composer-normalize laravel/pint phpstan/extension-installer phpstan/phpstan phpstan/phpstan-deprecation-rules phpstan/phpstan-phpunit
