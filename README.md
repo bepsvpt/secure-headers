@@ -1,7 +1,7 @@
 # Secure Headers
 
 [![Financial Contributors on Open Collective](https://opencollective.com/secure-headers/all/badge.svg?label=financial+contributors)](https://opencollective.com/secure-headers)
-[![Actions Status](https://github.com/bepsvpt/secure-headers/workflows/Laravel/badge.svg)](https://github.com/bepsvpt/secure-headers/actions)
+[![Actions Status](https://github.com/bepsvpt/secure-headers/actions/workflows/testing.yml/badge.svg)](https://github.com/bepsvpt/secure-headers/actions/workflows/testing.yml)
 [![Latest Stable Version](https://poser.pugx.org/bepsvpt/secure-headers/v/stable)](https://packagist.org/packages/bepsvpt/secure-headers)
 [![Total Downloads](https://poser.pugx.org/bepsvpt/secure-headers/downloads)](https://packagist.org/packages/bepsvpt/secure-headers)
 [![License](https://poser.pugx.org/bepsvpt/secure-headers/license)](https://packagist.org/packages/bepsvpt/secure-headers)
