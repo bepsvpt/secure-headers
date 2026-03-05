@@ -17,7 +17,6 @@
   <php>
     <ini name="error_reporting" value="-1"/>
     <ini name="xdebug.show_exception_trace" value="0"/>
-    <ini name="xdebug.mode" value="coverage"/>
     <ini name="zend.assertions" value="1"/>
     <ini name="assert.exception" value="1"/>
     <ini name="memory_limit" value="-1"/>
