@@ -1,5 +1,8 @@
 ## 9.x
 
+- 9.1.0 (2026-03-18)
+  - Support Laravel 13
+
 - 9.0.0 (2025-01-18)
   - **BREAKING CHANGE**
     - PHP 7.0 is no longer supported.
