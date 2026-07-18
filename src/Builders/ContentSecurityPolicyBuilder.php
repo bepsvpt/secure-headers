@@ -110,6 +110,7 @@ final class ContentSecurityPolicyBuilder extends Builder
             'self' => true,
             'unsafe-inline' => true,
             'unsafe-eval' => true,
+            'wasm-unsafe-eval' => true,
             'unsafe-hashes' => true,
             'strict-dynamic' => true,
             'report-sample' => true,
