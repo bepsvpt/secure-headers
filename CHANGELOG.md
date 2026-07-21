@@ -1,5 +1,8 @@
 ## 9.x
 
+- 9.1.1 (2026-07-21)
+  - Support `wasm-unsafe-eval` for CSP. ([#95](https://github.com/bepsvpt/secure-headers/pull/95))
+
 - 9.1.0 (2026-03-18)
   - Support Laravel 13
 
